@@ -1,0 +1,100 @@
+Region: us-west-2
+CustomS3Bucket: dev-nlcd-parallelcluster-testbucket
+Image:
+  Os: alinux2
+  CustomAmi: ami-009c5907993dd62fd
+HeadNode:
+  InstanceType: t3.large
+  Networking:
+    SubnetId: subnet-0f29464029b7f677c
+    SecurityGroups:
+      - sg-00e85d664a5bcd8bb
+  Ssh:
+    KeyName: nlcd-pcluster-access-key
+  Iam:
+    AdditionalIamPolicies:
+      - Policy: arn:aws:iam::081515586180:policy/developer-policy
+      - Policy: arn:aws:iam::081515586180:policy/nlcd-developer-s3-access-policy
+    S3Access:
+      - BucketName: dev-nlcd-developer
+Scheduling:
+  Scheduler: slurm
+  SlurmSettings:
+    Dns:
+      DisableManagedDns: true
+      UseEc2Hostnames: true
+  SlurmQueues:
+  - Name: economy
+    ComputeResources:
+    - Name: t32xlarge
+      Instances:
+      - InstanceType: t3.2xlarge
+      MinCount: 0
+      MaxCount: 40
+    Networking:
+      SubnetIds:
+      - subnet-0f29464029b7f677c
+      SecurityGroups:
+        - sg-00e85d664a5bcd8bb
+    Image:
+      CustomAmi: ami-009c5907993dd62fd
+    Iam:
+      AdditionalIamPolicies:
+        - Policy: arn:aws:iam::081515586180:policy/developer-policy
+        - Policy: arn:aws:iam::081515586180:policy/nlcd-developer-s3-access-policy
+      S3Access:
+        - BucketName: dev-nlcd-developer
+  - Name: hpc
+    ComputeResources:
+    - Name: c6i32xlarge
+      Instances:
+      - InstanceType: c6i.32xlarge
+      MinCount: 0
+      MaxCount: 10
+    Networking:
+      SubnetIds:
+      - subnet-0f29464029b7f677c
+      SecurityGroups:
+        - sg-00e85d664a5bcd8bb
+      PlacementGroup:
+        Enabled: true
+    Image:
+      CustomAmi: ami-009c5907993dd62fd
+    Iam:
+      AdditionalIamPolicies:
+        - Policy: arn:aws:iam::081515586180:policy/developer-policy
+        - Policy: arn:aws:iam::081515586180:policy/nlcd-developer-s3-access-policy
+      S3Access:
+        - BucketName: dev-nlcd-developer
+#  - Name: gpu
+#    ComputeResources:
+#    - Name: p548xlarge
+#      Instances:
+#      - InstanceType: p5.48xlarge
+#      MinCount: 0
+#      MaxCount: 10
+#    Networking:
+#      SubnetIds:
+#      - subnet-0f29464029b7f677c
+#      SecurityGroups:
+#        - sg-00e85d664a5bcd8bb
+#      PlacementGroup:
+#        Enabled: true
+#    Image:
+#      CustomAmi: ami-009c5907993dd62fd
+#    Iam:
+#      AdditionalIamPolicies:
+#        - Policy: arn:aws:iam::081515586180:policy/developer-policy
+#        - Policy: arn:aws:iam::081515586180:policy/nlcd-developer-s3-access-policy
+#      S3Access:
+#        - BucketName: dev-nlcd-developer
+Iam:
+  PermissionsBoundary: arn:aws:iam::081515586180:policy/csr-Developer-Permissions-Boundary
+SharedStorage:
+  - MountDir: /efs
+    Name: s3-data-efs
+    StorageType: Efs
+    EfsSettings:
+      Encrypted: false
+      DeletionPolicy: Delete
+

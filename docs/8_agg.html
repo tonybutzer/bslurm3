@@ -1,0 +1,999 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SCRUM - running &mdash; uberBrandon HPC AWS Parallel Computer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> uberBrandon HPC AWS Parallel Computer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html">Planning for the Prototype Parallel Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#gantt-chart">GANTT CHART</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-10-27-2023">Current Week Ending 10/27/2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#terraform-terragrunt-gitlab-runners">terraform/terragrunt gitlab-runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#allowing-pat-and-kory-on-the-cluster-it-takes-a-village">Allowing Pat and Kory on the Cluster - It takes a village</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#kelcy-s-roadmap">Kelcy’s Roadmap</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-october-27-2023">Current Week Ending October 27, 2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#chaosmonkey-4-node-parallel-cluster-in-watersmart-iac">chaosMonkey 4 node parallel cluster in watersmart IAC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-sprint">Current Sprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#analysis-focus">Analysis Focus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#planning-focus">Planning Focus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#sdlc-phase-summary">SDLC Phase Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#user-story">User Story</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html">Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html#watersmart-cluster">WaterSMart Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iac-journey">IAC Journey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#so-vpcs">SO VPCs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#ws">WS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#therefore-the-usable-host-addresses-in-the-network-10-12-64-0-21-are-2046-2-2044-addresses">Therefore, the usable host addresses in the network <code class="docutils literal notranslate"><span class="pre">10.12.64.0/21</span></code> are (2046 - 2 = 2044) addresses.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#subnets">3 subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#nlcd-vpc">NLCD VPC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#availability-issues-in-the-not-quite-infinite-cloud">Availability Issues in the not quite infinite cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iam-roles-and-policies-cluster">IAM Roles and Policies Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0chaosMonkeyWIP.html">Chaos is Good</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0chaosMonkeyWIP.html#chaosmonkey">ChaosMonkey</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="000_stage0.html">Stage 0: Feasibility and Concept Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="111_stage1.html">Stage 1: Project Planning.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="222_stage2.html">Stage 2: Gathering Requirements &amp; Analysis.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="333_stage3.html">Stage 3: Design and Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="444_stage4.html">Stage 4: Coding or Implementation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#reading">Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#authentication-moving-parts-too-many-some-old-and-dusty">Authentication Moving Parts - too many - some old and dusty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-coding-trials">LDAP Coding Trials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#build-an-ldap-test-server-in-ws-account">Build an LDAP Test Server in ws account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#install-ldap">install ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#configure-ldap">configure ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#db-ldif">db.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#adding-users-to-ldap">Adding Users to LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#notional-tony-ldif">Notional tony.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#terraform-the-test-host-for-ldap">Terraform the test host for LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#demo-terraform-for-brandon">Demo Terraform for Brandon</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#install-and-learn-ldap">Install and Learn LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#docker-ldap-tests">Docker LDAP tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#m-active-directory-service-brandon">M$ Active Directory Service - Brandon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldappasswd-example">ldappasswd EXAMPLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#the-ldappasswd-command-is-used-to-change-a-user-s-password-in-an-ldap-lightweight-directory-access-protocol-directory-below-is-an-example-of-how-to-use-the-ldappasswd-command">The <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command is used to change a user’s password in an LDAP (Lightweight Directory Access Protocol) directory. Below is an example of how to use the <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-jargon">LDAP Jargon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="555_stage5.html">Stage 5: Testing and Documentation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="555_stage5.html#science-workload-alpha-tesing">SCience Workload Alpha Tesing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="555_stage5.html#pat-danielson-dynamic-surface-water-extent">Pat Danielson Dynamic Surface Water Extent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="555_stage5.html#wbs">WBS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html">Stage 6: Deployment.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#manual-deployment-steps-for-uberbrandon">Manual Deployment Steps for uberBrandon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#help-me">HELP ME</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#iac-steps-for-chaosmonkey">IaC Steps for chaosMonkey</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#manual-choas">Manual choas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="666_stage6.html#building-with-the-cli">Building with the CLI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#estimating">Estimating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#monitoring">Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="777_stage7.html">Stage 7: Maintenance.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="800_user_guide.html">Stage 8: User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="900_admin_guide.html">Stage 9: Admin Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#post-install-stuff">Post Install Stuff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#monitoring-the-cluster-with-prometheus-and-grafana">Monitoring The Cluster with Prometheus and Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-cluster-level-dashboard">Monitor Cluster Level Dashboard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#prometheus-slurm-exporter">prometheus-slurm-exporter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-node-level-dashboad">Monitor Node Level Dashboad</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#node-exporter">Node Exporter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#getting-the-compute-node-ip-addresses">Getting the Compute Node IP Addresses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#mpi-considerations">MPI Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#mpi-centos-installations">MPI Centos Installations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aaa_appendix.html">Stage A: Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html">Parallel Cluster Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#tldr-is-the-parallel-cluster-feasible-and-applicable-for-lcnext-yes">tldr; - Is the Parallel Cluster feasible and applicable for LCNext? <code class="docutils literal notranslate"><span class="pre">YES!</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#elevator-pitch">Elevator Pitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#genius">Genius!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#plans">Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#progress">Progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#problems">Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#gantt-chart-rough-order-of-magnitude">GANTT CHART - Rough order of Magnitude</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#context-danny-howard">Context Danny Howard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#butzer-dev-10-12-71-5-t3a-2xlarge-219-584-month">butzer-dev  10.12.71.5  t3a.2xlarge       $219.584/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#headnode-10-12-64-196-t3-medium-30-368-month">HeadNode  10.12.64.196    t3.medium        $30.368/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#ws-gparrish-dev-10-12-65-226-m6i-2xlarge-280-320-month">ws-gparrish-dev  10.12.65.226  m6i.2xlarge       $280.320/month</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#disclaimers">Disclaimers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#engineering-research-scope-responsibilities">Engineering Research Scope - Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#production-devops-items">Production DevOps Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#scientist-teams-responsibilities">Scientist Teams Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#pc-benefits">PC Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#easier-than-most-scale-out-technologies">Easier than most scale out technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm">SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm-benefits">SLURM Benefits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#the-demo">The Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#creating-the-creator-ws-pc-admin-box">Creating the Creator ws-pc-admin-box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#terraform-variables">Terraform Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-cluster-itself-is-created-from-pure-yaml-cool">The Cluster itself is Created from pure yaml - COOL!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#shut-er-down">Shut’er Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#demo-again-with-instruments">Demo Again with Instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#prometheus">Prometheus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#grafana">Grafana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#what-have-we-learned">What Have we Learned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-stac-browser">the stac browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#usgs-stac-browser"></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next">Whats Next?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#more">more</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next-at-high-level">Whats Next at High Level?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#deep-dive-on-cluster-tech-things">Deep Dive on Cluster Tech Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#a-look-deeper-at-only-one-thing-observability">A look deeper at only one thing –&gt; Observability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#no">No</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#yes-but-we-will-charge-you-and-move-the-schedule-to-the-right">Yes - but we will charge you and move the schedule to the right.</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">uberBrandon HPC AWS Parallel Computer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>SCRUM - running</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/8_agg.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scrum-running">
+<h1>SCRUM - running<a class="headerlink" href="#scrum-running" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="wip">
+<h2>WIP<a class="headerlink" href="#wip" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="goals-week-ending-5-29-2020">
+<h3>Goals Week Ending 5/29/2020<a class="headerlink" href="#goals-week-ending-5-29-2020" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>get 40N-80E model running</p>
+<ul class="simple">
+<li><p>time it</p></li>
+<li><p>resource usage evaluation</p>
+<ul>
+<li><p>memory</p></li>
+<li><p>cpu</p></li>
+<li><p>disk - not so much</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Code simplification - dumb it down for Tony</p></li>
+<li><p>Next week run in parallel</p></li>
+<li><p>Soil data and other data incremental improvements</p></li>
+<li><p>Train tony on the alg and numpy wrangling</p></li>
+</ol>
+</div>
+<div class="section" id="week-ending-5-22-2020">
+<h3>Week Ending 5/22/2020<a class="headerlink" href="#week-ending-5-22-2020" title="Permalink to this headline">¶</a></h3>
+<p><strong>Another Productive Week for team veg_et_2020</strong></p>
+<ol class="simple">
+<li><p>Olena, Steffi and Gabe corrected math errors in the cloud code and the model output is a direct match to the windows/ARC model. This is fantastic!</p></li>
+<li><p>We have the next iteration of data inputs pushed to the cloud.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@ip-10-12-68-72:~$ aws s3 ls dev-et-data/NA_data_for_cloud/
+                           PRE ETo_mosaic/
+                           PRE NDVI/
+                           PRE Precipitation_withHawaiiPuertoRico/
+                           PRE Soil/
+                           PRE Temperature/
+2020-05-22 17:33:48  364931586 global_water_mask_inland.tif
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Olena was nominated for the prestigious ET Data Wrangler of the Year Award.</p></li>
+<li><p>We plan to run the model on a couple of tiles to define the scaling computer types by base-lining time to run; cpu usage; and memory usage.</p></li>
+<li><p>We are targeting September Milestone for all of North America - but we will have parts of the 48 states done sooner and we can compare and share those partial results - they are about 5000x5000 pixels at 250 meters resolution.</p></li>
+<li><p>Below are pictures of the first two tiles to calculate and evaluate for Veg_ET.</p></li>
+</ol>
+<p><img alt="https://raw.githubusercontent.com/tonybutzer/assets/master/et/delaware-and-east-tiles-ndvi.PNG" src="https://raw.githubusercontent.com/tonybutzer/assets/master/et/delaware-and-east-tiles-ndvi.PNG" /></p>
+<ol class="simple">
+<li><p>We plan to scale the model to run a complete strip/row as depicted below:</p></li>
+</ol>
+<p><img alt="https://raw.githubusercontent.com/tonybutzer/assets/master/et/delaware-row3-geojson.PNG" src="https://raw.githubusercontent.com/tonybutzer/assets/master/et/delaware-row3-geojson.PNG" /></p>
+<ol class="simple">
+<li><p>Prepared a COG generation demo to simplify understanding COGS for the upcoming Open Data Cube Steering Group.</p></li>
+<li><p>Created a Jupyter-Notebook for automatic creation of GEOJSON files and ESRI Shapefiles for the legacy shapefile fans on the team.</p></li>
+<li><p>Pushed data to the cloud using linux, docker and rclone without TIC impediments.</p></li>
+<li><p>Learned the difference between median and mean.</p></li>
+</ol>
+</div>
+<div class="section" id="week-ending-5-15-2020">
+<h3>Week Ending 5/15/2020<a class="headerlink" href="#week-ending-5-15-2020" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Working with the NDVI data and reformatting it into compressed geotiffs and clipping/cropping the Great Lakes AOI with geojson and shape file specified coordinates.</p></li>
+<li><p>Setting up the data for daily medians - possibly using the xarray python abstraction/eco-system.</p></li>
+<li><p>Moved the model code and data wrangling code into documented python classes.</p></li>
+</ol>
+<p>So the primary goal for next week is:
+getting the North America “static” data placed in the cloud:</p>
+<ol class="simple">
+<li><p>Precipitation</p></li>
+<li><p>Soils</p></li>
+<li><p>ETo</p></li>
+<li><p>Ts</p></li>
+</ol>
+<ul class="simple">
+<li><p>meanwhile we will work with the NDVI we have and experiment with ways to create map-reduced daily averages in the miniPANGEO and the superPANGEO.</p></li>
+<li><p>we will also debug the model calculations by comparing the cloud computed values with pragmatic calculations</p></li>
+<li><p>we will also continue to organize the python code into useful classes.</p></li>
+</ul>
+</div>
+<div class="section" id="week-ending-5-8-2020">
+<h3>Week Ending 5/8/2020<a class="headerlink" href="#week-ending-5-8-2020" title="Permalink to this headline">¶</a></h3>
+<p>The VEG_ET 2020 team finished another productive week.</p>
+<div class="section" id="accomplishments">
+<h4>Accomplishments<a class="headerlink" href="#accomplishments" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>We have added Rich Signell science and cloud expert to the team - this is tremendous news for our team - and we are honored to have him as a member.</p></li>
+<li><p>We moved the model from the Aussie Account to the USGS Space - We will need a more formal account in USGS CHS soon. We need to discuss this with Gabriel Senay and Rich Signell on options.</p></li>
+<li><p>The model ran without modification in the new “more secure” CHS USGS sandbox with zero code modifications. AOI is Delaware River Basin.</p></li>
+<li><p>We worked hard on an integrated environment sharing the best of both development environments the Windows Desktop (ARC gui and pycharm) and the speed and expandability of cloud storage.</p></li>
+<li><p>We are working on reducing the S3 storage foot print to the least practical size for our needs.</p></li>
+<li><p>We tested COG compression using “DEFLATE” we plan to test various compression schemes.</p></li>
+<li><p>We continue to loop in Terry Sohl’s [Greg and Jordan] crew on how to get data inputs to the AWS buckets and how to grab the many outputs from the model for quality inspections and science validation.</p></li>
+</ol>
+</div>
+<div class="section" id="enabling-technologies">
+<h4>Enabling Technologies<a class="headerlink" href="#enabling-technologies" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>fsspec</p>
+<ul class="simple">
+<li><p>https://readthedocs.org/projects/filesystem-spec/downloads/pdf/latest/</p></li>
+</ul>
+</li>
+<li><p>fileZilla</p></li>
+<li><p>S3FS linux mounts from an S3 bucket “tree”</p></li>
+<li><p>python threads and queues</p></li>
+</ol>
+</div>
+<div class="section" id="traditions">
+<h4>Traditions<a class="headerlink" href="#traditions" title="Permalink to this headline">¶</a></h4>
+<p>We sent German Chocolate to Rich as part of the ET tradition for welcoming new ET Team members. After he begged – we had to.</p>
+<p><img alt="https://raw.githubusercontent.com/tonybutzer/assets/master/et/Rich_Signell_s.jpg" src="https://raw.githubusercontent.com/tonybutzer/assets/master/et/Rich_Signell_s.jpg" /></p>
+</div>
+<div class="section" id="next-week">
+<h4>Next Week<a class="headerlink" href="#next-week" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Rich is looking at building xarrays using dask to create the average daily NDVI over the 48States. This will help demo the bigPANGEO and its dask cluster and the xarray/dask pattern. There are at least three dask python patterns Tony needs to learn.</p></li>
+<li><p>Gabe is working on transforming the model into modules so it can evolve with the project. We are working on getting Gabe the right pycharm tool-set - navigating the robust government approval process.</p></li>
+<li><p>Tony will continue to help with the Windows meets linux meets the Cloud items. And finally learn dask.</p></li>
+<li><p>We will likely work on the next steps plan and scope out the Great Lakes Tile by prototyping in the cloud.</p></li>
+</ol>
+<p>… more to come …</p>
+<p>… stay tuned …</p>
+<p>… to be continued …</p>
+</div>
+</div>
+<div class="section" id="april-25-2020">
+<h3>April 25, 2020<a class="headerlink" href="#april-25-2020" title="Permalink to this headline">¶</a></h3>
+<p>My Actions for this week-end</p>
+<ol class="simple">
+<li><p>Finish Transfer of 48State NDVI_filled data.</p></li>
+<li><p>compress 48State data</p></li>
+<li><p>Set up new USGS sandbox in AWS cloud</p></li>
+</ol>
+<p>Gabe  - write software to window and compute 18 year avg NDVI for sq_90W_50N.geojson</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fix</span> <span class="n">model</span> <span class="n">code</span> <span class="n">to</span> <span class="n">run</span> <span class="kn">from</span> <span class="nn">new</span> <span class="n">bucket</span> <span class="n">dev</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span>
+
+<span class="n">Help</span> <span class="n">get</span> <span class="n">code</span> <span class="n">ready</span> <span class="n">to</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">docker</span> <span class="n">container</span>
+</pre></div>
+</div>
+<div class="section" id="code-taxonomy-bigger-pictures">
+<h4>Code Taxonomy - Bigger Pictures<a class="headerlink" href="#code-taxonomy-bigger-pictures" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Data Portal Extraction/Transfer Code - wrangles all ‘level-0’ data - sinusoidal NDVI - plus statics</p></li>
+<li><p>Data preparation Code - reproject, align, organize, tile, verify</p></li>
+<li><p>Model Runner Code - runs the model in a container - save the outputs in bucket as tiles</p></li>
+<li><p>Presentation and Bragging Code - mosaic into shinny apps and maps and papers - oh my!</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="april-15-2020-sandbox-and-scaling">
+<h3>April 15, 2020 Sandbox and Scaling<a class="headerlink" href="#april-15-2020-sandbox-and-scaling" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="delaware-gets-hot-then-cold">
+<h3>Delaware Gets HOT then COLD<a class="headerlink" href="#delaware-gets-hot-then-cold" title="Permalink to this headline">¶</a></h3>
+<p><img alt="hot" src="https://raw.githubusercontent.com/tonybutzer/npset/master/10-swarm-png-scale/00-01-swarm-png-app/tmax_animated.gif" /></p>
+</div>
+<div class="section" id="march-30-2020-gregory-rouze">
+<h3>March 30, 2020 Gregory Rouze<a class="headerlink" href="#march-30-2020-gregory-rouze" title="Permalink to this headline">¶</a></h3>
+<p>Interview Questions</p>
+<ol class="simple">
+<li><p>Landcover</p>
+<ul class="simple">
+<li><p>NLCD</p></li>
+<li><p>This landcover data set</p>
+<ul>
+<li><p>format Raster? - Geotiff?</p></li>
+</ul>
+</li>
+<li><p>How is different or Better than NLCD</p></li>
+</ul>
+</li>
+<li><p>How long at EROS?</p></li>
+<li><p>Python?</p></li>
+<li><p>NetAPP Access?</p></li>
+<li><p>ET familiarity</p></li>
+<li><p>Personal Mission</p></li>
+<li><p>Linux?</p></li>
+<li><p>Interested in learning?</p>
+<ul class="simple">
+<li><p>AWS</p></li>
+<li><p>Jupyter Notebooks</p></li>
+<li><p>Python</p></li>
+<li><p>Scalable Processing</p></li>
+<li><p>Cloud Computing Concepts</p></li>
+</ul>
+</li>
+<li><p>Describe your work with Darin Schulte</p></li>
+</ol>
+</div>
+<div class="section" id="march-29-2020">
+<h3>March 29,2020<a class="headerlink" href="#march-29-2020" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="darin">
+<h3>Darin<a class="headerlink" href="#darin" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Darin created an excellent demo using <strong>PLOTLY and DASH</strong></p></li>
+<li><p><a class="reference external" href="https://afternoon-crag-97068.herokuapp.com/">demo https://afternoon-crag-97068.herokuapp.com/</a></p></li>
+</ol>
+<p>https://github.com/ecolstat/phenology_library/blob/master/app.py</p>
+<p>https://github.com/ecolstat/VegET</p>
+</div>
+<div class="section" id="march-27-2020-steffi">
+<h3>March 27, 2020 Steffi<a class="headerlink" href="#march-27-2020-steffi" title="Permalink to this headline">¶</a></h3>
+<p>Good morning Tony,</p>
+<p>how are you today? I am doing well.
+I finally got all the data on that NetApp drive.
+Now i will continue to work on the soil data to finish it.
+Cant wait to get to the next step.</p>
+<p>The coordinates i used for the Delaware River Basin in gdal are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dimx</span> <span class="o">=</span> <span class="mi">1938</span>
+<span class="n">dimy</span> <span class="o">=</span> <span class="mi">3124</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">77.022786801</span>  <span class="c1"># (left)</span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="mf">37.0082889025</span>  <span class="c1"># (bottom)</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">72.98980008</span>   <span class="c1"># (right)</span>
+<span class="n">ymax</span> <span class="o">=</span> <span class="mf">43.5093469605</span>  <span class="c1"># (top)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="march-21-2020">
+<h3>March 21, 2020<a class="headerlink" href="#march-21-2020" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="gabe-steffi">
+<h3>Gabe/Steffi<a class="headerlink" href="#gabe-steffi" title="Permalink to this headline">¶</a></h3>
+<p>Steffi &amp; Gabe have most of the data inputs aligned in pickled numpy arrays</p>
+<ol class="simple">
+<li><p>This is a very important step as outlined in the following high level steps.</p>
+<ul class="simple">
+<li><p>Gather or Locate on the web all critical input data</p>
+<ul>
+<li><p>precipitation</p></li>
+<li><p>temperature</p></li>
+<li><p>potential ET</p></li>
+<li><p>NDVI</p></li>
+<li><p>soils</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Align Raster Data using GDAL tools</strong></p>
+<ul class="simple">
+<li><p>store as numpy arrays</p></li>
+<li><p>explore use of xarrays to collate and self document numpy gamut</p></li>
+</ul>
+</li>
+<li><p>Run Models</p>
+<ul class="simple">
+<li><p>more detail needed HERE</p></li>
+</ul>
+</li>
+<li><p>Display, Visualize, and Host Vector and Raster Results</p></li>
+</ol>
+<p><strong>SOILS</strong></p>
+<ol class="simple">
+<li><p>still some work to get the right detailed soil input from Norm Bliss or alternate venue.</p></li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h3>Darin<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="https://plotly.github.io/images/dashboard-carousel.jpg" src="https://plotly.github.io/images/dashboard-carousel.jpg" /></p>
+<ol class="simple">
+<li><p>Darin has been simplifying the Phenology models</p>
+<ul class="simple">
+<li><p>creating a flattened lookup table for soil type from NLDC</p></li>
+<li><p>Using GEE to explore the data with a plan to migrate to AWS open source</p></li>
+</ul>
+</li>
+<li><p>Darin is exploring the tools for visualizing point data with a geographic reference plus ability to drill down</p>
+<ul class="simple">
+<li><p>visual interactive dashboards</p></li>
+<li><p>exploring Jupyter tools using Holoviz</p></li>
+<li><p>encouraged by the capabilities in the python Plotly/Dash Library</p></li>
+<li><p>Darin demoed early prototypes on March 20, 2020</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="assignment">
+<h4>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">¶</a></h4>
+<p>Darin will be exploring the sandbox at</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">host</span> <span class="n">sbet</span><span class="o">.</span><span class="n">hopto</span><span class="o">.</span><span class="n">org</span>
+<span class="n">sbet</span><span class="o">.</span><span class="n">hopto</span><span class="o">.</span><span class="n">org</span> <span class="n">has</span> <span class="n">address</span> <span class="mf">34.215</span><span class="o">.</span><span class="mf">234.93</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>with emphasis on looking at the sample years for MODIS NDVI</p></li>
+<li><p>Darin should elicit tony’s help if he gets stuck at any time</p></li>
+<li><p>The NDVI data will eventually be curated by the LP DAAC and just be available in buckets in AWS Oregon</p></li>
+</ol>
+<p>The data <strong>bucket</strong> is <code class="docutils literal notranslate"><span class="pre">ga-et-data</span></code> and the prefix is <code class="docutils literal notranslate"><span class="pre">MODIS_NDVI/</span></code></p>
+<p><strong>EXAMPLE LS</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aws</span> <span class="n">s3</span> <span class="n">ls</span> <span class="n">ga</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="o">/</span>
+                           <span class="n">PRE</span> <span class="n">Cloud_Veg_ET</span><span class="o">/</span>
+                           <span class="n">PRE</span> <span class="n">MODIS_NDVI</span><span class="o">/</span>
+                           <span class="n">PRE</span> <span class="n">inputsv0</span><span class="o">/</span>
+                           <span class="n">PRE</span> <span class="n">lunch</span><span class="o">/</span>
+                           <span class="n">PRE</span> <span class="n">steffi</span><span class="o">/</span>
+
+<span class="n">aws</span> <span class="n">s3</span> <span class="n">ls</span> <span class="n">ga</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">MODIS_NDVI</span><span class="o">/</span>
+                           <span class="n">PRE</span> <span class="mi">2013</span><span class="o">/</span>
+                           <span class="n">PRE</span> <span class="mi">2014</span><span class="o">/</span>
+                           <span class="n">PRE</span> <span class="mi">2015</span><span class="o">/</span>
+                           <span class="n">PRE</span> <span class="mi">2016</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tony">
+<h3>Tony<a class="headerlink" href="#tony" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Tony is working on moving and organizing data in the cloud</p></li>
+<li><p>Starting with the numpy pickled arrays located on Windows Shares</p></li>
+<li><p>Gained permision to access the <code class="docutils literal notranslate"><span class="pre">watersmartfs</span></code> share.</p></li>
+<li><p>Created a docker container that has both a CIFs [samba like] mount and rclone to push numpy to the cloud underneath the much more versatile linux OS</p></li>
+<li><p>Tony is exploring the S3FS mounting options from cloud based systems and notebooks - very promising - abstracts away the unique S3 AWS specific access methods for bucket objects [files].</p>
+<ul class="simple">
+<li><p>this work is in npset/pkg github of course.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="march-18-2020">
+<h3>March 18, 2020<a class="headerlink" href="#march-18-2020" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>Darin<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Tony, I have an example of the GEE results and a rough notebook of interactive data visualization for the phenology library. Still a few things to iron out to get the demo running, but we could talk about getting it up with the other notebooks, and how the inputs were generated in GEE, etc..</p>
+</div></blockquote>
+<p>I’ll keep trying to get the quirks figured out in the demo notebook, hopefully tomorrow night, and I’ll be in touch to see about sharing it with everyone.</p>
+<ul class="simple">
+<li><p>From Renee</p></li>
+</ul>
+<p>https://geemap.readthedocs.io</p>
+<div class="section" id="juxtapose">
+<h4>Juxtapose<a class="headerlink" href="#juxtapose" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=1da064a6-68a6-11ea-b9b8-0edaf8f81e27">juxta example temperature cold day</a>`</p>
+</div>
+</div>
+<div class="section" id="march-17-2020">
+<h3>March 17, 2020<a class="headerlink" href="#march-17-2020" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="git-memory">
+<h3>Git Memory<a class="headerlink" href="#git-memory" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://gitmemory.com/tonybutzer">https://gitmemory.com/tonybutzer</a></p>
+<p><img alt="https://avatars2.githubusercontent.com/u/1872600?s=460&amp;v=4" src="https://avatars2.githubusercontent.com/u/1872600?s=460&amp;v=4" /></p>
+<p><a class="reference external" href="https://github.com/rsignell-usgs">https://github.com/rsignell-usgs</a></p>
+<p><a class="reference external" href="https://gitmemory.com/rsignell-usgs">https://gitmemory.com/rsignell-usgs</a></p>
+<p><a class="reference external" href="https://github.com/friedrichknuth/covid_dashboard">https://github.com/friedrichknuth/covid_dashboard</a></p>
+<div class="section" id="animations-and-prism-science-data">
+<h4>Animations and Prism Science Data<a class="headerlink" href="#animations-and-prism-science-data" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="temperature">
+<h4>Temperature<a class="headerlink" href="#temperature" title="Permalink to this headline">¶</a></h4>
+<p><img alt="animate prism data" src="https://github.com/tonybutzer/npset/blob/master/00-notebooks/82-opendap-rich-signell-examples-prism-virtual-datasets/10hot_temp.gif?raw=true" /></p>
+</div>
+</div>
+<div class="section" id="march-16-2020">
+<h3>March 16, 2020<a class="headerlink" href="#march-16-2020" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h4>Tony<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="mike-tercek">
+<h4>Mike Tercek<a class="headerlink" href="#mike-tercek" title="Permalink to this headline">¶</a></h4>
+<p><img alt="http://www.yellowstoneecology.com/about/mike_tercek.jpg" src="http://www.yellowstoneecology.com/about/mike_tercek.jpg" /></p>
+<p><a class="reference external" href="https://www.nps.gov/yell/learn/photosmultimedia/indepth-watersheddown.htm">Tercek in Video - worth watching</a></p>
+<p><a class="reference external" href="http://www.yellowstone.solutions/thredds/catalog/daily_or_monthly/monthly/catalog.html">NPS Catalog</a></p>
+<p><a class="reference external" href="http://www.climateanalyzer.us/raws/kniferiverraws/graph_choices">Climate Analyzer - Cool!</a></p>
+<p><a class="reference external" href="https://npwbanalres.s3-us-west-2.amazonaws.com/annual_static_norm.html">Annual Static Summaries</a></p>
+<p><img alt="Model Output" src="http://www.climateanalyzer.us/raws/kniferiverraws/graphs" /></p>
+<p><img alt="Deficit" src="https://npwbanalres.s3-us-west-2.amazonaws.com/annual_normalized_change.jpg" /></p>
+</div>
+</div>
+<div class="section" id="march-14-2020">
+<h3>March 14, 2020<a class="headerlink" href="#march-14-2020" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4>Tony<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Loaded the code from Mike Tercek here</p>
+<ul class="simple">
+<li><p>https://github.com/tonybutzer/npset/tree/master/fromMikeT</p></li>
+<li><p>University of Idaho Northern Knowledge Network</p></li>
+<li><p>THREDDS server</p></li>
+<li><p><a class="reference external" href="https://www.unidata.ucar.edu/software/tds/current/">https://www.unidata.ucar.edu/software/tds/current/</a></p></li>
+</ul>
+</li>
+<li><p>Started researching what a thredd server was.</p></li>
+<li><p>Found a great video here</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=VIuFLkN_FpM">Serving PRISM Climate Group data on the THREDDS Data Server</a></p></li>
+<li><p>Rich Signell is definitely “a person in our neighborhood”</p></li>
+<li><p>neat way to aggregate input and output data for our models</p></li>
+<li><p>example python and matplotlib access as well as viewers etc.</p></li>
+<li><p>Rich will be a keynote at the Open Data Cube Forum in August 2020 at EROS</p></li>
+<li><p><strong>IMPORTANT NOTE STEFFI</strong> - Rich in this video shows reading text files like the ETo in a non arcpy way using GDAL</p></li>
+</ul>
+</li>
+<li><p>Worked on converting the big input soil files to Cloud Optimized Geotiffs</p>
+<ul class="simple">
+<li><p>significant storage savings and greatly reduces access times</p></li>
+<li><p>still some occasional bumps when using rasterio and vsis3 - likely workarounds could be are easily built in python</p>
+<ul>
+<li><p>this bump applies to COG and stripped TIF files</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Continuing to look at ways to stand-up and exploit Kubernetes in the cloud.</p></li>
+<li><p>Discovered virtual backgrounds for the Zoom videoconferencing application - so now I can be telepresent from the Black Hills.</p>
+<ul class="simple">
+<li><p>no green screen needed -</p></li>
+<li><p>also teams has a blur feature - not as cool - but still useful</p></li>
+</ul>
+</li>
+<li><p>EPSCoR - another new term: Experimental Program to Stimulate Competitive Research.</p></li>
+</ol>
+<p><img alt="costs" src="https://github.com/tonybutzer/assets/blob/master/et/costsAWS-mar14.png?raw=true" /></p>
+</div>
+</div>
+<div class="section" id="mar-12-2020">
+<h3>Mar 12 2020<a class="headerlink" href="#mar-12-2020" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="steffi">
+<h3>Steffi<a class="headerlink" href="#steffi" title="Permalink to this headline">¶</a></h3>
+<p>I am converting the input data to numpy arrays, hope to be done soon, i am waiting for that right soil data and some more temp data to finish processing.</p>
+<p>test notebooks to go here:</p>
+<ul class="simple">
+<li><p>00-notebooks directory in your VegET rep https://github.com/skagone/cloud-veg-et</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>Mar 12 2020<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>Steffi<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>I am converting the input data to numpy arrays, hope to be done soon, i am waiting for that right soil data and some more temp data to finish processing.</p>
+<p>test notebooks to go here:</p>
+<ul class="simple">
+<li><p>00-notebooks directory in your VegET rep https://github.com/skagone/cloud-veg-et</p></li>
+</ul>
+<p>I guess we will be doing a lot more things virtually for a while. I had a good - 2hour conversation with Darin Schulte — yesterday and a zoom session to meet him - the LSP Phenology is all about NDVI so</p>
+<p>•	i directed him to the sample NDVI data we have in the cloud - he may do something over the Delaware River Basin as a first test.
+•	I think if he can create a notebook - I would be happy to wrap that into a library that we can reuse and later scale. –
+•	He indicated Phenology is not so much about lines of code as it is about I/O and examining large stacks of NDVI
+•	We will see what infrastructure topologies will match that alg.
+•	I will also play with COGS on some of the 4.9 Gig files to see if I can improve the performance of accessing these larger critters.
+•	Played a little with Kanban in the github – anything is better than Jira  😊
+•	Added a few folks to our International and Open Sandbox – Mahsa, Cole and Aaron to help build a cadre of Pangeo experts
+o	I am a firm believer in the cloud – it’s the best compute infrastructure I have seen in 40 years.</p>
+<ul class="simple">
+<li><p>Stay Healthy Everyone</p></li>
+<li><p>Cheers</p></li>
+</ul>
+</div>
+<div class="section" id="mar-10-2020">
+<h3>Mar 10, 2020<a class="headerlink" href="#mar-10-2020" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h4>Tony<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Worked with Steffi and Gabe to define some small steps</p></li>
+<li><p>Great conversations with Mike Trecek and Dr. Darin Shulte</p></li>
+<li><p>Worked on a k8s curriculum for training our LPIP team and for refining my skills with k8s - this will likely pay off down the road when we implement this capability as a prodcution set of services.</p></li>
+</ol>
+<p>We received the instructions for running Mike’s code and I will post them in this web site below under Mike Tercek Instructions - see <code class="docutils literal notranslate"><span class="pre">Notes</span> <span class="pre">from</span> <span class="pre">Yellowstone</span></code></p>
+</div>
+<div class="section" id="decision-on-land-surface-phonology-lsp-library">
+<h4>Decision on Land Surface Phonology (LSP) Library<a class="headerlink" href="#decision-on-land-surface-phonology-lsp-library" title="Permalink to this headline">¶</a></h4>
+<p>Senay:</p>
+<blockquote>
+<div><p>I think it is a good idea to move the Land Surface Phonology (LSP) Library  to the Pangeo framework.  I imagine we will also be building the most difficult procedure of LSP assignment, i.e, calling a particular LSP signature for a location and land cover type for a give time period?</p>
+</div></blockquote>
+<p>But again, the sooner we integrate the VegET with its LSP libraries in the same platform the better! We got a few months …</p>
+</div>
+<div class="section" id="gabe-and-steffi">
+<h4>Gabe and Steffi<a class="headerlink" href="#gabe-and-steffi" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>getting used to the cloud environment and understand where jupyter fits and how to combine that with other tools.</p></li>
+<li><p>Pickled Numpy Arrays for all of the modeled inputs</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="mar-1-2020-its-really-march">
+<h3>Mar 1, 2020 - Its really March?<a class="headerlink" href="#mar-1-2020-its-really-march" title="Permalink to this headline">¶</a></h3>
+<p><strong>sharpen the saw today</strong></p>
+</div>
+<div class="section" id="pangeo">
+<h3>Pangeo<a class="headerlink" href="#pangeo" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=VNfpGIIjL3E">PANGEO SALES PITCH Excellent</a></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=Iwpi1Lm6dFo">avoid death by powerpoint</a></p>
+</div>
+<div class="section" id="feb-29-2020-steffi-gabe-darin">
+<h3>Feb 29, 2020 - Steffi, Gabe, Darin<a class="headerlink" href="#feb-29-2020-steffi-gabe-darin" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="this-project-is-taking-off">
+<h3>This project is taking off<a class="headerlink" href="#this-project-is-taking-off" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Great working with the scientists on real world applications</p></li>
+<li><p>Such an opportunity for using the CLOUD</p></li>
+<li><p>There is nothing we can’t build in the cloud and fast….</p></li>
+</ul>
+<ol class="simple">
+<li><p>Steffi is working her magic here:
+<a class="reference external" href="https://github.com/skagone/cloud-veg-et">https://github.com/skagone/cloud-veg-et</a></p></li>
+<li><p>I am anxious to start dissecting the NPS ET code - should be fun!!</p></li>
+</ol>
+<p>Started a kanban to play with here:
+<a class="reference external" href="http://10.12.69.21:8080/board/2">Kanboard KANBOARD kanboard KANBAN</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">you</span> <span class="pre">can</span> <span class="pre">login</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">user</span> <span class="pre">and</span> <span class="pre">password</span> <span class="pre">as</span> <span class="pre">the</span> <span class="pre">jupyter</span> <span class="pre">lab</span> <span class="pre">sandbox</span></code></p>
+<p>xarray manual <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.Dataset.coords.html">Man</a></p>
+<p><strong>Discussion Notes</strong></p>
+<ol class="simple">
+<li><p>Briefly discuss Makefile and git minimalism - add,commit,push</p></li>
+<li><p>Determine if you are a gui or chewy user</p>
+<ul class="simple">
+<li><p>The Jupyter Text Editors</p></li>
+<li><p>Versus <code class="docutils literal notranslate"><span class="pre">vim</span></code> and the dreaded terminal</p></li>
+</ul>
+</li>
+<li><p>We should consider a birds-of-feather weekly Jupyter <code class="docutils literal notranslate"><span class="pre">bootcamp</span> <span class="pre">aws</span> <span class="pre">training</span></code></p>
+<ul class="simple">
+<li><p>this would be say 5 to 10 scientists hungry for cheating at AWS/Pangeo</p></li>
+<li><p>I think Pete might build enthusiasm and permission to run such training classes</p></li>
+<li><p>Tony would be happy to teach on numerous subjects</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Better</span> <span class="pre">Instructors</span></code> Nathan, Renee, Rich Signell, The Aussies via distance learning</p></li>
+<li><p>We may want to zoom Dr. Darin Schulte in as well</p></li>
+<li><p>Could be offsite and relaxed</p></li>
+</ul>
+</li>
+<li><p>could start with ET team plus Sanath plus Pete if he is interested and build by word of mouth</p></li>
+</ul>
+</li>
+<li><p>Xarrays - this could/should be a science construct that we heavily leverage across fire and water applications</p>
+<ul class="simple">
+<li><p>could roll your own - start building examples</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/tonybutzer/active-fire/blob/master/00-notebook/00-explore-sample-data.ipynb">Tony’s Simple Sanath Fire XARRAY</a></p></li>
+</ul>
+</li>
+<li><p>could use Open Data Cube to create</p></li>
+<li><p>could use some Pangeo stuff to create - stac-intake, odc-lite,</p></li>
+</ul>
+</li>
+<li><p>Dask - someday I want to deep dive understand this</p>
+<ul class="simple">
+<li><p>also ZARR - so many python objects - so little time - such a small, leaky brain - <em>SIGH</em></p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="feb-28-2020-meet-with-steffi">
+<h3>Feb 28, 2020 - meet with Steffi<a class="headerlink" href="#feb-28-2020-meet-with-steffi" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Document Steffi Actions</p>
+<ul class="simple">
+<li><p>probably focus on understanding the data assets in the cloud</p>
+<ul>
+<li><p>the vsis3 stuff</p></li>
+</ul>
+</li>
+<li><p>explore visualizing the data</p></li>
+<li><p>longer term seek out ways to just use data lakes in lieu of data portals and downloads and cloud pushes…</p></li>
+<li><p>with Landsat C2 maybe use NDVI scaled to 250 meters via ODC scaling</p></li>
+<li><p>help me understand all this data summing and interpolation - or just keep you and darin involved in that part of the project.</p></li>
+<li><p>do we have code that runs on a pc with no GEE libraries - could lift and shift and modify that code?</p></li>
+<li><p>Roles and assignments - where should Gabe be focusing?</p></li>
+</ul>
+</li>
+<li><p>Tony</p>
+<ul class="simple">
+<li><p>any benefit in mapping MODIS NDVI into xarrays - maybe even using ODC middleware?</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="feb-27-2020">
+<h3>Feb 27, 2020<a class="headerlink" href="#feb-27-2020" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Standing up Jupyter Hub in Aussie Account</p></li>
+<li><p>Started looking at the VegET code</p>
+<ul class="simple">
+<li><p>a little concerned about how different GEE is to rasterio/xarray</p></li>
+</ul>
+</li>
+<li><p>Data Loading</p>
+<ul class="simple">
+<li><p>still loading the MODIS data</p></li>
+<li><p>bucket renamed to <code class="docutils literal notranslate"><span class="pre">ga-et-data</span></code></p></li>
+</ul>
+</li>
+<li><p>Data Discovery - started some notes here
+<a class="reference external" href="http://10.12.69.21/33data_discovery.html#lpdaac">LPDAAC DATA WOW CLICK HERE:</a></p></li>
+<li><p>More to Come</p></li>
+<li><p>Tony should get better at packaging python pip/conda inside a venv with tljh - I know right?</p></li>
+</ol>
+</div>
+<div class="section" id="detailed-items">
+<h3>Detailed Items<a class="headerlink" href="#detailed-items" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="notes-from-yellowstone">
+<h3>Notes from Yellowstone<a class="headerlink" href="#notes-from-yellowstone" title="Permalink to this headline">¶</a></h3>
+<p>Hi All,
+Here are a few things that you mentioned being interested in during the call.</p>
+<ul class="simple">
+<li><p>– gcm_getter.py  –&gt; this will move the maca data to your amazon ec2 instance. The version that you have will get CSIRO-mk3-6-0, but you can swap that out for the names of other GCMS.</p></li>
+<li><p>– rcp_splitter.py – simple script that copies the different rcps into separate directories. Run this in the directory that has the *.nc from the script above</p></li>
+<li><p>– param_splitter.py  – run this in the folder containing the separated rcp data</p></li>
+<li><p>–sort_ren.py –&gt; run this in the folders containing the separated *.nc files for each parameter. It renames the files so that the output of the reprojection and resampling steps below are easier to sort through.</p></li>
+<li><p>–maca_processor_v3.py – &gt; This will take the maca netcdf files and make tifs that have the same resolution, projection, extent, as daymet. I did all this so that my historical and gcm output datasets line up, and so that I can use the same DEM, soil layer etc.</p></li>
+</ul>
+<p>I imagine you will want to adjust all this and probably use some other projection, resolution, but at least the steps worked for me.</p>
+<p>A few  notes to make the last script run properly:</p>
+<ul class="simple">
+<li><p>– I use anaconda (from the community AMI containing anaconda preinstalled on ubuntu 16.04). This runs well on an M5a.xlarge.  On the command line write:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">py355</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.5</span><span class="o">.</span><span class="mf">5.</span>
+<span class="n">source</span> <span class="n">activate</span> <span class="n">py355</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">nco</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">gdal</span>
+</pre></div>
+</div>
+<p>but <em>do not</em>  run sudo apt install gdal-bin or sudo apt install netcdf-bin. Interestingly you can run these apt command both in the base environment and in the py355 environment with exciting results that don’t work in different ways.</p>
+<blockquote>
+<div><p>As I mentioned on the phone, using the native ubuntu C libraries or using different versions of python will sometimes bring in different versions of gdal and the nco tools like ncks and nccopy. There are several ways for that to go wrong. In the most obvious case it will create an “environment that has conflicts’ and runs very slow. In the worst case it will appear to run fine without throwing any errors but produce garbage data. I wish I had a better explanation as to why these things happen or which actual versions were bad. My approach was just to spin up a bunch of machines and try every possible combination of installations that I could think of until I got results that were ok. By ok, I mean comparing the original maca data to the reprojected output and making sure that it looked way it should on a day to day basis. It’s is fairly obvious when you have a problem. Either the data will contain huge holes of no data or have, .e.g. no precip in places that had rainstorms that day. Then I wrote this information down and have never changed it. I’m sure there is a better way but that’s what I came up with. I’d be curious to see any improvements that you find.</p>
+</div></blockquote>
+<p>Our results (historical and the GCM runs that are complete so far) are available on a THREDDS that I set up (with Docker by the way) here:</p>
+<p>http://www.yellowstone.solutions/thredds/catalog.html</p>
+<p>This would let you subset our results  to particular regions or times and compare them to your outputs. Maybe that would help at some point. I have this server running on a slow instance, so if you plan to do a lot of work with it, please let me know. I can boost it up to something more powerful.</p>
+</div>
+</div>
+</div>
+<div class="section" id="wbs">
+<h1>WBS -<a class="headerlink" href="#wbs" title="Permalink to this headline">¶</a></h1>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,809 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Infrastructure &mdash; uberBrandon HPC AWS Parallel Computer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> uberBrandon HPC AWS Parallel Computer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html">Planning for the Prototype Parallel Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#gantt-chart">GANTT CHART</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-10-27-2023">Current Week Ending 10/27/2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#terraform-terragrunt-gitlab-runners">terraform/terragrunt gitlab-runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#allowing-pat-and-kory-on-the-cluster-it-takes-a-village">Allowing Pat and Kory on the Cluster - It takes a village</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#kelcy-s-roadmap">Kelcy’s Roadmap</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-october-27-2023">Current Week Ending October 27, 2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#chaosmonkey-4-node-parallel-cluster-in-watersmart-iac">chaosMonkey 4 node parallel cluster in watersmart IAC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-sprint">Current Sprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#analysis-focus">Analysis Focus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#planning-focus">Planning Focus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#sdlc-phase-summary">SDLC Phase Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#user-story">User Story</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html">Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html#watersmart-cluster">WaterSMart Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iac-journey">IAC Journey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#so-vpcs">SO VPCs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#ws">WS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#therefore-the-usable-host-addresses-in-the-network-10-12-64-0-21-are-2046-2-2044-addresses">Therefore, the usable host addresses in the network <code class="docutils literal notranslate"><span class="pre">10.12.64.0/21</span></code> are (2046 - 2 = 2044) addresses.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#subnets">3 subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#nlcd-vpc">NLCD VPC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#availability-issues-in-the-not-quite-infinite-cloud">Availability Issues in the not quite infinite cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iam-roles-and-policies-cluster">IAM Roles and Policies Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0chaosMonkeyWIP.html">Chaos is Good</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0chaosMonkeyWIP.html#chaosmonkey">ChaosMonkey</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="000_stage0.html">Stage 0: Feasibility and Concept Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="111_stage1.html">Stage 1: Project Planning.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="222_stage2.html">Stage 2: Gathering Requirements &amp; Analysis.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="333_stage3.html">Stage 3: Design and Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="444_stage4.html">Stage 4: Coding or Implementation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#reading">Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#authentication-moving-parts-too-many-some-old-and-dusty">Authentication Moving Parts - too many - some old and dusty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-coding-trials">LDAP Coding Trials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#build-an-ldap-test-server-in-ws-account">Build an LDAP Test Server in ws account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#install-ldap">install ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#configure-ldap">configure ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#db-ldif">db.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#adding-users-to-ldap">Adding Users to LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#notional-tony-ldif">Notional tony.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#terraform-the-test-host-for-ldap">Terraform the test host for LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#demo-terraform-for-brandon">Demo Terraform for Brandon</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#install-and-learn-ldap">Install and Learn LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#docker-ldap-tests">Docker LDAP tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#m-active-directory-service-brandon">M$ Active Directory Service - Brandon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldappasswd-example">ldappasswd EXAMPLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#the-ldappasswd-command-is-used-to-change-a-user-s-password-in-an-ldap-lightweight-directory-access-protocol-directory-below-is-an-example-of-how-to-use-the-ldappasswd-command">The <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command is used to change a user’s password in an LDAP (Lightweight Directory Access Protocol) directory. Below is an example of how to use the <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-jargon">LDAP Jargon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="555_stage5.html">Stage 5: Testing and Documentation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="555_stage5.html#science-workload-alpha-tesing">SCience Workload Alpha Tesing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="555_stage5.html#pat-danielson-dynamic-surface-water-extent">Pat Danielson Dynamic Surface Water Extent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="555_stage5.html#wbs">WBS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html">Stage 6: Deployment.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#manual-deployment-steps-for-uberbrandon">Manual Deployment Steps for uberBrandon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#help-me">HELP ME</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#iac-steps-for-chaosmonkey">IaC Steps for chaosMonkey</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#manual-choas">Manual choas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="666_stage6.html#building-with-the-cli">Building with the CLI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#estimating">Estimating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#monitoring">Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="777_stage7.html">Stage 7: Maintenance.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="800_user_guide.html">Stage 8: User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="900_admin_guide.html">Stage 9: Admin Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#post-install-stuff">Post Install Stuff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#monitoring-the-cluster-with-prometheus-and-grafana">Monitoring The Cluster with Prometheus and Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-cluster-level-dashboard">Monitor Cluster Level Dashboard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#prometheus-slurm-exporter">prometheus-slurm-exporter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-node-level-dashboad">Monitor Node Level Dashboad</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#node-exporter">Node Exporter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#getting-the-compute-node-ip-addresses">Getting the Compute Node IP Addresses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#mpi-considerations">MPI Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#mpi-centos-installations">MPI Centos Installations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aaa_appendix.html">Stage A: Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html">Parallel Cluster Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#tldr-is-the-parallel-cluster-feasible-and-applicable-for-lcnext-yes">tldr; - Is the Parallel Cluster feasible and applicable for LCNext? <code class="docutils literal notranslate"><span class="pre">YES!</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#elevator-pitch">Elevator Pitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#genius">Genius!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#plans">Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#progress">Progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#problems">Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#gantt-chart-rough-order-of-magnitude">GANTT CHART - Rough order of Magnitude</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#context-danny-howard">Context Danny Howard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#butzer-dev-10-12-71-5-t3a-2xlarge-219-584-month">butzer-dev  10.12.71.5  t3a.2xlarge       $219.584/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#headnode-10-12-64-196-t3-medium-30-368-month">HeadNode  10.12.64.196    t3.medium        $30.368/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#ws-gparrish-dev-10-12-65-226-m6i-2xlarge-280-320-month">ws-gparrish-dev  10.12.65.226  m6i.2xlarge       $280.320/month</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#disclaimers">Disclaimers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#engineering-research-scope-responsibilities">Engineering Research Scope - Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#production-devops-items">Production DevOps Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#scientist-teams-responsibilities">Scientist Teams Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#pc-benefits">PC Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#easier-than-most-scale-out-technologies">Easier than most scale out technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm">SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm-benefits">SLURM Benefits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#the-demo">The Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#creating-the-creator-ws-pc-admin-box">Creating the Creator ws-pc-admin-box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#terraform-variables">Terraform Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-cluster-itself-is-created-from-pure-yaml-cool">The Cluster itself is Created from pure yaml - COOL!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#shut-er-down">Shut’er Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#demo-again-with-instruments">Demo Again with Instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#prometheus">Prometheus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#grafana">Grafana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#what-have-we-learned">What Have we Learned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-stac-browser">the stac browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#usgs-stac-browser"></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next">Whats Next?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#more">more</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next-at-high-level">Whats Next at High Level?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#deep-dive-on-cluster-tech-things">Deep Dive on Cluster Tech Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#a-look-deeper-at-only-one-thing-observability">A look deeper at only one thing –&gt; Observability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#no">No</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#yes-but-we-will-charge-you-and-move-the-schedule-to-the-right">Yes - but we will charge you and move the schedule to the right.</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">uberBrandon HPC AWS Parallel Computer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Infrastructure</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/2_agg.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="infrastructure">
+<h1>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="jupyter-sandbox-in-ga-space">
+<h1>Jupyter Sandbox in GA Space<a class="headerlink" href="#jupyter-sandbox-in-ga-space" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quick-notes">
+<h2>Quick notes<a class="headerlink" href="#quick-notes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>tfinfra/et-gahub1</p>
+<ul>
+<li><p>make start</p></li>
+<li><p>git clone et done automatically as part of terraform</p></li>
+</ul>
+</li>
+<li><p>cd pkg/tljh</p>
+<ul>
+<li><p>make services</p></li>
+<li><p>make all</p></li>
+</ul>
+</li>
+<li><p>sign in hub as ubuntu</p>
+<ul>
+<li><p>cd files</p>
+<ul>
+<li><p>make et-depends</p></li>
+</ul>
+</li>
+<li><p>then add users from users.txt in pkg/tljh</p></li>
+<li><p>set user passsword (this project rocks)</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference external" href="http://44.226.205.97/18sandbox.html">THEN GO TO SANDBOX</a></p>
+</div>
+</div>
+<div class="section" id="project-website">
+<h1>Project Website<a class="headerlink" href="#project-website" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Complete terraform templates and launch - DONE</p></li>
+<li><p>Register in no cost ip space <code class="docutils literal notranslate"><span class="pre">et.hopto.org</span></code></p></li>
+<li><p>Document in github repo and as Infra_as_code - PENDING</p></li>
+</ol>
+</div>
+<div class="section" id="k8s">
+<h1>K8s<a class="headerlink" href="#k8s" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="instance-sizing">
+<h2>Instance Sizing<a class="headerlink" href="#instance-sizing" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://learnk8s.io/kubernetes-node-size">https://learnk8s.io/kubernetes-node-size</a></p>
+</div>
+</div>
+<div class="section" id="infrastructure-notes">
+<h1>Infrastructure Notes<a class="headerlink" href="#infrastructure-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bucket-creation">
+<h2>Bucket Creation<a class="headerlink" href="#bucket-creation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h3>
+<p>https://github.com/tonybutzer/data-curation/tree/master/00proj/deploy/bucket</p>
+<p>https://labs.detectify.com/2017/07/13/a-deep-dive-into-aws-s3-access-controls-taking-full-control-over-your-assets/</p>
+<p>https://www.serverlab.ca/tutorials/dev-ops/infrastructure/terraforming-your-aws-environment/</p>
+</div>
+<div class="section" id="quick-excerpt">
+<h3>Quick Excerpt<a class="headerlink" href="#quick-excerpt" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo &quot; Hi from Tony!&quot;
+
+## make the bucket
+
+BUCKETNAME=&#39;ga-odc-eros-opt-west&#39;
+REGION=&#39;us-west-2&#39;
+
+#aws s3api create-bucket --bucket ${BUCKETNAME} --region ${REGION}
+
+aws s3 mb s3://${BUCKETNAME}
+
+## List the Bucket
+echo &quot;THE ODC bucket list is as follows:&quot;
+aws s3 ls
+
+aws s3 ls ${BUCKETNAME}
+
+## Set Bucket Policy
+
+aws s3api put-bucket-policy --bucket ${BUCKETNAME} --policy file://optBucketPolicy.json
+
+## Get Bucket Policy
+
+echo &quot;The bucket policy is now:&quot;
+aws s3api get-bucket-policy --bucket ${BUCKETNAME}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="aws-cost-reviews">
+<h1>AWS Cost Reviews<a class="headerlink" href="#aws-cost-reviews" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Cost Explorer by Region</p>
+<ul>
+<li><p>Monitor Services in Sydney</p></li>
+<li><p>Export as CSV</p>
+<ul>
+<li><p>Using Resource Groups</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>I need to expand on the detail here</p></li>
+</ol>
+</div>
+<div class="section" id="chs">
+<h1>CHS<a class="headerlink" href="#chs" title="Permalink to this headline">¶</a></h1>
+<p>merge requests - example
+https://code.chs.usgs.gov/CHS-Custom-Infrastructure/LSDSDPAS/LSDSDPAS/-/merge_requests/399</p>
+<p>request for service</p>
+<p>We can just create a public bucket policy for whatever bucket you need to have public. You can request the policy following our CAB - Custom Infra Request process.</p>
+<p>https://support.chs.usgs.gov/display/CHSKB/CAB+-+Custom+Infrastructure+Request</p>
+<p>read:https://support.chs.usgs.gov/display/CHSKB/CAB+-+Custom+Infrastructure+Request</p>
+</div>
+<div class="section" id="infrastructure-devops-cookbook">
+<h1>Infrastructure DevOps Cookbook<a class="headerlink" href="#infrastructure-devops-cookbook" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="devops-details">
+<h2>DEVOPS details<a class="headerlink" href="#devops-details" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>you don’t have to be a cloud devops engineer - just have one on your team</p>
+<ul>
+<li><p>or phone a friend - tony butzer</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="devops-weekly">
+<h2>DEVOPS WEEKLY<a class="headerlink" href="#devops-weekly" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Class number 1</p>
+<ul>
+<li><p>create mini-pangeo</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="create-mini-pangeo">
+<h2>Create Mini-Pangeo<a class="headerlink" href="#create-mini-pangeo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>add devops/tfinfra to git repo harmony <code class="docutils literal notranslate"><span class="pre">done</span></code></p></li>
+<li><p>terraform apply butzer-neal-mini-pangeo – from github harmont devops tfinfra <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">test</span></code></p></li>
+<li><p>create another-one  butzer-neal-mini-pangeo-demo-only-nuke-me <code class="docutils literal notranslate"><span class="pre">skip</span></code></p></li>
+<li><p>tljh install – the littleist jupyter hub := mini-pangeo</p></li>
+<li><p>create users plus harmony user from notebook <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">in</span> <span class="pre">class</span></code></p>
+<ul>
+<li><p>http://10.12.69.216:8080/notebooks/jovyan/06-Instructor/01-Students.ipynb</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="tljh-install">
+<h3>tljh install<a class="headerlink" href="#tljh-install" title="Permalink to this headline">¶</a></h3>
+<p>cd /opt/et/pkg/tljh</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">services</span>
+
+<span class="n">make</span> <span class="nb">all</span>
+</pre></div>
+</div>
+<p>sign in hub as ubuntu</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">files</span>
+
+    <span class="n">make</span> <span class="n">et</span><span class="o">-</span><span class="n">depends</span>
+
+<span class="n">then</span> <span class="n">add</span> <span class="n">users</span> <span class="kn">from</span> <span class="nn">users.txt</span> <span class="ow">in</span> <span class="n">pkg</span><span class="o">/</span><span class="n">tljh</span>
+
+<span class="nb">set</span> <span class="n">user</span> <span class="n">passsword</span> <span class="p">(</span><span class="n">this</span> <span class="n">project</span> <span class="n">rocks</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="techno-babble">
+<h4>techno-babble<a class="headerlink" href="#techno-babble" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@gahub1:/opt/et/pkg/tljh$ more bootstrapTheHub.sh
+#! /bin/bash
+
+curl https://raw.githubusercontent.com/jupyterhub/the-littlest-jupyterhub/master/bootstrap/bootstrap.py \
+  | sudo python3 - \
+    --admin ubuntu
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="docker-and-docker-logs">
+<h2>docker and docker logs<a class="headerlink" href="#docker-and-docker-logs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>see github repo</p>
+<ul>
+<li><p>https://github.com/tonybutzer/etops/tree/master/grid_veget_c</p></li>
+</ul>
+</li>
+<li><p>look at Dockerfile</p></li>
+<li><p>look at gridmeister.py</p></li>
+<li><p>look at *.sh</p></li>
+<li><p>bash cmd_…</p></li>
+</ul>
+</div>
+<div class="section" id="chs-and-chs-processes">
+<h2>CHS and CHS Processes<a class="headerlink" href="#chs-and-chs-processes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="process-recap-of-requestor-pays">
+<h3>Process recap of requestor pays<a class="headerlink" href="#process-recap-of-requestor-pays" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>bucket = dev-et-data</p></li>
+<li><p>chat = rich signell and sam congden</p></li>
+<li><p>fyi chs customer user group</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="chs-processes">
+<h2>CHS Processes<a class="headerlink" href="#chs-processes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-board-cab">
+<h3>The Board CAB<a class="headerlink" href="#the-board-cab" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="cab-request-process">
+<h3>CAB Request Process<a class="headerlink" href="#cab-request-process" title="Permalink to this headline">¶</a></h3>
+<p>https://support.chs.usgs.gov/display/CHSKB/CAB+-+Custom+Infrastructure+Request</p>
+<div class="section" id="synopsys">
+<h4>Synopsys<a class="headerlink" href="#synopsys" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>RFC - request for change</p>
+<ul>
+<li><p>developers do not have root permissions</p></li>
+<li><p>so they request admins to change AWS on their behalf</p></li>
+<li><p>CHS use CloudFormation Templates (CFTs)</p></li>
+</ul>
+</li>
+<li><p>Step by Step Guide</p>
+<ul>
+<li><p>our account = LSDS - our EC2 Role = lsds-developer-ec2 # IAM Role</p></li>
+<li><p>create a new branch for your cft change - more info needed</p></li>
+<li><p>make changes and sumbit a commit</p></li>
+<li><p>push branch to repository</p></li>
+<li><p>create a merge request</p></li>
+<li><p>include brief description</p></li>
+<li><p>create a change request</p>
+<ul>
+<li><p>https://taskmgr.chs.usgs.gov/servicedesk/customer/portal/9</p></li>
+<li><p>submit AN rfc HERE</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Resources</p>
+<ul>
+<li><p>https://code.chs.usgs.gov/chs-library</p></li>
+</ul>
+</li>
+<li><p>Review process</p>
+<ul>
+<li><p>in by friday - reviewed by the next Tuesday</p></li>
+<li><p>notification of completed RFCs</p></li>
+<li><p>Classes</p>
+<ul>
+<li><p>Standard</p></li>
+<li><p>Normal</p>
+<ul>
+<li><p>changes security posture</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CHS Operations completes Change</p></li>
+<li><p>Customer/user validates the operation works</p></li>
+<li><p>Closed</p></li>
+<li><p>modifications use a CRQ-# - what?</p></li>
+<li><p>logged, documented and reviewed by all developer groups.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="chs-example-lsds-s3-dev-et-data">
+<h3>CHS Example lsds-s3-dev-et-data<a class="headerlink" href="#chs-example-lsds-s3-dev-et-data" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="commit">
+<h4>Commit<a class="headerlink" href="#commit" title="Permalink to this headline">¶</a></h4>
+<p>https://code.chs.usgs.gov/CHS-Custom-Infrastructure/LSDSDPAS/LSDSDPAS/-/commit/981fe8bdf093fd6345bf0ad0854867a311a11eb4</p>
+</div>
+<div class="section" id="gitlab-repo">
+<h4>gitlab repo<a class="headerlink" href="#gitlab-repo" title="Permalink to this headline">¶</a></h4>
+<p>https://code.chs.usgs.gov/CHS-Custom-Infrastructure/LSDSDPAS/LSDSDPAS/-/tree/development</p>
+</div>
+<div class="section" id="cft">
+<h4>CFT<a class="headerlink" href="#cft" title="Permalink to this headline">¶</a></h4>
+<p>https://code.chs.usgs.gov/CHS-Custom-Infrastructure/LSDSDPAS/LSDSDPAS/-/blob/development/S3/Templates/lsds-s3-dev-et-data.yml</p>
+</div>
+</div>
+<div class="section" id="pangeo-process">
+<h3>Pangeo Process<a class="headerlink" href="#pangeo-process" title="Permalink to this headline">¶</a></h3>
+<p>https://code.chs.usgs.gov/usgs-chs/CHS-IaC/baseline/managed-services/pangeo/pangeo-image/-/blob/master/pangeo-notebook/packages.txt</p>
+<div class="section" id="need-to-understand-the-gitlab-structure">
+<h4>Need to understand the gitlab structure<a class="headerlink" href="#need-to-understand-the-gitlab-structure" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>code.chs.usgs.gov</p>
+<ul>
+<li><p>usge-chs</p></li>
+<li><p>CHS-IaC baseline</p>
+<ul>
+<li><p>managed-services/pangeo</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="special-iam-users">
+<h3>Special IAM Users<a class="headerlink" href="#special-iam-users" title="Permalink to this headline">¶</a></h3>
+<p>An AWS Identity and Access Management (IAM) user is an entity that you create in AWS to represent the person or application that uses it to interact with AWS. A user in AWS consists of a name and credentials. An IAM user with administrator permissions is not the same thing as the AWS account root user.</p>
+</div>
+</div>
+<div class="section" id="bucket">
+<h2>bucket<a class="headerlink" href="#bucket" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bucket-data-moving">
+<h3>bucket data moving<a class="headerlink" href="#bucket-data-moving" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="getting-data-from-dev-et-data-to-the-netapp">
+<h3>getting data from dev-et-data to the netapp<a class="headerlink" href="#getting-data-from-dev-et-data-to-the-netapp" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>powershell</p>
+<ul>
+<li><p>net use</p></li>
+<li><p>net use w: \igskmncnfs016\watersmartfs1</p></li>
+</ul>
+</li>
+<li><p>mkdir</p>
+<ul>
+<li><p>mkdir w:/Projects/Cloud_Veg_ET/fromtony/tiles/tile40N-90E_chip40N-82E</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="using-filezilla">
+<h4>Using FileZilla<a class="headerlink" href="#using-filezilla" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="using-pycharm">
+<h4>Using Pycharm<a class="headerlink" href="#using-pycharm" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Prerequisite</p>
+<ul>
+<li><p>Mount S3 as /opt/et_data</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mounting-s3">
+<h3>Mounting S3<a class="headerlink" href="#mounting-s3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>s3fs.sh</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/bash</span>
+<span class="n">REGION</span><span class="o">=</span><span class="n">us</span><span class="o">-</span><span class="n">west</span><span class="o">-</span><span class="mi">2</span>
+
+<span class="n">sudo</span> <span class="n">s3fs</span> <span class="o">-</span><span class="n">o</span> <span class="n">allow_other</span> <span class="o">-</span><span class="n">o</span> <span class="n">iam_role</span><span class="o">=</span><span class="s2">&quot;lsds-developer-ec2&quot;</span> \
+<span class="o">-</span><span class="n">o</span> <span class="n">use_cache</span><span class="o">=/</span><span class="n">tmp</span> \
+<span class="o">-</span><span class="n">o</span> <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://s3-$REGION.amazonaws.com&quot;</span> \
+<span class="o">-</span><span class="n">o</span> <span class="n">umask</span><span class="o">=</span><span class="mi">0227</span><span class="p">,</span><span class="n">uid</span><span class="o">=</span><span class="mi">1000</span> \
+<span class="o">-</span><span class="n">o</span> <span class="n">nonempty</span>     \
+        <span class="n">dev</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">et_data</span>
+
+<span class="c1"># some debug options</span>
+<span class="c1"># -o dbglevel=info -f \</span>
+<span class="c1"># -o curldbg \</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pycharm-code-for-ssh-and-for-sftp">
+<h3>Pycharm Code for ssh and for sftp<a class="headerlink" href="#pycharm-code-for-ssh-and-for-sftp" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>import fsspec</p></li>
+<li><p>import paramiko</p></li>
+</ul>
+<div class="section" id="code-example-select-file-pattern-download">
+<h4>Code example select file pattern download<a class="headerlink" href="#code-example-select-file-pattern-download" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Pycharm on windows with modules installed</p>
+<ul>
+<li><p>tip install without the VPN</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fsspec</span>
+<span class="kn">import</span> <span class="nn">paramiko</span>
+
+<span class="n">ip</span><span class="o">=</span><span class="s1">&#39;10.12.69.21&#39;</span>
+<span class="n">port</span><span class="o">=</span><span class="mi">22</span>
+<span class="n">username</span><span class="o">=</span><span class="s1">&#39;ubuntu&#39;</span>
+<span class="n">password</span><span class="o">=</span><span class="s1">&#39;etrocks&#39;</span>
+
+<span class="n">dst</span> <span class="o">=</span> <span class="s1">&#39;w:/Projects/Cloud_Veg_ET/fromtony/tiles/tile40N-90E_chip40N-82E/&#39;</span>
+
+<span class="n">src</span> <span class="o">=</span> <span class="s1">&#39;dev-et-data/tiles/tile40N-90E_chip40N-82E/&#39;</span>
+
+<span class="n">fs_src</span> <span class="o">=</span> <span class="s1">&#39;/opt/et_data/tiles/tile40N-90E_chip40N-82E/&#39;</span>
+
+<span class="n">cmd</span><span class="o">=</span><span class="s1">&#39;aws s3 ls &#39;</span> <span class="o">+</span> <span class="n">src</span>
+
+<span class="n">ssh</span><span class="o">=</span><span class="n">paramiko</span><span class="o">.</span><span class="n">SSHClient</span><span class="p">()</span>
+<span class="n">ssh</span><span class="o">.</span><span class="n">set_missing_host_key_policy</span><span class="p">(</span><span class="n">paramiko</span><span class="o">.</span><span class="n">AutoAddPolicy</span><span class="p">())</span>
+<span class="n">ssh</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span><span class="n">port</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">password</span><span class="p">)</span>
+
+<span class="n">stdin</span><span class="p">,</span><span class="n">stdout</span><span class="p">,</span><span class="n">stderr</span><span class="o">=</span><span class="n">ssh</span><span class="o">.</span><span class="n">exec_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+<span class="n">outlines</span><span class="o">=</span><span class="n">stdout</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">outlines</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">outlines</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;this many lines in a steffi dir&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">outlines</span><span class="p">))</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s1">&#39;sftp&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="n">ip</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+<span class="c1">#mylist = fs.ls(fs_src)</span>
+<span class="c1">#print(mylist)</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">outlines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">from_file</span> <span class="o">=</span> <span class="n">fs_src</span> <span class="o">+</span> <span class="n">file</span>
+<span class="n">to_file</span> <span class="o">=</span> <span class="n">dst</span> <span class="o">+</span> <span class="n">file</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">from_file</span><span class="p">,</span> <span class="n">to_file</span><span class="p">)</span>
+<span class="c1">#fs.get(from_file, to_file)</span>
+
+<span class="n">my_dd_list</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">outlines</span><span class="p">)):</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">outlines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;etasw_&#39;</span><span class="p">):</span>
+        <span class="n">my_dd_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dd num of files is &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_dd_list</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">my_dd_list</span><span class="p">:</span>
+    <span class="n">from_file</span> <span class="o">=</span> <span class="n">fs_src</span> <span class="o">+</span> <span class="n">file</span>
+    <span class="n">to_file</span> <span class="o">=</span> <span class="n">dst</span> <span class="o">+</span> <span class="n">file</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">from_file</span><span class="p">,</span> <span class="n">to_file</span><span class="p">)</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">fs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">from_file</span><span class="p">,</span> <span class="n">to_file</span><span class="p">)</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;file </span><span class="si">{}</span><span class="s1"> took </span><span class="si">{}</span><span class="s1"> seconds - TOO LONG!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

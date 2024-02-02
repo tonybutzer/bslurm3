@@ -1,0 +1,15 @@
+# https://docs.aws.amazon.com/parallelcluster/latest/ug/Build-v3.html
+Region: us-west-2
+CustomS3Bucket: dev-nlcd-parallelcluster-testbucket
+Build:
+  InstanceType: t3.2xlarge
+  ParentImage: ami-07a8d300323bcc3be
+  SubnetId: subnet-0f29464029b7f677c
+  SecurityGroupIds:
+    - sg-00e85d664a5bcd8bb
+  Iam:
+    AdditionalIamPolicies:
+      - Policy: arn:aws:iam::081515586180:policy/developer-policy
+      - Policy: arn:aws:iam::aws:policy/AmazonS3FullAccess
+    PermissionsBoundary: arn:aws:iam::081515586180:policy/csr-Developer-Permissions-Boundary
+

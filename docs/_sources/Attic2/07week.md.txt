@@ -1,0 +1,12 @@
+
+
+## AWS S3 Pricing
+
+There are three major costs associated with S3:
+
+- Storage cost: charged per GB / month. ~ $0.03 / GB / month, charged hourly
+- API cost for operation of files: ~$0.005 / 10000 read requests, write requests are 10 times more expensive
+- `Data transfer outside of AWS region:` ~$0.02 / GB to different AWS region, ~$0.06 / GB to the internet.
+
+Based on volume and region the actual prices differs a bit, but optimization techniques stay the same. I will use the above prices in following cost estimates.
+

@@ -1,0 +1,60 @@
+# Agile Terminology
+
+
+Certainly! Here is a list of common Agile development terms along with their definitions:
+
+1. **User Stories**:
+   - **Definition**: User stories are short, simple descriptions of a feature or functionality told from the perspective of an end user. They focus on the value a particular feature brings to the user.
+
+2. **Epics**:
+   - **Definition**: Epics are large bodies of work that can be broken down into smaller tasks or user stories. They represent a set of related user stories.
+
+3. **Sprints**:
+   - **Definition**: Sprints are time-boxed periods (usually 2-4 weeks) during which a set amount of work must be completed. It's a regular, repeatable work cycle in Scrum.
+
+4. **Tasks**:
+   - **Definition**: Tasks are the individual pieces of work that need to be completed to fulfill a user story. They are the smallest units of work in Agile.
+
+5. **Backlog**:
+   - **Definition**: The backlog is a prioritized list of features, enhancements, bug fixes, and other work items that a team maintains. It's a dynamic document that evolves over time.
+
+6. **Product Owner**:
+   - **Definition**: The Product Owner is a role responsible for defining and prioritizing the product backlog. They represent the stakeholders' interests and ensure that the team is working on the most valuable features.
+
+7. **Scrum Master**:
+   - **Definition**: The Scrum Master is responsible for facilitating the Scrum process and ensuring that the team adheres to its practices. They help the team become self-organizing and self-managing.
+
+8. **Velocity**:
+   - **Definition**: Velocity is a metric used in Agile to measure the amount of work a team can complete in a sprint. It helps in predicting future workloads and planning sprints.
+
+9. **Definition of Done (DoD)**:
+   - **Definition**: The Definition of Done is a clear and agreed-upon list of criteria that must be satisfied for a user story or task to be considered complete.
+
+10. **Daily Stand-up (Daily Scrum)**:
+    - **Definition**: A short, time-boxed meeting held every day in which team members update each other on their progress, discuss any obstacles, and plan their work for the day.
+
+11. **Burn-down Chart**:
+    - **Definition**: A visual representation that shows the amount of work remaining versus time. It helps in tracking progress and predicting when all work will be completed.
+
+12. **Acceptance Criteria**:
+    - **Definition**: Criteria that a user story must meet to be considered completed and accepted by the Product Owner.
+
+13. **Continuous Integration (CI)**:
+    - **Definition**: The practice of automatically integrating code changes from multiple contributors into a shared repository multiple times a day.
+
+14. **Continuous Delivery (CD)**:
+    - **Definition**: The practice of automatically deploying code changes to production or staging environments after passing automated tests.
+
+15. **Retrospective**:
+    - **Definition**: A meeting held at the end of a sprint where the team reflects on their process and identifies ways to improve in the next sprint.
+
+16. **Increment**:
+    - **Definition**: The sum of all the product backlog items completed during a sprint, plus the value of work from previous sprints.
+
+17. **Sprint Review**:
+    - **Definition**: A meeting held at the end of a sprint where the team demonstrates the work completed and seeks feedback from stakeholders.
+
+18. **MVP (Minimum Viable Product)**:
+    - **Definition**: The smallest version of a product that still delivers value to users. It's often used to gather feedback and learn from users' experiences.
+
+These are some of the key terms in Agile development. Keep in mind that different organizations may have their own variations or interpretations of these terms.

@@ -1,0 +1,23 @@
+Region: us-west-2
+
+Image:
+  Os: alinux2
+HeadNode:
+  InstanceType: t2.medium
+  Networking:
+    SubnetId: subnet-08f1118dd59133513
+  Ssh:
+    KeyName: ws-pcluster-keypair
+Scheduling:
+  Scheduler: slurm
+  SlurmQueues:
+  - Name: queue1
+    ComputeResources:
+    - Name: t2small
+      Instances:
+      - InstanceType: t2.small
+      MinCount: 0
+      MaxCount: 3
+    Networking:
+      SubnetIds:
+      - subnet-08f1118dd59133513

@@ -1,0 +1,3 @@
+Build:
+ InstanceType: t3.2xlarge
+ ParentImage: ami-08cff5bb52b298d7b

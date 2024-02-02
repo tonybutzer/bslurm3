@@ -1,0 +1,2691 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Week 10 - We are Really on to Something Here: &mdash; uberBrandon HPC AWS Parallel Computer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> uberBrandon HPC AWS Parallel Computer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html">Planning for the Prototype Parallel Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#gantt-chart">GANTT CHART</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-10-27-2023">Current Week Ending 10/27/2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#terraform-terragrunt-gitlab-runners">terraform/terragrunt gitlab-runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#allowing-pat-and-kory-on-the-cluster-it-takes-a-village">Allowing Pat and Kory on the Cluster - It takes a village</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#kelcy-s-roadmap">Kelcy’s Roadmap</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-october-27-2023">Current Week Ending October 27, 2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#chaosmonkey-4-node-parallel-cluster-in-watersmart-iac">chaosMonkey 4 node parallel cluster in watersmart IAC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-sprint">Current Sprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#analysis-focus">Analysis Focus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#planning-focus">Planning Focus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#sdlc-phase-summary">SDLC Phase Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#user-story">User Story</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html">Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html#watersmart-cluster">WaterSMart Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iac-journey">IAC Journey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#so-vpcs">SO VPCs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#ws">WS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#therefore-the-usable-host-addresses-in-the-network-10-12-64-0-21-are-2046-2-2044-addresses">Therefore, the usable host addresses in the network <code class="docutils literal notranslate"><span class="pre">10.12.64.0/21</span></code> are (2046 - 2 = 2044) addresses.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#subnets">3 subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#nlcd-vpc">NLCD VPC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#availability-issues-in-the-not-quite-infinite-cloud">Availability Issues in the not quite infinite cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iam-roles-and-policies-cluster">IAM Roles and Policies Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0chaosMonkeyWIP.html">Chaos is Good</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0chaosMonkeyWIP.html#chaosmonkey">ChaosMonkey</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="000_stage0.html">Stage 0: Feasibility and Concept Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="111_stage1.html">Stage 1: Project Planning.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="222_stage2.html">Stage 2: Gathering Requirements &amp; Analysis.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="333_stage3.html">Stage 3: Design and Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="444_stage4.html">Stage 4: Coding or Implementation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#reading">Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#authentication-moving-parts-too-many-some-old-and-dusty">Authentication Moving Parts - too many - some old and dusty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-coding-trials">LDAP Coding Trials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#build-an-ldap-test-server-in-ws-account">Build an LDAP Test Server in ws account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#install-ldap">install ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#configure-ldap">configure ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#db-ldif">db.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#adding-users-to-ldap">Adding Users to LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#notional-tony-ldif">Notional tony.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#terraform-the-test-host-for-ldap">Terraform the test host for LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#demo-terraform-for-brandon">Demo Terraform for Brandon</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#install-and-learn-ldap">Install and Learn LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#docker-ldap-tests">Docker LDAP tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#m-active-directory-service-brandon">M$ Active Directory Service - Brandon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldappasswd-example">ldappasswd EXAMPLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#the-ldappasswd-command-is-used-to-change-a-user-s-password-in-an-ldap-lightweight-directory-access-protocol-directory-below-is-an-example-of-how-to-use-the-ldappasswd-command">The <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command is used to change a user’s password in an LDAP (Lightweight Directory Access Protocol) directory. Below is an example of how to use the <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-jargon">LDAP Jargon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="555_stage5.html">Stage 5: Testing and Documentation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="555_stage5.html#science-workload-alpha-tesing">SCience Workload Alpha Tesing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="555_stage5.html#pat-danielson-dynamic-surface-water-extent">Pat Danielson Dynamic Surface Water Extent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="555_stage5.html#wbs">WBS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html">Stage 6: Deployment.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#manual-deployment-steps-for-uberbrandon">Manual Deployment Steps for uberBrandon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#help-me">HELP ME</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#iac-steps-for-chaosmonkey">IaC Steps for chaosMonkey</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#manual-choas">Manual choas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="666_stage6.html#building-with-the-cli">Building with the CLI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#estimating">Estimating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#monitoring">Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="777_stage7.html">Stage 7: Maintenance.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="800_user_guide.html">Stage 8: User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="900_admin_guide.html">Stage 9: Admin Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#post-install-stuff">Post Install Stuff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#monitoring-the-cluster-with-prometheus-and-grafana">Monitoring The Cluster with Prometheus and Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-cluster-level-dashboard">Monitor Cluster Level Dashboard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#prometheus-slurm-exporter">prometheus-slurm-exporter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-node-level-dashboad">Monitor Node Level Dashboad</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#node-exporter">Node Exporter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#getting-the-compute-node-ip-addresses">Getting the Compute Node IP Addresses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#mpi-considerations">MPI Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#mpi-centos-installations">MPI Centos Installations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aaa_appendix.html">Stage A: Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html">Parallel Cluster Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#tldr-is-the-parallel-cluster-feasible-and-applicable-for-lcnext-yes">tldr; - Is the Parallel Cluster feasible and applicable for LCNext? <code class="docutils literal notranslate"><span class="pre">YES!</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#elevator-pitch">Elevator Pitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#genius">Genius!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#plans">Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#progress">Progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#problems">Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#gantt-chart-rough-order-of-magnitude">GANTT CHART - Rough order of Magnitude</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#context-danny-howard">Context Danny Howard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#butzer-dev-10-12-71-5-t3a-2xlarge-219-584-month">butzer-dev  10.12.71.5  t3a.2xlarge       $219.584/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#headnode-10-12-64-196-t3-medium-30-368-month">HeadNode  10.12.64.196    t3.medium        $30.368/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#ws-gparrish-dev-10-12-65-226-m6i-2xlarge-280-320-month">ws-gparrish-dev  10.12.65.226  m6i.2xlarge       $280.320/month</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#disclaimers">Disclaimers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#engineering-research-scope-responsibilities">Engineering Research Scope - Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#production-devops-items">Production DevOps Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#scientist-teams-responsibilities">Scientist Teams Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#pc-benefits">PC Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#easier-than-most-scale-out-technologies">Easier than most scale out technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm">SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm-benefits">SLURM Benefits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#the-demo">The Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#creating-the-creator-ws-pc-admin-box">Creating the Creator ws-pc-admin-box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#terraform-variables">Terraform Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-cluster-itself-is-created-from-pure-yaml-cool">The Cluster itself is Created from pure yaml - COOL!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#shut-er-down">Shut’er Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#demo-again-with-instruments">Demo Again with Instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#prometheus">Prometheus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#grafana">Grafana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#what-have-we-learned">What Have we Learned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-stac-browser">the stac browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#usgs-stac-browser"></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next">Whats Next?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#more">more</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next-at-high-level">Whats Next at High Level?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#deep-dive-on-cluster-tech-things">Deep Dive on Cluster Tech Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#a-look-deeper-at-only-one-thing-observability">A look deeper at only one thing –&gt; Observability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#no">No</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#yes-but-we-will-charge-you-and-move-the-schedule-to-the-right">Yes - but we will charge you and move the schedule to the right.</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">uberBrandon HPC AWS Parallel Computer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Week 10 - We are Really on to Something Here:</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/1_agg.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="week-10-we-are-really-on-to-something-here">
+<h1>Week 10 - We are Really on to Something Here:<a class="headerlink" href="#week-10-we-are-really-on-to-something-here" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p><img alt="http://ontheworldmap.com/usa/state/maine/map-of-maine.jpg" src="http://ontheworldmap.com/usa/state/maine/map-of-maine.jpg" /></p>
+<hr class="docutils" />
+<div class="section" id="a-lot-to-cover-today">
+<h2>A lot to cover today<a class="headerlink" href="#a-lot-to-cover-today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Remember: - Tony does topical small sessions on specific topics as part of the Pangeo/Open Data Cube outreach project</p></li>
+</ul>
+<hr class="docutils" />
+<hr class="docutils" />
+<hr class="docutils" />
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system#/media/File:Universal_Transverse_Mercator_zones.svg">UTM Link svg</a></p>
+</div>
+<div class="section" id="tony-yamls-on">
+<h2>Tony yamls on<a class="headerlink" href="#tony-yamls-on" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>http://www.yamllint.com/</p></li>
+<li><p>https://jsonlint.com/</p></li>
+</ul>
+</div>
+<div class="section" id="next-2-classes-yaml">
+<h2>Next 2 classes - Yaml<a class="headerlink" href="#next-2-classes-yaml" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Today</span><span class="p">:</span> <span class="s1">&#39;2-16-2021&#39;</span>
+  <span class="n">Theme</span><span class="p">:</span> <span class="s1">&#39;Sentinel Data Exploration and Discovery&#39;</span>
+  <span class="n">Title</span><span class="p">:</span> <span class="s1">&#39;Cloud Based Sentinel CogS&#39;</span>
+  <span class="n">Sensor</span><span class="p">:</span> <span class="s1">&#39;Sentinel&#39;</span>
+  <span class="n">Data_Tier</span><span class="p">:</span> <span class="s1">&#39;L2A&#39;</span>
+  <span class="n">Projection</span><span class="p">:</span> <span class="s1">&#39;UTM&#39;</span>
+  <span class="n">Science_Application</span><span class="p">:</span> <span class="s1">&#39;Compositing&#39;</span>
+  <span class="n">Sandbox</span><span class="p">:</span> <span class="s1">&#39;pangeo.chs.usgs.gov&#39;</span>
+  <span class="n">Status</span><span class="p">:</span> <span class="s1">&#39;Exploration early R&amp;D&#39;</span>
+  <span class="n">Purpose</span><span class="p">:</span> <span class="s1">&#39;Class Example&#39;</span>
+  <span class="n">AWS_Document</span><span class="p">:</span> <span class="s1">&#39;https://registry.opendata.aws/sentinel-2-l2a-cogs/&#39;</span>
+  <span class="n">AOI</span><span class="p">:</span> <span class="s1">&#39;Maine&#39;</span>
+  <span class="n">City</span><span class="p">:</span> <span class="s1">&#39;Augusta&#39;</span>
+  <span class="n">Subtopics</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Browse&#39;</span><span class="p">,</span> <span class="s1">&#39;Tiles&#39;</span><span class="p">,</span> <span class="s1">&#39;Clouds&#39;</span><span class="p">,</span> <span class="s1">&#39;Geojson&#39;</span><span class="p">,</span> <span class="s1">&#39;Google_Maps&#39;</span><span class="p">]</span>
+  <span class="n">Git_Repo_Ref</span><span class="p">:</span> <span class="s1">&#39;https://github.com/tonybutzer/composite/tree/main/00-notebooks/00-wip-geojson-viewer&#39;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+<hr class="docutils" />
+<div class="section" id="everyone-loves-a-grid">
+<h2>Everyone loves a Grid<a class="headerlink" href="#everyone-loves-a-grid" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p><img alt="hls" src="_images/hls-grid-conus.PNG" /></p>
+<hr class="docutils" />
+<p><img alt="a" src="https://dragon3.esa.int/documents/247904/266366/Sentinel-2-MSI_Product_Types_Figure_1_v3/262f604c-de1e-4cf7-b4f6-abdd7f0dc5fd?t=1523262257162" />
+https://earth-info.nga.mil/GandG/update/index.php?action=home#tab_coord-data</p>
+<p><img alt="https://earth-info.nga.mil/GandG/update/img/MGRS_1km_Polygon_Shapefiles_Coverage.jpg" src="https://earth-info.nga.mil/GandG/update/img/MGRS_1km_Polygon_Shapefiles_Coverage.jpg" /></p>
+<p>https://www.usgs.gov/centers/eros/science/usgs-eros-archive-sentinel-2?qt-science_center_objects=0#qt-science_center_objects</p>
+<ul class="simple">
+<li><p>The Sentinel-2 tiling grid is referenced to the U.S. Military Grid Reference System (MGRS).</p></li>
+<li><p>Tiles can be fully or <code class="docutils literal notranslate"><span class="pre">partially</span></code> covered by image data.</p>
+<ul>
+<li><p>Partially covered tiles correspond to those at the edge of the swath.</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="demo-klm-shapefiles-geoviews-maps">
+<h3>Demo - klm - shapefiles - geoviews - maps<a class="headerlink" href="#demo-klm-shapefiles-geoviews-maps" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> 
+<span class="n">Notebook</span><span class="p">:</span> <span class="mi">00</span><span class="o">-</span><span class="n">sentinel</span><span class="o">-</span><span class="n">klm</span><span class="o">-</span><span class="n">study</span>
+<span class="n">Purpose</span><span class="p">:</span> <span class="s2">&quot;geometry vector intersection example&quot;</span>
+<span class="n">AOI</span><span class="p">:</span> <span class="s2">&quot;Maine and tiles&quot;</span>
+<span class="n">Python_Packages</span><span class="p">:</span> 
+  <span class="o">-</span> <span class="n">geopandas</span>
+  <span class="o">-</span> <span class="n">shapely</span>
+  <span class="o">-</span> <span class="n">feona</span>
+  
+<span class="n">Sandbox</span><span class="p">:</span> <span class="n">pangeo</span><span class="o">.</span><span class="n">chs</span><span class="o">.</span><span class="n">usgs</span><span class="o">.</span><span class="n">gov</span>
+<span class="n">User</span><span class="p">:</span> <span class="n">butzer</span><span class="nd">@contractor</span><span class="o">.</span><span class="n">usgs</span><span class="o">.</span><span class="n">gov</span>
+<span class="n">github</span><span class="p">:</span> <span class="n">composite</span>
+<span class="n">path</span><span class="p">:</span> <span class="n">opt</span><span class="o">/</span><span class="n">composite00</span><span class="o">-</span><span class="n">notebooks</span><span class="o">/</span><span class="mi">00</span><span class="o">-</span><span class="n">wip</span><span class="o">-</span><span class="n">geojson</span><span class="o">-</span><span class="n">viewer</span>
+<span class="n">Opinion</span><span class="p">:</span> <span class="s2">&quot;geoviews base * maine layers cool - zoom them&quot;</span>
+
+<span class="n">COOL_FEATURES</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">prune</span> <span class="n">by</span> <span class="n">geometric</span> <span class="n">intesection</span> <span class="n">operation</span> <span class="k">with</span> <span class="n">state</span> <span class="n">of</span> <span class="n">maine</span>
+  <span class="o">-</span> <span class="n">save</span> <span class="k">as</span> <span class="n">geojson</span> <span class="o">--&gt;</span> <span class="n">geojson</span><span class="o">.</span><span class="n">io</span>
+  <span class="o">-</span> <span class="n">save</span> <span class="k">as</span> <span class="n">klm</span> <span class="o">--&gt;</span> <span class="n">maps</span>    <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">maps</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">home</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="week-11">
+<h1>Week 11<a class="headerlink" href="#week-11" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>“One of the advantages of doing science in general in the cloud is the potential to facilitate interagency collaboration in terms of people and data sets. That is a fundamental objective of new analysis environments coming on the scene, such as <code class="docutils literal notranslate"><span class="pre">PANGEO</span></code> and Open Data Cube. And because these are open source, they can operate on any cloud or on-prem platform. In late 2019, we (NLI, EROS, and CHS folks) began discussing these kinds of joint development opportunities with NASA and NOAA, which are continuing. That’s a pretty exciting prospect for EROS.” – Pete Doucette</p>
+</div></blockquote>
+<div class="section" id="class-recap">
+<h2>Class Recap<a class="headerlink" href="#class-recap" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>I want to demystify the cloud.</p>
+<ul>
+<li><p>i.e. – cost for CONUS Evapo is $100</p></li>
+</ul>
+</li>
+<li><p>I want to accelerate science to keep up with the earth and human challenges we face</p>
+<ul>
+<li><p>Early results are quite promising - more to come …</p></li>
+</ul>
+</li>
+<li><p>I will be asking you folks lots of questions about the effectiveness of Jupyter and how to work with such a diverse group of folks.</p></li>
+<li><p>Should folks be trained on linux, python, jupyter, docker? – Can I help with that training?</p>
+<ul>
+<li><p>In many cases people are already skilled here.</p></li>
+<li><p>Just need to increase the opportunities to exploit those skills on behalf of science</p></li>
+</ul>
+</li>
+<li><p>Techniques to reduce Data Wrangling?</p></li>
+</ul>
+</div>
+<div class="section" id="what-s-happening-in-pangeo-land">
+<h2>What’s Happening in Pangeo Land<a class="headerlink" href="#what-s-happening-in-pangeo-land" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Kevin Costinett’s team fixing some of the Collection-2 STAC rough spots</p></li>
+<li><p>Rich Signell has been working on improving the Pangeo</p></li>
+<li><p>We have a fledgeling DataLake in the dev-et-data - can access it from pangeo.cr.usgs.gov</p>
+<ul>
+<li><p>Now that Kristi Kline is on the case we may get more attention on a USGS cloud S3 based Data Lake.</p></li>
+</ul>
+</li>
+<li><p>LCMAP exploring AWS - they have an account and are playing with Xarray and Dask</p></li>
+<li><p>Discussion with Neal, Dev, Logan on HLS, docker, mini-pangeo python GDAL upgrade</p></li>
+<li><p>Steffi Kagone data validation tools - slicing xarrays as pixel drill time series</p></li>
+<li><p>compositing Maine with clouds using Sentinel data in the cloud and pangeo.chs.usgs.gov</p>
+<ul>
+<li><p>deploying panel apps with usgs urls and docker - Rich Signell</p></li>
+<li><p>AI - it may be the future for better land characterization - lets use the cloud for that as well</p></li>
+<li><p>A quick look at the cloud buckets for ET and ECO</p></li>
+</ul>
+</li>
+<li><p>Guest Speakers Dahal, Devendra (Contractor) and Megard, Logan J on HLS</p>
+<ul>
+<li><p>Megard, Logan J on Logan’s simple library of AWS Jupyter Examples - or how to really write tutorials.</p>
+<ul>
+<li><p>even smaller bites with no assembly required - just git clone and run</p></li>
+</ul>
+</li>
+<li><p>Tony will do a short intro to github and https://code.usgs.gov - and how to use SSH KEYS!</p></li>
+</ul>
+</li>
+<li><p>Evapotranspiration Demos coming next week</p>
+<ul>
+<li><p>How to slice Xarray data in multiple ways</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="data-wrangling-working-group">
+<h2>Data Wrangling Working Group<a class="headerlink" href="#data-wrangling-working-group" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="data-lake-work">
+<h2>Data Lake Work<a class="headerlink" href="#data-lake-work" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Class A Data Assets</p>
+<ul>
+<li><p>Landsat Collection-2</p></li>
+<li><p>Sentinel Cogs</p></li>
+<li><p>Harmonized Landsat Sentinel (1.5)</p></li>
+</ul>
+</li>
+<li><p>Class B Data Assets</p>
+<ul>
+<li><p>NLCD</p></li>
+<li><p>LCMAP Products</p></li>
+</ul>
+</li>
+<li><p>Class C Data Assets</p>
+<ul>
+<li><p>Soil …</p></li>
+</ul>
+</li>
+<li><p>Collaborative data wangling pipelines and datalakes of key science input datasets will reduce the burden of portals</p></li>
+<li><p>AWS S3 &gt; portals — Google &gt; Portals - Chris Holmes</p></li>
+<li><p>Tony to introduce the Data Wrangling Working Group DWWG Concept Only</p></li>
+<li><p>Team Members so far (Blue Sky)</p>
+<ul>
+<li><p>Danielson, Patrick (Contractor) - NLCD wrangle chair</p></li>
+<li><p>Megard, Logan J, Dahal, Devendra (Contractor) – HLS1.5 cloud pipelines</p></li>
+<li><p>Boiko, Olena - Soil Data and Climate Data</p></li>
+<li><p>Tony  - infrastructure advisory and data lakes - plus COG  enthusiast - network tools/tecniques</p></li>
+</ul>
+</li>
+</ul>
+<p>Concepts:</p>
+<ul class="simple">
+<li><p>shared data - makes less wrangling</p></li>
+<li><p>shared python code - allows reuse</p></li>
+<li><p>cross-project communication - breaks silos and diverse teams build better solutions</p></li>
+<li><p>data deluge is coming - lets be ready to filter and use what we want</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="signell-reading-list">
+<h1>Signell Reading List<a class="headerlink" href="#signell-reading-list" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>https://github.com/pangeo-data/cog-best-practices</p></li>
+<li><p>https://github.com/intake/intake-stac/tree/main/examples</p></li>
+</ul>
+<hr class="docutils" />
+<p><img alt="https://www.usgs.gov/center-news/doucette-discusses-future-eros-science-earthmap-new-branch-chief" src="https://www.usgs.gov/center-news/doucette-discusses-future-eros-science-earthmap-new-branch-chief" /></p>
+<div class="section" id="now-a-word-from-ssh-its-the-key-to-every-door">
+<h2>Now a word from ssh - its the key to every door<a class="headerlink" href="#now-a-word-from-ssh-its-the-key-to-every-door" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ssh-keys">
+<h3>ssh keys<a class="headerlink" href="#ssh-keys" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>nice article here</p></li>
+<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys">https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys</a></p></li>
+</ul>
+<div class="section" id="ssh-summary">
+<h4>SSH Summary<a class="headerlink" href="#ssh-summary" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>SSH is a secure protocol used as the primary means of connecting to Linux servers remotely.</p>
+<ul>
+<li><p>and github and gitlab – code.usgs.gov</p></li>
+</ul>
+</li>
+<li><p>SSH is a secure protocol used as the primary means of connecting to Linux servers remotely.</p></li>
+<li><p>you will be dropped into a shell session, which is a text-based interface where you can interact with your server.</p></li>
+<li><p>Clients generally authenticate either using passwords (less secure and not recommended) or SSH keys, which are very secure.</p>
+<ul>
+<li><p>I miss usercode and password - sometimes</p></li>
+</ul>
+</li>
+<li><p>SSH keys are a matching set of cryptographic keys which can be used for authentication.</p>
+<ul>
+<li><p>public — share with everyone</p></li>
+<li><p>private - never share or you will get in trouble</p></li>
+</ul>
+</li>
+<li><p>ssh-keygen —- # generates a key pair PAIR</p>
+<ul>
+<li><p>~/.ssh/id_rsa: The private key. DO NOT SHARE THIS FILE!</p></li>
+<li><p>~/.ssh/id_rsa.pub: The associated public key. This can be shared freely without consequence.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="where-they-go">
+<h4>Where they go<a class="headerlink" href="#where-they-go" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>the public key must be copied to a file within the user’s home directory at <code class="docutils literal notranslate"><span class="pre">~/.ssh/authorized_keys</span></code></p></li>
+<li><p>or in a github/gitlab - central repository  using settings –&gt; keys …</p></li>
+</ul>
+</div>
+<div class="section" id="they-look-like-this">
+<h4>They look like this<a class="headerlink" href="#they-look-like-this" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tony@jose ~ $ cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcy3arx6+bW7LIVtgRgkfB/1tGieIVt6Id90qMnve2kRBBK3qlzEFgtwIsl8Io8Rr9Ip3e0apJQwSw3rTXkLd11J6xDLjkRBKWU2jsaYOn8iSfbaHT5JHMEAfTEZ49AELjdMNSBTb0TYw/cmKE9bLNMchmYNvfPnCidv/TakOY+DB1ZdSfDgI+NKoPZQ+Y9sK4Hl8xIEevwR2C0oP7S4+ekU9Fd3tx34R66vDyeCQeJItFp9Q1a7mW+wmulafAdr/Y3vxcEe4ArCPsDRgs8ElT0mrYD7csXZGNjqBxmSe/rNvknD/byE7SgMWvodWOpWRdN8/0eHzSsPJ1zvfnAW49 tony@jose
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-belong-here">
+<h4>The belong here<a class="headerlink" href="#the-belong-here" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>the public key must be copied to a file within the user’s home directory at <code class="docutils literal notranslate"><span class="pre">~/.ssh/authorized_keys</span></code></p></li>
+<li><p>or in a github/gitlab - central repository  using settings –&gt; keys …</p></li>
+<li></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ssh-use-cases">
+<h3>SSH Use Cases<a class="headerlink" href="#ssh-use-cases" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>local laptop - to cloud ec2 instance</p></li>
+<li><p>pangeo jupyter - to git repo - such as code.usgs.gov</p></li>
+<li><p>ec2 instance –&gt; denali or tallgrass</p></li>
+<li><p>lots of scp scenarios</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="github-and-code-usgs-gov">
+<h2>Github and code.usgs.gov<a class="headerlink" href="#github-and-code-usgs-gov" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-repo-add-a-file-edit-a-file-git-add-git-push">
+<h3>Create a repo - add a file - edit a file - git add - git push<a class="headerlink" href="#create-a-repo-add-a-file-edit-a-file-git-add-git-push" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="windows-git-tools">
+<h3>Windows Git Tools<a class="headerlink" href="#windows-git-tools" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>git bash</p></li>
+<li><p>git gui tools</p></li>
+<li><p>pycharm git integration - IDE based</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="hls-next-week">
+<h2>HLS - Next WEEK<a class="headerlink" href="#hls-next-week" title="Permalink to this headline">¶</a></h2>
+<p><img alt="a" src="https://cdn.earthdata.nasa.gov/conduit/upload/14905/CMR_Overview.png" /></p>
+</div>
+<div class="section" id="brave-sir-logan-and-the-cmr">
+<h2>Brave Sir Logan and The CMR<a class="headerlink" href="#brave-sir-logan-and-the-cmr" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Common Metadata Repository (CMR) - Earthdata - NASA</p></li>
+<li><p>Logan says register here:</p>
+<ul>
+<li><p>I think you just need an earth data log in</p></li>
+<li><p>https://urs.earthdata.nasa.gov/</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="geojson-io-and-google-measure-distances-klm">
+<h2>geojson.io and google - measure distances - klm<a class="headerlink" href="#geojson-io-and-google-measure-distances-klm" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>demo cut and paste into geojson.io</p></li>
+<li><p>talk about importing as a kml in google maps</p></li>
+<li><p>all you need is a chromebook to do science.</p></li>
+</ul>
+<p><a class="reference external" href="https://www.google.com/maps/d/?hl=en">https://www.google.com/maps/d/?hl=en</a></p>
+<div class="section" id="hls-grid">
+<h3>HLS GRID<a class="headerlink" href="#hls-grid" title="Permalink to this headline">¶</a></h3>
+<p><img alt="hls" src="_images/hls-grid-conus.PNG" /></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="sentinel">
+<h2>Sentinel<a class="headerlink" href="#sentinel" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>klm grid and google maps</p></li>
+</ul>
+<p><img alt="a" src="https://dragon3.esa.int/documents/247904/266366/Sentinel-2-MSI_Product_Types_Figure_1_v3/262f604c-de1e-4cf7-b4f6-abdd7f0dc5fd?t=1523262257162" /></p>
+</div>
+<div class="section" id="composite-work">
+<h2>Composite Work<a class="headerlink" href="#composite-work" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pangeo-startup-sequence">
+<h3>Pangeo Startup Sequence<a class="headerlink" href="#pangeo-startup-sequence" title="Permalink to this headline">¶</a></h3>
+<p><img alt="pang" src="_images/pangeo-k8s-startup-event-log.PNG" /></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="landsat-8-toa">
+<h2>Landsat-8 TOA<a class="headerlink" href="#landsat-8-toa" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="simple-animations-using-landsat-8-toa">
+<h2>Simple Animations using Landsat-8 TOA<a class="headerlink" href="#simple-animations-using-landsat-8-toa" title="Permalink to this headline">¶</a></h2>
+</div>
+<hr class="docutils" />
+<div class="section" id="denali-integration-scenarios">
+<h2>Denali integration Scenarios<a class="headerlink" href="#denali-integration-scenarios" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>composite on AWS — Characterize on Denali or Tallgrass</p></li>
+<li><p>Water Evaporation and Runoff on AWS — Evaluate Water Balance Model fidelity on Denali using Stream Guage Data</p>
+<ul>
+<li><p>brand new USGS <code class="docutils literal notranslate"><span class="pre">Landsat</span> <span class="pre">Collection2</span></code> - Surface Reflectance in UTM</p>
+<ul>
+<li><p>coming soon Albers</p></li>
+</ul>
+</li>
+<li><p>Experimental <code class="docutils literal notranslate"><span class="pre">Harmonized</span> <span class="pre">Landsat-Sentinel</span></code></p></li>
+<li><p>nearFuture Suomi NPP will carry five science instruments</p>
+<ul>
+<li><p>Suomi NPP is the first satellite mission to address the challenge of acquiring a wide range of land, ocean, and atmospheric measurements</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Synergies with google maps and geojson.io</p></li>
+<li><p>NO LICENSE FEES</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="cloud">
+<h1>Cloud<a class="headerlink" href="#cloud" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="unpacking-the-aws-cloud">
+<h2>Unpacking the AWS Cloud<a class="headerlink" href="#unpacking-the-aws-cloud" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>“Amazon has plans to build a new 120-acre data center park in Oregon’s Umatilla County, reported The East Oregonian. The facility will join one of three sites in East Oregon. The existing two are located in the Port of Morrow Industrial Park (Boardman) and at the McNary industrial park just outside of Umatilla.”</p>
+</div></blockquote>
+<p><img alt="oregon datacenter" src="https://raw.githubusercontent.com/tonybutzer/assets/master/et/50-cloud-boardman-oregon-aws.PNG" /></p>
+<div class="section" id="location-location-location">
+<h3>Location Location Location<a class="headerlink" href="#location-location-location" title="Permalink to this headline">¶</a></h3>
+<p><img alt="region cost graph" src="https://raw.githubusercontent.com/tonybutzer/assets/master/et/50-cloud-region-cost-variances.PNG" /></p>
+</div>
+<div class="section" id="aws-data-centers">
+<h3>AWS Data Centers<a class="headerlink" href="#aws-data-centers" title="Permalink to this headline">¶</a></h3>
+<p><img alt="data center guts" src="https://raw.githubusercontent.com/tonybutzer/assets/master/et/50-cloud-data-center-guts.PNG" /></p>
+</div>
+</div>
+<div class="section" id="cloud-advantages">
+<h2>Cloud Advantages<a class="headerlink" href="#cloud-advantages" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>elasticity and quick to scale</p></li>
+<li><p>ephemeral - break it and rebuild</p></li>
+<li><p>economies of scale</p></li>
+<li><p>many details are now someone else’s problems</p>
+<ul class="simple">
+<li><p>os patching</p></li>
+</ul>
+</li>
+<li><p>no down time</p></li>
+<li><p>ubiquitous access</p></li>
+<li><p>speed</p></li>
+<li><p>autonomy - never blocked by human or policy</p></li>
+</ol>
+</div>
+<div class="section" id="cloud-disadvantages">
+<h2>Cloud Disadvantages<a class="headerlink" href="#cloud-disadvantages" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>must trust the provider</p></li>
+<li><p>when the meter is running - they are billing you</p></li>
+<li><p>costs seem less tangible</p></li>
+</ol>
+</div>
+<div class="section" id="managing-costs">
+<h2>Managing Costs<a class="headerlink" href="#managing-costs" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>s3 is $.02 per month per gigabyte</p></li>
+<li><p>some instance types are free</p></li>
+</ol>
+<p><code class="docutils literal notranslate"> <span class="pre">need</span> <span class="pre">to</span> <span class="pre">write</span> <span class="pre">a</span> <span class="pre">whole</span> <span class="pre">section</span> <span class="pre">here</span></code></p>
+<ul class="simple">
+<li><p>point to a notebook and aws cost analyzer</p></li>
+<li><p>simple mitigation strategies</p>
+<ul>
+<li><p>reserved instances?</p></li>
+<li><p>spot instances</p></li>
+</ul>
+</li>
+<li><p>cloudchecker - is that what ist called - gov and contractor - have and have nots</p></li>
+</ul>
+</div>
+<div class="section" id="cattle-versus-pets">
+<h2>Cattle versus Pets<a class="headerlink" href="#cattle-versus-pets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>all compute servers and docker containers are disposable at a moments notice</p></li>
+<li><p>this is actually a really good thing</p></li>
+<li><p>decouple compute from code</p></li>
+<li><p>everything lives in the cloud</p></li>
+<li><p>everything can be instantly recreated from a github repo TEXT file</p>
+<ul>
+<li><p>i think that is really cool!!!!!</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="pets-service-model">
+<h3>Pets Service Model<a class="headerlink" href="#pets-service-model" title="Permalink to this headline">¶</a></h3>
+<p>In the pets service model, each pet server is given a loving names like zeus, ares, hades, poseidon, and athena. They are “unique, lovingly hand-raised, and cared for, and when they get sick, you nurse them back to health”. You scale these up by making them bigger, and when they are unavailable, everyone notices.</p>
+<p>Examples of pet servers include mainframes, solitary servers, load balancers and firewalls, database systems, and so on.</p>
+</div>
+<div class="section" id="cattle-service-model">
+<h3>Cattle Service Model<a class="headerlink" href="#cattle-service-model" title="Permalink to this headline">¶</a></h3>
+<p>In the cattle service model, the servers are given identification numbers like web01, web02, web03, web04, and web05, much the same way cattle are given numbers tagged to their ear. Each server is “almost identical to each other” and “when one gets sick, you replace it with another one”. You scale these by creating more of them, and when one is unavailable, no one notices.</p>
+<ul class="simple">
+<li><p>from –&gt; https://joachim8675309.medium.com/devops-concepts-pets-vs-cattle-2380b5aab313</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="bucket-permissions">
+<h2>Bucket Permissions<a class="headerlink" href="#bucket-permissions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cross-account">
+<h3>Cross Account<a class="headerlink" href="#cross-account" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Policy1563360701540&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;Sid&quot;</span><span class="p">:</span> <span class="s2">&quot;ListFrom-usgs-CHS-aws&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Principal&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;AWS&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:iam::574826924367:root&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="s2">&quot;s3:ListBucket&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Resource&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:s3:::ga-et-data&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;Sid&quot;</span><span class="p">:</span> <span class="s2">&quot;GetFrom-usgs-CHS-aws&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Principal&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;AWS&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:iam::574826924367:root&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;Action&quot;</span><span class="p">:</span> <span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Resource&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:s3:::ga-et-data/*&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="week-12">
+<h1>Week 12<a class="headerlink" href="#week-12" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Kelcy's</span> <span class="pre">notebook</span></code> – Landsat Collection-2 and STAC</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HLS</span></code> Notebooks for mosaic overlap issue</p>
+<ul>
+<li><p>start with browse for less clouds and more coverage</p></li>
+<li><p>Look for these NASA LPDAAC concepts in today’s notebooks</p>
+<ul>
+<li><p>CMR - Common Metdata Repository</p></li>
+<li><p>UMM – Unified Metadata Model</p></li>
+<li><p>Authentication</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DAGs</p></li>
+<li><p>Data Wrangling</p></li>
+<li><p>Road to Reusable Code - How?</p>
+<ul>
+<li><p>Start with common goals</p>
+<ul>
+<li><p>Open Source Python</p></li>
+<li><p>In the cloud</p>
+<ul>
+<li><p>and in the HPC(s)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Use the same platform for sharing</p>
+<ul>
+<li><p>Jupyter Notebooks</p></li>
+<li><p>github and code.usgs.gov</p></li>
+</ul>
+</li>
+<li><p>Refine and Refactor your Code so people want to reuse it</p>
+<ul>
+<li><p>Self documented or well documented</p></li>
+<li><p>Clean Code – eliminate code smells</p></li>
+<li><p>Make your code so simple people want to use it</p>
+<ul>
+<li><p>good examples</p>
+<ul>
+<li><p>xarray</p></li>
+<li><p>hvplot</p></li>
+<li><p>folium</p></li>
+<li><p>pandas</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Use opinionated approaches</p>
+<ul>
+<li><p>xarray, pandas, geopandas - all reinforce rigor and reusability</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>good reusable code allows for lots of work done in few lines of code</p></li>
+<li><p>good code is always a journey</p></li>
+<li><p>Organize Science by common interests in addition to projects</p>
+<ul>
+<li><p>Promote non-silo Communication</p></li>
+</ul>
+</li>
+<li><p>make it simple to install - advertise it</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="future-classes">
+<h2>Future Classes<a class="headerlink" href="#future-classes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Model Analysis work Olena Boiko is working on for evapo</p>
+<ul>
+<li><p>We will showcase these notebooks in a future class</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="direct-s3-or-portal-or-something-in-between">
+<h3>Direct S3 or portal or something in between<a class="headerlink" href="#direct-s3-or-portal-or-something-in-between" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>STAC Assets</p>
+<ul>
+<li><p>http (portal like)</p></li>
+<li><p>s3://</p></li>
+<li><p>gdal virtual filesystem specifiers /vsicurl/ – /vsis3/</p></li>
+<li><p>Kelcy and Nathan - map the http to s3 for collection2</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="some-folks-just-cannot-let-go-of-portals-https-landsatlook-usgs-gov-data">
+<h3>Some Folks Just Cannot Let Go of Portals https://landsatlook.usgs.gov/data<a class="headerlink" href="#some-folks-just-cannot-let-go-of-portals-https-landsatlook-usgs-gov-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convert_llurl</span><span class="p">(</span><span class="n">ll_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a landsat look url to an S3 url</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">ll_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;https://landsatlook.usgs.gov/data&#39;</span><span class="p">,</span> <span class="s1">&#39;s3://usgs-landsat&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">open_dateset</span><span class="p">(</span><span class="n">ll_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Open a file with gdal</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">convert_llurl</span><span class="p">(</span><span class="n">ll_url</span><span class="p">))</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">f</span>
+<span class="c1">#     return gdal.Open(path, gdal.ReadOnly)---</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="kelcy-notebook">
+<h2>Kelcy Notebook<a class="headerlink" href="#kelcy-notebook" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://code.usgs.gov/klsmith/pangeo-examples/-/blob/master/lcmap-time-series-ccd.ipynb">https://code.usgs.gov/klsmith/pangeo-examples/-/blob/master/lcmap-time-series-ccd.ipynb</a></p>
+<hr class="docutils" />
+<hr class="docutils" />
+<div class="section" id="nathan-s-less-obvious-method-to-cheat-http-by-using-s3">
+<h3>Nathan’s less obvious method to cheat http by using s3<a class="headerlink" href="#nathan-s-less-obvious-method-to-cheat-http-by-using-s3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove 33 characters and replace them</span>
+<span class="c1">#remove everything forward of /collection from the cloudfront object URL</span>
+<span class="n">greens</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">greens</span><span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">33</span><span class="p">:])</span>
+<span class="n">swirs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">swirs</span><span class="p">[</span><span class="s1">&#39;Swirs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">33</span><span class="p">:])</span>
+<span class="c1">#append s3://usgs-landsat to the front of the URLs</span>
+<span class="n">greens</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="s2">&quot;s3://usgs-landsat&quot;</span><span class="o">+</span><span class="n">greens</span><span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">])</span>
+<span class="n">swirs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="s2">&quot;s3://usgs-landsat&quot;</span><span class="o">+</span><span class="n">swirs</span><span class="p">[</span><span class="s1">&#39;Swirs&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>kelcy’s code is more readable IMHO</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="sentinel-cog-example">
+<h3>Sentinel COG Example<a class="headerlink" href="#sentinel-cog-example" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="sentinel-stac-gets-this-preference-for-direct-s3-access-correct">
+<h3>Sentinel STAC gets this preference for direct S3 access correct<a class="headerlink" href="#sentinel-stac-gets-this-preference-for-direct-s3-access-correct" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/19/T/CJ/2020/10/S2A_19TCJ_20201014_0_L2A/B02.tif&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@ip-10-12-69-188:~$ aws s3 ls sentinel-cogs
+                           PRE sentinel-s2-l2a-cogs/
+ubuntu@ip-10-12-69-188:~$ aws s3 ls sentinel-cogs/sentinel-s2-l2a-cogs/
+                           PRE 1/
+                           PRE 10/
+                           PRE 11/
+                            ...
+</pre></div>
+</div>
+<div class="section" id="hls-example">
+<h4>HLS Example<a class="headerlink" href="#hls-example" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Buckets</p>
+<ul>
+<li><p>lp-prod-protected</p></li>
+<li><p>lp-prod-public</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rasterio</span> <span class="k">as</span> <span class="nn">rio</span>
+<span class="n">e</span><span class="o">=</span><span class="s1">&#39;https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T18TYR.2020278T154121.v1.5.B04.tif&#39;</span>
+<span class="n">b04</span> <span class="o">=</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="c1">#dir(b09)</span>
+<span class="n">b04</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="s1">&#39;href&#39;</span><span class="p">:</span> <span class="s1">&#39;https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T19TCM.2020278T154121.v1.5.jpg&#39;</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.umm_json">https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.umm_json</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;https://lpdaac.earthdata.nasa.gov/s3credentials&quot;</span>
+
+<span class="n">Description</span><span class="p">:</span>    <span class="s2">&quot;api endpoint to retrieve temporary credentials valid for same-region direct s3 access&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="everyone-is-moving-to-the-cloud-getting-there-is">
+<h2>Everyone is moving to the cloud – getting there is ________<a class="headerlink" href="#everyone-is-moving-to-the-cloud-getting-there-is" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Opening new horizons:</p>
+<ul>
+<li><p>EU</p></li>
+<li><p>How to migrate the Copernicus Global Land Service to a Cloud environment</p></li>
+</ul>
+</li>
+<li><p>conversion of space-based Earth Observation information into <code class="docutils literal notranslate"><span class="pre">actionable</span></code> knowledge</p></li>
+<li><p>Moving Global Land Services to another completely new and technological challenging cloud computing environment is <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">a</span> <span class="pre">trivial</span> <span class="pre">job.</span></code></p></li>
+<li><p>providing <code class="docutils literal notranslate"><span class="pre">clear</span> <span class="pre">suggestions</span></code> for an efficient ‘cloudification’ of the Copernicus global land production lines and user interfaces,</p></li>
+<li><p>Benefits</p>
+<ul>
+<li><p>greater transparency and reproducibility of the data processing chains, enhancing trust</p></li>
+<li><p>better scalability to handle the large volume of data we expect from future satellites</p></li>
+<li><p>better integration with downstream processing chains and thus more value delivered to research and industry</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> 
+<span class="n">Group</span><span class="p">:</span> <span class="s2">&quot;HLS Interest Group&quot;</span>
+<span class="n">HLS</span><span class="p">:</span> 
+  <span class="o">-</span> 
+    <span class="n">ECO</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Sujan Parajuli&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Devandra Dahal&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Logan Megard&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Neal Pastick&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Mike Oimoen&quot;</span>
+    <span class="n">LCMAP</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Kelcy Smith&quot;</span>
+    <span class="n">LPDAAC</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Cole Krehbiel&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Aaron Friesz&quot;</span>
+    <span class="n">PANGEO</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Tony Butzer&quot;</span>
+    <span class="n">VegDyn</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Dinesh Shrestha&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Trenton Benedict&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Class Recap<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Still attacking data wrangling</p></li>
+<li><p>people should get friendly with github/gitlab – code.usgs.gov</p></li>
+<li><p>pangeo.chs.usgs.gov and other subsidized infrastructure platforms</p></li>
+</ul>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="if-the-mask-fits-understand-it">
+<h4>If the Mask fits .. understand it<a class="headerlink" href="#if-the-mask-fits-understand-it" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://rasterio.readthedocs.io/en/latest/topics/masks.html">https://rasterio.readthedocs.io/en/latest/topics/masks.html</a></p>
+</div>
+</div>
+<div class="section" id="nice-tutorials-guest-teacher-of-the-week">
+<h3>Nice Tutorials - Guest Teacher of the Week<a class="headerlink" href="#nice-tutorials-guest-teacher-of-the-week" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.earthdatascience.org/courses/use-data-open-source-python/multispectral-remote-sensing/landsat-in-Python/">https://www.earthdatascience.org/courses/use-data-open-source-python/multispectral-remote-sensing/landsat-in-Python/</a></p></li>
+<li><p>Pat Danielson - volunteer</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="projections-and-geoviews">
+<h2>Projections and Geoviews<a class="headerlink" href="#projections-and-geoviews" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://geoviews.org/user_guide/Projections.html">https://geoviews.org/user_guide/Projections.html</a></p>
+<ul class="simple">
+<li><p>Managing Overlap in Albers</p></li>
+<li><p>pangeo demos</p></li>
+<li><p>github albers-mosiac repo</p>
+<ul>
+<li><p>https://github.com/tonybutzer/albers-mosaic</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>What’s Happening in Pangeo Land<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ECO team will continue to get high speed data access to HLS</p>
+<ul>
+<li><p>we have just scratched the surface on how to scale</p></li>
+<li><p>looking for an open source, xarray perhaps, solution to mosiacing like ARCMAP</p>
+<ul>
+<li><p>needs to handle overlapping scenes intelligently</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Scotty H - has lots of great tutorials - a little over my head - but i’m learning.</p></li>
+<li><p>DataLake</p>
+<ul>
+<li><p>interim - s3://dev-et-data/data-lake - can access it from pangeo.cr.usgs.gov</p></li>
+<li><p>Now that Kristi Kline is on the case we may get more attention on a USGS cloud S3 based Data Lake.</p></li>
+</ul>
+</li>
+<li><p>Binder is pretty cool - more free pangeo compute -</p></li>
+<li><p>The scientist is the critical resource on the planet - never compute</p></li>
+</ul>
+</div>
+<div class="section" id="direct-acyclic-graphs">
+<h2>Direct acyclic Graphs<a class="headerlink" href="#direct-acyclic-graphs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>used in DASK</p></li>
+<li><p>used in python code graphing/flow charting - dependency trees</p></li>
+<li><p>graphviz and pyan3 # python analyzer</p>
+<ul>
+<li><p><a class="reference external" href="https://graphviz.org/">https://graphviz.org/</a></p></li>
+</ul>
+</li>
+<li><p>consists of vertices and edges (also called arcs), with each edge directed from one vertex to another, such that following those directions will never form a closed loop.</p></li>
+</ul>
+<p><img alt="dag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Tred-G.svg/440px-Tred-G.svg.png" /></p>
+</div>
+<div class="section" id="id3">
+<h2>Data Wrangling Working Group<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>Data Lake Work<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Class A Data Assets</p>
+<ul>
+<li><p>Landsat Collection-2</p></li>
+<li><p>Sentinel Cogs</p></li>
+<li><p>Harmonized Landsat Sentinel (1.5)</p></li>
+</ul>
+</li>
+<li><p>Class B Data Assets</p>
+<ul>
+<li><p>NLCD</p></li>
+<li><p>LCMAP Products</p></li>
+</ul>
+</li>
+<li><p>Class C Data Assets</p>
+<ul>
+<li><p>Soil …</p></li>
+</ul>
+</li>
+</ul>
+<p>Concepts:</p>
+<ul class="simple">
+<li><p>shared data - makes less wrangling</p></li>
+<li><p>shared python code - allows reuse</p></li>
+<li><p>cross-project communication - breaks silos and diverse teams build better solutions</p></li>
+<li><p>data deluge is coming - lets be ready to filter and use what we want</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>Signell Reading List<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>https://github.com/pangeo-data/cog-best-practices</p></li>
+<li><p>https://github.com/intake/intake-stac/tree/main/examples</p></li>
+</ul>
+<div class="section" id="other">
+<h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>https://www.earthdatascience.org/courses/use-data-open-source-python/multispectral-remote-sensing/landsat-in-Python/</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h3>Pangeo Startup Sequence<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p><img alt="pang" src="_images/pangeo-k8s-startup-event-log.PNG" /></p>
+<hr class="docutils" />
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id7">
+<h2>Denali integration Scenarios<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>composite on AWS — Characterize on Denali or Tallgrass</p></li>
+<li><p>Water Evaporation and Runoff on AWS — Evaluate Water Balance Model fidelity on Denali using Stream Guage Data</p>
+<ul>
+<li><p>brand new USGS <code class="docutils literal notranslate"><span class="pre">Landsat</span> <span class="pre">Collection2</span></code> - Surface Reflectance in UTM</p>
+<ul>
+<li><p>coming soon Albers</p></li>
+</ul>
+</li>
+<li><p>Experimental <code class="docutils literal notranslate"><span class="pre">Harmonized</span> <span class="pre">Landsat-Sentinel</span></code></p></li>
+<li><p>nearFuture Suomi NPP will carry five science instruments</p>
+<ul>
+<li><p>Suomi NPP is the first satellite mission to address the challenge of acquiring a wide range of land, ocean, and atmospheric measurements</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Synergies with google maps and geojson.io</p></li>
+<li><p>NO LICENSE FEES</p></li>
+<li><p>Jen Rover is in HPC school</p></li>
+<li><p>Should be able to use notebooks in both environments - cloud and HPC</p>
+<ul>
+<li><p>IF the python <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">monster</span></code> does not get you!</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="end-of-week-12">
+<h2>END OF WEEK 12<a class="headerlink" href="#end-of-week-12" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="glossary">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>Agency Problem:</strong></p></li>
+</ul>
+<blockquote>
+<div><p>The <strong>agency problem</strong> is a conflict of interest inherent in any relationship where one party is expected to act in another’s best interests. In corporate finance, the agency problem usually refers to a conflict of interest between a company’s management and the company’s stockholders.  [‘Windows OS’, ‘Kubernetes?’, ‘Jira/Confluence?’]</p>
+</div></blockquote>
+<div class="section" id="id8">
+<h2><img alt="_images/rest-of-the-herd.PNG" src="_images/rest-of-the-herd.PNG" /><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>COG</strong></p></li>
+</ul>
+<blockquote>
+<div><p>What are Cloud Optimized GeoTIFFs (COGs)?</p>
+</div></blockquote>
+<blockquote>
+<div><p>A <strong>Cloud Optimized GeoTIFF (COG)</strong> is a GeoTIFF file with an internal organization that enables more efficient workflows in the cloud environment.  It does this by leveraging the ability of clients issuing HTTP GET range requests to ask for just the parts of a file they need.
+<em>Geek Hint:</em> Use rio info and gdalinfo to see the innards of a COG and the overviews associated with a COG.
+For more info talk to THE GOOGLE.</p>
+</div></blockquote>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>Data Lake</strong></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>Data Wrangling</strong></p></li>
+<li><p>Transferring, organizing, reprojecting, verifying, locating, formatting, netcdf, geotiff, hdf, ascii, json, mtl, xml, storage, costs</p></li>
+<li><p>Downloading, portaling, machine-to-machining, researching, refreshing, forward-processing</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>DataOps</strong></p></li>
+</ul>
+<blockquote>
+<div><p>DataOps is an automated, process-oriented methodology, used by analytic and data teams, to improve the quality and reduce the cycle time of data analytics. While DataOps began as a set of best practices, it has now matured to become a new and independent approach to data analytics. - Cassandra Ladino USGS ACIO has experience in DataOps</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>What is DataOps?</p>
+</div></blockquote>
+<blockquote>
+<div><p>DataOps is a collection of technical practices, workflows, cultural norms, and architectural patterns that enable:</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Rapid</span> <span class="n">innovation</span> <span class="ow">and</span> <span class="n">experimentation</span><span class="p">,</span> <span class="n">delivering</span> <span class="n">new</span> <span class="n">insights</span> <span class="n">to</span> <span class="n">customers</span> <span class="k">with</span> <span class="n">increasing</span> <span class="n">velocity</span>
+
+<span class="o">-</span> <span class="n">Extremely</span> <span class="n">high</span> <span class="n">quality</span> <span class="ow">and</span> <span class="n">very</span> <span class="n">low</span> <span class="n">error</span> <span class="n">rates</span>
+
+<span class="o">-</span> <span class="n">Collaboration</span> <span class="n">across</span> <span class="nb">complex</span> <span class="n">arrays</span> <span class="n">of</span> <span class="n">people</span><span class="p">,</span> <span class="n">technology</span><span class="p">,</span> <span class="ow">and</span> <span class="n">environments</span>
+
+<span class="o">-</span> <span class="n">Clear</span> <span class="n">measurement</span><span class="p">,</span> <span class="n">monitoring</span> <span class="ow">and</span> <span class="n">transparency</span> <span class="n">of</span> <span class="n">results</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>Dark Repository</strong></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>DevOps</strong></p></li>
+</ul>
+<blockquote>
+<div><p>DevOps Model Defined</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes. This speed enables organizations to better serve their customers and compete more effectively in the market. <a class="reference external" href="https://aws.amazon.com/devops/what-is-devops/">https://aws.amazon.com/devops/what-is-devops/</a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>focused and diffuse thinking</strong></p></li>
+</ul>
+<blockquote>
+<div><p>In her book A Mind for Numbers, Barbara Oakley calls these two different ways of approaching a problem “focused thinking” and “diffuse thinking.” She claims that both of them are crucial for analytical and creative thinking, and that switching between the two modes is a great way to get unstuck when you’re facing a difficult problem.
+Diffuse thinking happens when you let your mind wander freely, making connections at random. The diffuse mode of thinking does not happen in any one area of the brain, but rather all over. The challenge for all is to cultivate an efficient state of mind, depending on what we wish to accomplish.</p>
+</div></blockquote>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>docker</strong>
+<img alt="https://raw.githubusercontent.com/tonybutzer/data-curation/master/dataDog/eng/assets/dockerVirtualization.png" src="https://raw.githubusercontent.com/tonybutzer/data-curation/master/dataDog/eng/assets/dockerVirtualization.png" /></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>Imposter Syndrome:</strong></p></li>
+</ul>
+<blockquote>
+<div><p><strong>Imposter syndrome</strong> can be defined as a collection of feelings of inadequacy that persist despite evident success. ‘Imposters’ suffer from chronic self-doubt and a sense of intellectual fraudulence that override any feelings of success or external proof of their competence</p>
+</div></blockquote>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>Jupyter (Notebook and Hub)</strong></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>open source software</strong></p></li>
+</ul>
+<blockquote>
+<div><p>What is open source software?
+Open source software is software with source code that anyone can inspect, modify, and enhance.</p>
+</div></blockquote>
+<blockquote>
+<div><p>“Source code” is the part of software that most computer users don’t ever see; it’s the code computer programmers can manipulate to change how a piece of software—a “program” or “application”—works. Programmers who have access to a computer program’s source code can improve that program by adding features to it or fixing parts that don’t always work correctly.
+What’s the difference between open source software and other types of software?</p>
+</div></blockquote>
+<blockquote>
+<div><p>Some software has source code that only the person, team, or organization who created it—and maintains exclusive control over it—can modify. People call this kind of software “proprietary” or “closed source” software.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Only the original authors of proprietary software can legally copy, inspect, and alter that software. And in order to use proprietary software, computer users must agree (usually by signing a license displayed the first time they run this software) that they will not do anything with the software that the software’s authors have not expressly permitted. Microsoft Office and Adobe Photoshop are examples of proprietary software. <a class="reference external" href="https://opensource.com/resources/what-open-source">here</a></p>
+</div></blockquote>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>PANGEO</strong></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>STAC</strong></p></li>
+</ul>
+<blockquote>
+<div><p>STAC is a standardized way to expose collections of spatial temporal data. … It can be used for external access to your holdings, exposing your information to search engines and to a growing ecosystem of tools.</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>“So STAC itself has no aim to provide one single index, but to encourage the basic unit of information from which a variety of indexes can be built. For STAC that basic unit is the actual geospatial asset and a JSON description of the core fields. This mirrors the design of the web as a whole: html pages are the basic unit of information, and companies like Google build the global search index. Creating a great geospatial search index is left to others to innovate on, but the STAC spec aims to encourage software implementations and data providers to expose their holdings in a way that everyone can understand.” - Chris Holmes</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>Chris Holmes Product Architect &#64; Planet, Board Member &#64; Open Geospatial Consortium, Technical Fellow &#64; Radiant.Earth – Chris’s medium articles contain well-written descriptuions of these cloud optimized ecosystems that can be exploited to simplify science.</p>
+</div></blockquote>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>terraform</strong></p></li>
+</ul>
+<blockquote>
+<div><p>Terraform is an open-source infrastructure as code software tool created by HashiCorp. Users define and provision data center infrastructure using a declarative configuration language known as HashiCorp Configuration Language, or optionally JSON. Terraform manages external resources with “providers”</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>terraform</strong> creates infrastructure out of thin air - <strong>terraform</strong> allows tony to feel like Bob Ross painting infrastucture “lets have a nice litte server here … next to our little network here and a lovely little data bucket over there.”</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scp bob_ross.PNG ubuntu@`resolv hweb`:.
+</pre></div>
+</div>
+<p><img alt="_images/bob_ross.PNG" src="_images/bob_ross.PNG" /></p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>Yak Shaving</strong></p></li>
+</ul>
+<blockquote>
+<div><p><strong>Yak shaving</strong> refers to a task, that leads you to perform another related task and so on, and so on — all distracting you from your original goal. This is sometimes called “going down the rabbit hole.”</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Donavon West</p></li>
+<li><p>American Express Developer Relations</p></li>
+</ul>
+<img src="https://americanexpress.io/_post_assets/yak-shaving/img/yak-shaving-small.png" width="30%">
+# Week 13 - day in the life of ETa<div class="section" id="subtitle-don-t-tell-my-boss">
+<h3>subtitle - Don’t Tell My Boss<a class="headerlink" href="#subtitle-don-t-tell-my-boss" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="real-world-scene">
+<h2>Real World Scene<a class="headerlink" href="#real-world-scene" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>My boss - says I have to get Tmin, Tmax and Tavg - done for 150 years - converted to Celsius</p>
+<ul>
+<li><p>from that useless Kelvin data i gave her - she is not happy</p></li>
+<li><p>she says I have until COB Friday or look for another job</p></li>
+<li><p>The problem is it looks like golfing weather for Monday and Tuesday</p></li>
+<li><p>So I think use the cloud and docker - maybe this can be done</p></li>
+<li><p>I spend a day figuring out the sophisticated algebra and try to play that up - But she is on to me.</p></li>
+<li><p>docker - container from jupyter to orchestration in 2 easy steps</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="run-the-orchestration">
+<h3>run the orchestration<a class="headerlink" href="#run-the-orchestration" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>two system engineers walk into a bar</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>… the first one asks why can’t we do that simple Kelvin conversion by friday on our current platform</p></li>
+<li><p>… the second eng says cause x and y suck</p></li>
+<li><p>… the next day the 2nd eng is explaining this converstion to his Govt Sponsor as:</p>
+<ul>
+<li><p>well you see the Netapp is bandwidth constrained and not really intended for large image data xfers and Microsoft has chosen Linux as its highly scalable platform for its Azure Cloud.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="community-interest">
+<h2>Community Interest<a class="headerlink" href="#community-interest" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Looking at Pangeo and Docker on HPC</p>
+<ul>
+<li><p>Could support nice hybrid solutions between the cloud and HPC(s) Denali, Tallgrass</p></li>
+<li><p>need to examine Singularity and Shifter on the HPC</p></li>
+<li><p>I may call my orchestration method - manual_transmission :-)</p></li>
+</ul>
+</li>
+<li><p>Tony prefers scaling with docker versus other methods - Why:</p>
+<ul>
+<li><p>MPI – Message Passing Interface¶</p>
+<ul>
+<li><p>Distributed Memory Systems</p></li>
+<li><p>More difficult to parallelize</p></li>
+<li><p>Requires a change in fundamental programming</p></li>
+</ul>
+</li>
+<li><p>Kubernetes is well over 1 MILLION lines of code</p></li>
+<li><p>Slurm - the s stands for simple - is over 500,000 lines of code</p></li>
+<li><p>Simple Orchestration -  129 lines of code</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@ip-10-12-69-188:/opt/kelvin_celsius/api$ wc -l kelvin_*.py
+129 kelvin_orchestration.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="community-case-studies">
+<h2>Community Case Studies<a class="headerlink" href="#community-case-studies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>VegET in the cloud</p>
+<ul>
+<li><p>Cloud Scaling</p></li>
+<li><p>Model validation without ARC tools</p></li>
+<li><p>Simple Visualizations</p></li>
+<li><p>Pathfinder project for other cloud enthusiasts</p></li>
+</ul>
+</li>
+<li><p>ETa pipeline from SSEBoP (Google Earth Engine)</p>
+<ul>
+<li><p>Pushing data into a Dark Repo</p>
+<ul>
+<li><p>Web Interface for endusers</p></li>
+<li><p>Many data users just want direct access to COGs</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="day-in-the-life-of-the-low-budget-et-project">
+<h2>Day in the Life of the low budget ET project<a class="headerlink" href="#day-in-the-life-of-the-low-budget-et-project" title="Permalink to this headline">¶</a></h2>
+</div>
+<hr class="docutils" />
+<div class="section" id="id9">
+<h2><img alt="_images/VegET-DRB-Rouze.PNG" src="_images/VegET-DRB-Rouze.PNG" /><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Port the VegET model from Windows and Netapp  - to cloud, xarray and S3 data storage</p></li>
+<li><p>Run the model on small AOIs</p></li>
+<li><p>Scale the Model by slicing the problem spatially</p>
+<ul class="simple">
+<li><p>glue the parts together with simple xarray code and multiple docker containers for scaling</p></li>
+</ul>
+</li>
+<li><p>Wrangle and Wrangle Data for Delaware, Conus, NorthAmerica, Globe</p>
+<ul class="simple">
+<li><p>Also just to make it more challenging - add projected or future model data for temperature and precip</p></li>
+<li><p>do this with as few people as possible with tight deadlines</p></li>
+</ul>
+</li>
+<li><p>Run the model for 150 years over Delaware</p>
+<ul class="simple">
+<li><p>Notice some data model issues over 2000-2020</p></li>
+<li><p>Visually apparent with jupyter-python-panel-app.ipynb</p></li>
+</ul>
+</li>
+<li><p>Run DRB again for 70 years times 2 with different soil intercept values.</p></li>
+<li><p>Hire a <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">Integrity</span> <span class="pre">Analyst</span></code> Olena</p>
+<ul class="simple">
+<li><p>Write a simple pandas model simulator</p>
+<ul>
+<li><p>replaces old windows manual excel spreadsheet methods</p></li>
+</ul>
+</li>
+<li><p>Discovered Kelvin and Celsius Confusion</p></li>
+<li><p><img alt="https://www.nasa.gov/sites/default/files/styles/side_image/public/thumbnails/image/1979_hst_primary_mirror.jpg?itok=UJ4wDauY" src="https://www.nasa.gov/sites/default/files/styles/side_image/public/thumbnails/image/1979_hst_primary_mirror.jpg?itok=UJ4wDauY" /></p></li>
+</ul>
+</li>
+<li><p>Wrote a very simple Kelvin–&gt;Celsius Conversion Python Notebook –&gt; Python App with Argparse API</p>
+<ul class="simple">
+<li><p>Run this in class today 1950 –&gt; 2099</p>
+<ul>
+<li><p>Notebook prototype/bread-board</p>
+<ul>
+<li><p>Slicing in python and xarray - time-series</p></li>
+<li><p>simple docker image</p></li>
+<li><p>basic orchestration 101</p></li>
+<li><p>functional programming like <code class="docutils literal notranslate"><span class="pre">ds</span> <span class="pre">=</span> <span class="pre">ds</span> <span class="pre">-</span> <span class="pre">273.15</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Convert to pure Python - Olena and add argparse to replace hardcoded values</p>
+<ul class="simple">
+<li><p>jupyter nbconvert –to script  my_ugly_notebook.ipynb</p></li>
+</ul>
+</li>
+<li><p>Create an orchestration python wrapper - borrow an old one and customize this</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="below-here-there-be-unfinished-unpolished-work">
+<h1>Below HERE there be unfinished/unpolished work<a class="headerlink" href="#below-here-there-be-unfinished-unpolished-work" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="project-execution-plan">
+<h2>Project Execution Plan<a class="headerlink" href="#project-execution-plan" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Note</span> <span class="o">-</span> <span class="n">see</span> <span class="n">the</span> <span class="n">major</span> <span class="n">milestones</span> <span class="ow">and</span> <span class="k">break</span> <span class="n">it</span> <span class="n">down</span> <span class="n">here</span> 
+<span class="ow">or</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">kanban</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="december-milestone">
+<h2>December Milestone<a class="headerlink" href="#december-milestone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>onboarding class and feedback</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="week-14-olena-matplotlib-and-pandas">
+<h1>Week 14 - Olena – matplotlib and pandas<a class="headerlink" href="#week-14-olena-matplotlib-and-pandas" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Introduction - Tony</p></li>
+<li><p>Evapo model evaluation landscape - <code class="docutils literal notranslate"><span class="pre">Stefanie</span> <span class="pre">Kagone</span></code></p></li>
+<li><p>Using Xarray slicing and Pandas to automate Spreadsheet Model Analysis - <code class="docutils literal notranslate"><span class="pre">Olena</span> <span class="pre">Boiko</span></code></p></li>
+<li><p>Apply cloud solutions to HLS plipelines - <code class="docutils literal notranslate"><span class="pre">Logan</span> <span class="pre">Megard</span></code></p></li>
+<li><p>Using Open Data Cube to align pixels and then bigPangeo (netcdf ingest) to look at clouds in the cloud - tony</p></li>
+</ol>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="eros-items-of-interest">
+<h1>EROS Items of Interest<a class="headerlink" href="#eros-items-of-interest" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Science continues to elevate</p>
+<ul class="simple">
+<li><p>Pete Doucette  - Data Center Director</p></li>
+<li><p>Terry Sohl - Science Lead</p></li>
+</ul>
+</li>
+<li><p>Aaron Friez (Pangeo/DAAC/Science - Workshop/Lecture)</p>
+<ul class="simple">
+<li><p>Organized – April 5?</p></li>
+</ul>
+</li>
+<li><p>Cali - searching for an intern</p>
+<ul class="simple">
+<li><p>In charge of collating disparate/disaggregated training</p></li>
+<li><p>“Oh Cali” - “if the world could just be aggregated”</p></li>
+</ul>
+</li>
+<li><p>Summer Hours for AWS Onboarding - begin May 1. -</p>
+<ul class="simple">
+<li><p>Get Vaccinated - save a scientist we need them.</p></li>
+</ul>
+</li>
+<li><p>Evapo - seeks partnership with Jim Rowland on project cloud account similar to Neal’s and Kelcy’s</p></li>
+<li><p>Evapo Actrivities</p>
+<ul class="simple">
+<li><p>Next cloud model please - SSeBop - meets Modis meets cloud - Thanks Claudia, Olena and Steffi</p></li>
+<li><p>Co-sponsor for NLCD data wrangling and emerging datalake prototype.</p>
+<ul>
+<li><p>Dinesh and Trenton to test NLCD data lake and HLS access</p></li>
+</ul>
+</li>
+<li><p>HUC12 - zonal stats - impress your stakeholder with a map-reduced spreadsheet</p>
+<ul>
+<li><p>Data starts to inform as information</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HLS Activities Logan</p>
+<ul class="simple">
+<li><p>Tony still does not like Authentication nuances</p></li>
+<li><p>Rehearsing wrangling for Devandra and Sujan</p></li>
+</ul>
+</li>
+<li><p>Open Data Cube - cube-in-a-box - (now a word from my sponsor)</p>
+<ul class="simple">
+<li><p>higher level abstraction - hint at what is possible. - black box - black magic approach.</p></li>
+<li><p>Hey ODC don’t make me index and learn Postgresql and PostGIS - my life is already disaggregated enough</p></li>
+</ul>
+</li>
+<li><p>Tony wakes up and uses github.io</p>
+<ul class="simple">
+<li><p>Using the cloud == FAIL!</p></li>
+<li><p>Using Tony’s home server == FAIL</p></li>
+<li><p>USING GITHUB.IO - I found Goldilocks - this one is just right!</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="favorite-featured-references">
+<h2>Favorite/Featured References<a class="headerlink" href="#favorite-featured-references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>http://gallery.pangeo.io/repos/pangeo-data/landsat-8-tutorial-gallery/landsat8.html</p></li>
+<li><p>https://docs.dea.ga.gov.au/notebooks/Frequently_used_code/Masking_data.html</p></li>
+</ul>
+<div class="section" id="pangeo-jupyter-book-that-ryan-abernathey-has-created">
+<h3>Pangeo Jupyter Book - that Ryan Abernathey has Created –&gt;<a class="headerlink" href="#pangeo-jupyter-book-that-ryan-abernathey-has-created" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>https://earth-env-data-science.github.io/intro</p></li>
+</ul>
+</div>
+<div class="section" id="scott-henderson-medium-article">
+<h3>Scott Henderson Medium Article<a class="headerlink" href="#scott-henderson-medium-article" title="Permalink to this headline">¶</a></h3>
+<p>From</p>
+<ul class="simple">
+<li><p>https://medium.com/pangeo/intake-stac-nasa-4cd78d6246b7</p></li>
+<li><p>Scott Henderson - Dec 2020</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>Overview<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span> 
+<span class="nt">Abstractions</span><span class="p">:</span> 
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">openDataCube</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stac-intake</span>
+<span class="nt">Asset-Location</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">S3</span>
+<span class="nt">Deployment-Technology</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docker-compose</span>
+<span class="nt">Format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">COGS</span>
+<span class="nt">Metadata-Containers</span><span class="p">:</span> 
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">postgis-odc</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stac-json</span>
+<span class="nt">STAC_API_URL</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;https://explorer.sandbox.dea.ga.gov.au/stac/&#39;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&#39;https://earth-search.aws.element84.com/v0/collections/sentinel-s2-l2a-cogs&#39;</span>
+<span class="nt">Sandboxes</span><span class="p">:</span> 
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cube-in-a-box</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pangeo.chs.usgs.gov</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">etrocks-sandbox</span>
+<span class="nt">Satellite</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sentinel-2A-2B</span>
+<span class="nt">Topics</span><span class="p">:</span> 
+  <span class="p p-Indicator">-</span> <span class="s">&quot;Sentinel</span><span class="nv"> </span><span class="s">SCL&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ODC</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Masking</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Xarray--&gt;netcdf</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">finding-clouds-in-the-cloud</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="featured-instructors-key-points">
+<h1>Featured Instructors - Key Points<a class="headerlink" href="#featured-instructors-key-points" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>pandas, xarray, rasterio, matplotlib, holoviews - xarray.hvplot</p></li>
+<li><p>Innovative_Fast_solutions = open source + brainPower</p></li>
+<li><p>Olena and Steffi Model Verification</p>
+<ul>
+<li><p>Significant as it directly and rapidly improves our scalable model code for Evapo</p></li>
+</ul>
+</li>
+<li><p>Logan HLS 1.4 and 1.5 Research</p></li>
+<li></li>
+</ul>
+<hr class="docutils" />
+<p><a class="reference external" href="https://www.usgs.gov/center-news/calibration-test-site-becomes-agricultural-hotspot?qt-news_science_products=2#qt-news_science_products">https://www.usgs.gov/center-news/calibration-test-site-becomes-agricultural-hotspot?qt-news_science_products=2#qt-news_science_products</a></p>
+<p><img alt="_images/sentenel-scene-classification-levels.PNG" src="_images/sentenel-scene-classification-levels.PNG" /></p>
+<hr class="docutils" />
+<div class="section" id="open-data-cube-odc-glimpse">
+<h2>Open Data Cube (ODC) - glimpse<a class="headerlink" href="#open-data-cube-odc-glimpse" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="use-open-data-cube-to-extract-dwyer-cube-from-sentinal-s3-cogs">
+<h2>Use Open Data Cube to extract Dwyer Cube from Sentinal S3 COGS<a class="headerlink" href="#use-open-data-cube-to-extract-dwyer-cube-from-sentinal-s3-cogs" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="then-use-the-big-pangeo-to-explore-compositing-with-bunde-postma-danielson">
+<h2>Then use the big pangeo to explore Compositing with (Bunde, Postma, Danielson)<a class="headerlink" href="#then-use-the-big-pangeo-to-explore-compositing-with-bunde-postma-danielson" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="odc-outputs-netcdf-nc-files-in-s3">
+<h3>ODC Outputs (netcdf/nc files in S3)<a class="headerlink" href="#odc-outputs-netcdf-nc-files-in-s3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maine</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">maine_ard</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">maine_masked_s2_all_bands</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">maine_s2_all_bands</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">maine_s2_common_name_bands</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="maine-masked-s2-all-bands-nc">
+<h2>maine_masked_s2_all_bands.nc<a class="headerlink" href="#maine-masked-s2-all-bands-nc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>main test nc file for compositing Maine - R&amp;D only</p></li>
+<li><p>briefly understand cloud and shadow masking</p></li>
+<li><p><a class="reference external" href="http://10.12.68.246:8080/notebooks/composite/30-cubebox-helper/2_tony_save_load_ard_all_bands.ipynb">http://10.12.68.246:8080/notebooks/composite/30-cubebox-helper/2_tony_save_load_ard_all_bands.ipynb</a></p></li>
+<li><p><a class="reference external" href="http://10.12.68.246:8080/notebooks/composite/30-cubebox-helper/00_tony_class_exhibit_learning_odc_claibration_site_Sentinel_2.ipynb">http://10.12.68.246:8080/notebooks/composite/30-cubebox-helper/00_tony_class_exhibit_learning_odc_claibration_site_Sentinel_2.ipynb</a></p></li>
+</ul>
+</div>
+<div class="section" id="concept-of-operations">
+<h2>Concept of Operations<a class="headerlink" href="#concept-of-operations" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="the-ecosystem">
+<h2>The Ecosystem<a class="headerlink" href="#the-ecosystem" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="github">
+<h2>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="since-everything-in-the-cloud-is-ephemeral-github-is-crucial">
+<h3>since everything in the cloud is EPHEMERAL- GITHUB is CRUCIAL<a class="headerlink" href="#since-everything-in-the-cloud-is-ephemeral-github-is-crucial" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="compute-aka-ec2-instance-s">
+<h2>Compute aka ec2 instance(s)<a class="headerlink" href="#compute-aka-ec2-instance-s" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="storage-aka-s3-buckets">
+<h2>Storage aka s3 buckets<a class="headerlink" href="#storage-aka-s3-buckets" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="inputs">
+<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="public-data-sets">
+<h3>Public Data Sets<a class="headerlink" href="#public-data-sets" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="processing">
+<h2>Processing<a class="headerlink" href="#processing" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="questions">
+<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="pictures">
+<h2>Pictures?<a class="headerlink" href="#pictures" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="week-15-hpc-edition-pangeo-singularity">
+<h1>Week 15 HPC Edition Pangeo + Singularity<a class="headerlink" href="#week-15-hpc-edition-pangeo-singularity" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="next-week-aaron-friesz-teaches-class-on-monday">
+<h1>NEXT WEEK - Aaron Friesz - Teaches class on Monday<a class="headerlink" href="#next-week-aaron-friesz-teaches-class-on-monday" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>so no class on next tuesday</p>
+<ul>
+<li><p>No class on next tuesday?</p>
+<ul>
+<li><p>that’s right no class next week -tony</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Tony’s summer hiatus coming soon</p></li>
+</ul>
+<div class="section" id="id11">
+<h2>Overview<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>around the projects</p></li>
+<li><p>datalake experiment</p></li>
+<li><p>hpc - denali and tallgrass</p>
+<ul>
+<li><p>very similar to cloud</p></li>
+<li><p>different approach</p></li>
+<li><p>sponsored $$$</p>
+<ul>
+<li><p>compute</p></li>
+<li><p>data storage</p></li>
+<li><p>scaling - both have batch</p></li>
+<li><p>rescale?</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pangeo demo on:</p>
+<ul>
+<li><p>bigPangeo</p></li>
+<li><p>miniPangeo</p></li>
+<li><p>Tallgrass</p></li>
+</ul>
+</li>
+<li></li>
+</ul>
+<p>https://www.usgs.gov/center-news/denali-tallgrass-eros-launch-new-era-high-performance-computing-capabilities</p>
+</div>
+<div class="section" id="around-the-projects">
+<h2>Around the Projects<a class="headerlink" href="#around-the-projects" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Logan continues to improve his orchestrated docker containers for downloading H:S and creating NDVI.</p></li>
+<li><p>Olena is working on Jupyter to explore the inverse relationship of NDVI and LST (temperature) for tuning Evaporation Models,</p></li>
+<li><p>Steffi is looking at ways to do CONUS scale VegET with the cloud and/or HPC (PANGEO-based)</p></li>
+<li><p>Tony is exploring Singularity and PANGEO on TALLGRASS -</p></li>
+<li><p>Pat Danielson - is looking at ways to do better, faster, cheaper composites with scalable hardware and linux open-source.</p></li>
+</ul>
+<p><img alt="https://media0.giphy.com/media/3d8mZpR1z4NFy6gIBA/giphy.gif?cid=ecf05e47w26iqr23x2mo46f6qgiia0cx7v6bmpvtsfz49u9t&amp;rid=giphy.gif" src="https://media0.giphy.com/media/3d8mZpR1z4NFy6gIBA/giphy.gif?cid=ecf05e47w26iqr23x2mo46f6qgiia0cx7v6bmpvtsfz49u9t&amp;rid=giphy.gif" /></p>
+<hr class="docutils" />
+<blockquote>
+<div><p>“HPC is just another tool in the toolbox,” he said. “So, what we’re trying to do is get people more comfortable with running large-scale simulations of data analytics and modeling. We want to make that a fabric within USGS so that it changes the culture within the Survey. We don’t want people having to deal with things on their own. We want to make sure everybody has the right tools, or at least good enough tools, to get their jobs done.” - Falgout</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>the right tools</p></li>
+<li><p>don’t have people try to go this alone - collaborate</p></li>
+<li><p>get scientists comfortable with these disruptive scalable environments</p></li>
+<li><p>Falgout is on to something here</p></li>
+<li><p>https://www.usgs.gov/center-news/denali-tallgrass-eros-launch-new-era-high-performance-computing-capabilities</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="hpc">
+<h2>HPC<a class="headerlink" href="#hpc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i-like-tallgrass-vs-denali">
+<h3>I like Tallgrass vs. Denali<a class="headerlink" href="#i-like-tallgrass-vs-denali" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Because it has singularity for support of containers - more to come</p></li>
+</ol>
+</div>
+<div class="section" id="but-salloc-job-1567397-has-exceeded-its-time-limit-and-its-allocation-has-been-revoked">
+<h3>BUT –&gt;  salloc: Job 1567397 has exceeded its time limit and its allocation has been revoked.<a class="headerlink" href="#but-salloc-job-1567397-has-exceeded-its-time-limit-and-its-allocation-has-been-revoked" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="singularity-demo">
+<h3>Singularity Demo<a class="headerlink" href="#singularity-demo" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">salloc</span>
+
+<span class="n">make</span> <span class="n">shell</span>
+
+<span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span>
+
+<span class="n">singularity</span> <span class="n">shell</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">ubuntu</span><span class="p">:</span><span class="n">latest</span>
+
+<span class="n">singularity</span> <span class="n">run</span> <span class="n">library</span><span class="p">:</span><span class="o">//</span><span class="n">sylabsed</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">lolcow</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="singularity-features-why-was-it-created">
+<h3>Singularity Features - why was it created?<a class="headerlink" href="#singularity-features-why-was-it-created" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>No Root Access in Containers - you run as butzer</p></li>
+<li><p>Created for scientists on HPC</p></li>
+<li><p>Integrated volumes - your home directory /home/butzer and Caldera are just there</p></li>
+<li><p>Job Scheduling integration with slurm</p></li>
+</ol>
+<p>I was not happy that I had to learn - yet another orchestration tool - let alone two - singularity and slurm</p>
+</div>
+<div class="section" id="singularity-versus-pure-docker">
+<h3>Singularity Versus pure Docker<a class="headerlink" href="#singularity-versus-pure-docker" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>For one, security. HPC environments are typically multi-user systems where users should only have access to their own data.</p>
+</div></blockquote>
+<blockquote>
+<div><p>For all practical purposes, docker gives superuser privileges. It’s hard to give someone limited Docker access.Sure there’s SELinux and the like, but Docker just wasn’t designed to keep users out of each other’s stuff. Singularity effectively runs as the running user and doesn’t result in elevated access.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Another is scheduling. On my cluster we use slurm, and users submit jobs with CPU/memory/time requirements. The Docker command is just an API client that talks to the docker daemon, so the resource requests and actual usages don’t match. Singularity runs container processes without a daemon. They just run as child processes.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+[butzer@ml-0001 ~]$ singularity shell library://sylabsed/examples/lolcow
+Singularity lolcow_latest.sif:~&gt; lolcat --help
+
+Usage: lolcat [OPTION]... [FILE]...
+
+Concatenate FILE(s), or standard input, to standard output.
+With no FILE, or when FILE is -, read standard input.
+
+    --spread, -p &lt;f&gt;:   Rainbow spread (default: 3.0)
+      --freq, -F &lt;f&gt;:   Rainbow frequency (default: 0.1)
+      --seed, -S &lt;i&gt;:   Rainbow seed, 0 = random (default: 0)
+       --animate, -a:   Enable psychedelics
+  --duration, -d &lt;i&gt;:   Animation duration (default: 12)
+     --speed, -s &lt;f&gt;:   Animation speed (default: 20.0)
+         --force, -f:   Force color even when stdout is not a tty
+       --version, -v:   Print version and exit
+          --help, -h:   Show this message
+
+Examples:
+  lolcat f - g      Output f&#39;s contents, then stdin, then g&#39;s contents.
+  lolcat            Copy standard input to standard output.
+  fortune | lolcat  Display a rainbow cookie.
+
+Report lolcat bugs to &lt;http://www.github.org/busyloop/lolcat/issues&gt;
+lolcat home page: &lt;http://www.github.org/busyloop/lolcat/&gt;
+Report lolcat translation bugs to &lt;http://speaklolcat.com/&gt;
+
+Singularity lolcow_latest.sif:~&gt; which lolcat
+/usr/games/lolcat
+Singularity lolcow_latest.sif:~&gt; cowsay -f tux  hello there | lolcat -a
+ _____________
+&lt; hello there &gt;
+ -------------
+   \
+    \
+        .--.
+       |o_o |
+       |:_/ |
+      //   \ \
+     (|     | )
+    /&#39;\_   _/`\
+    \___)=(___/
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>tony says - ‘oh yeah what do you use your supercomputer for’</p></li>
+</ul>
+<div class="section" id="hpc-doc-walk-thru">
+<h4>HPC DOC Walk Thru<a class="headerlink" href="#hpc-doc-walk-thru" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://hpcportal.cr.usgs.gov/hpc-user-docs/Resources/Cheat_Sheets.html">https://hpcportal.cr.usgs.gov/hpc-user-docs/Resources/Cheat_Sheets.html</a></p>
+<p><a class="reference external" href="https://vim.rtorr.com/">https://vim.rtorr.com/</a></p>
+<p><a class="reference external" href="https://cheatography.com/davechild/cheat-sheets/linux-command-line/">https://cheatography.com/davechild/cheat-sheets/linux-command-line/</a></p>
+</div>
+</div>
+<div class="section" id="big-data-and-data-cubes">
+<h3>Big Data and Data Cubes<a class="headerlink" href="#big-data-and-data-cubes" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>“ Developments of sensing observations and producing information from it need to be accompanied by suitable storage, processing and retrieval systems. “ - from …
+<a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/17538947.2019.1585976">https://www.tandfonline.com/doi/full/10.1080/17538947.2019.1585976</a></p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="data-lake-discussion-demo">
+<h2>Data Lake Discussion - Demo<a class="headerlink" href="#data-lake-discussion-demo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>copied data from Neal’s bucket eco-w1 to Caldera</p></li>
+<li><p>copied anhb nlcd fro Caldera to a usgsOPEN-bucket … dev-et-data – aka Steffie’s bucket.</p></li>
+<li><p>demo access from Steffie’s private mini-pangeo - http:/10.12.68.246</p></li>
+<li><p>demo access from theBigPangeo – http://pangeo.chs.usgs.gov</p></li>
+<li><p>demo local Caldera access from Jupyter via Tallgrass</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tallgrass</span>
+
+<span class="n">make</span> <span class="n">salloc</span>
+
+<span class="n">make</span> <span class="n">shell</span>
+
+<span class="p">(</span><span class="n">start</span> <span class="n">jupyter</span><span class="p">)</span>
+<span class="o">./</span><span class="n">launch</span><span class="p">(</span><span class="n">TAB</span><span class="p">)</span>
+
+<span class="n">tunnel</span> <span class="mi">8888</span>
+<span class="c1"># cut/paste the ssh tunnel 8888</span>
+
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8888</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="two-hpc-pangeo-notebooks-demos">
+<h2>Two HPC Pangeo notebooks demos<a class="headerlink" href="#two-hpc-pangeo-notebooks-demos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>http://localhost:8888/notebooks/opt/etscrum/2_ET_HPC/00-notebooks/0_HPC_for_dummies_like_tony.ipynb</p></li>
+<li><p>http://localhost:8888/notebooks/opt/etscrum/3_nlcd_datalake/1_HPC_anhb-viewer.ipynb</p></li>
+</ul>
+<div class="section" id="steffi-s-mini-pangeo">
+<h3>Steffi’s mini pangeo<a class="headerlink" href="#steffi-s-mini-pangeo" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>http://10.12.68.246/user/butzer/notebooks/opt/nlcd-datalake/scp-tools/1_nlcd-anhb-viewer.ipynb</p></li>
+</ul>
+</div>
+<div class="section" id="bigpangeo">
+<h3>bigPangeo<a class="headerlink" href="#bigpangeo" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>exact same notebook runs here</p></li>
+<li><p>how is that possible</p>
+<ul>
+<li><p>datalake!</p></li>
+<li><p>notice caldera and home directory are ubiqutous accross - denali and tallgrasss</p></li>
+<li><p>datalakes will be accessible world wide - the opposite of dark repositories of data</p></li>
+</ul>
+</li>
+<li><p>notebook url HERE</p></li>
+<li><p>https://pangeo.chs.usgs.gov/user/butzer&#64;contractor.usgs.gov/notebooks/nlcd-datalake/scp-tools/1_nlcd-anhb-viewer.ipynb</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="data-lake">
+<h1>Data Lake<a class="headerlink" href="#data-lake" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="approach">
+<h2>approach<a class="headerlink" href="#approach" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>model a data lake in the dev-et-data bucket - USGS-wide access</p></li>
+<li><p>infiltrate the CHS leaders and elevate the priority of a USGS datalake</p></li>
+<li><p>find common data needs and practice wrangling them vis the Data Wrangling Working Group</p>
+<ul class="simple">
+<li><p>remember data wrangling is still a real thing</p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="https://raw.githubusercontent.com/tonybutzer/etscrum/a46efbe7884e936973cd7fe55162a295c700b02f/Attic/00-presentation/ard/datawrangling_is_real.PNG" src="https://raw.githubusercontent.com/tonybutzer/etscrum/a46efbe7884e936973cd7fe55162a295c700b02f/Attic/00-presentation/ard/datawrangling_is_real.PNG" /></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="dwwg-next-steps">
+<h2>DWWG next steps:<a class="headerlink" href="#dwwg-next-steps" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Determine VegDyn NLCD Needs (Trenton, Dinesh)</p>
+<ul class="simple">
+<li><p>perhaps look at gridmet, daymet etc …</p></li>
+</ul>
+</li>
+<li><p>Refine Logan’s NLCD wrngling pipeline - add orchestration</p></li>
+<li><p>Wrangle some more NLCD and test with VegDyn-centric notebooks</p></li>
+<li><p>Move some of the VegET wrangling to the cloud - with branch to Caldera</p></li>
+</ol>
+</div>
+<div class="section" id="show-stac-for-maine-and-clipping-and-crs-from-platecarree">
+<h2>Show STAC - for maine and clipping and crs from plateCarree<a class="headerlink" href="#show-stac-for-maine-and-clipping-and-crs-from-platecarree" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>time permitting?</p></li>
+<li><p>find this demo - do it in the pangeo</p></li>
+<li><p>https://pangeo.chs.usgs.gov/user/butzer&#64;contractor.usgs.gov/notebooks/opt/composite/40-intake-stac-henderson/1-just-aoi-intake-stac-egypt-calibration.ipynb</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="week-16-welcome-landfire">
+<h1>Week 16 - Welcome Landfire<a class="headerlink" href="#week-16-welcome-landfire" title="Permalink to this headline">¶</a></h1>
+<p>Today we welcome the Landfire, FireScience team to this community of best practices and this community of sharing, notebooks, concepts, code , data and most importantly - non-silo-ed talent. Welcome Tolk, Brian (Contractor) L  – and Degaga, Erica J</p>
+<div class="section" id="what-is-this-class">
+<h2>What is this class?<a class="headerlink" href="#what-is-this-class" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>A community of cloud based Scientists that:</p>
+<ul class="simple">
+<li><p>use the cloud</p></li>
+<li><p>some have custom cloud accounts</p></li>
+<li><p>some use the Landsat account</p></li>
+<li><p>some use thebigPangeo</p></li>
+<li><p>some have their own mini-Pangeos/jupyterHubs/sandboxes</p></li>
+<li></li>
+</ul>
+</li>
+<li><p>Notable technologies</p>
+<ul class="simple">
+<li><p>Python</p></li>
+<li><p>Open Source</p></li>
+<li><p>Image Processing and GIS</p>
+<ul>
+<li><p>xarray, pandas, matplotlib, holoviews, geoviews, geopandas, rasterio, GDAL</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Remote Sensing Cloud Stored assets</p>
+<ul class="simple">
+<li><p>Landsat - utm/albers/ —&gt; ARD tiles</p></li>
+<li><p>Sentinel-2-COGs</p></li>
+<li><p>Hamonized Landsat Sentinel</p></li>
+</ul>
+</li>
+<li><p>Making birds-of-a-feather connections in science</p></li>
+<li><p>focus on TRAINING - lets have a highly TRAINED Science team and a world class data center</p>
+<ul class="simple">
+<li><p>start with simple get togethers - this class</p></li>
+<li><p>jot some disorganized notes</p></li>
+<li><p>share some draft notebooks</p></li>
+<li><p>stuff code and docs in github</p></li>
+<li><p>hire an intern to organize and collate this stuff</p></li>
+<li><p>repetition</p></li>
+<li><p>learn how to use git search in the meantime</p></li>
+<li><p>reach out and ask for help - connectors include Rich Signell, Nathan, Aaron Friesz, tony ….</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="teams">
+<h2>Teams<a class="headerlink" href="#teams" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Evapotranspiration – Water - Steffi, Olena</p></li>
+<li><p>Land Cover - Brett, Pat, Kory</p></li>
+<li><p>LCMAP - Kelcy</p></li>
+<li><p>Invasive - Sujan, Devandra, Logan, Neal</p></li>
+<li><p>Web Development Team - Claudia, Maxwell, Michelle, Balu …</p></li>
+<li><p>VegDyn - Trent, Dinesh</p></li>
+<li><p>Emerging AI experts …</p></li>
+</ol>
+<blockquote>
+<div><p>Basically, ostensibly- lots of superior TALENT</p>
+</div></blockquote>
+</div>
+<div class="section" id="a-group-of-experts">
+<h2>A group of experts<a class="headerlink" href="#a-group-of-experts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>here are just a few - there are many i have not enumerated and some i have not yet discovered</p></li>
+</ul>
+<ol class="simple">
+<li><p>Logan Megard - HLS – DevOps</p></li>
+<li><p>Steffi Kagone - Converting Models from ARCPY to rasterio</p></li>
+<li><p>Olena Boiko - Data Wrangling Expert - MOdel QA Expert - Jupyter/matplotlib</p></li>
+<li><p>Kelcy Smith - Python Expert, Jupyter Expert, time-series expert - STAC expert</p></li>
+<li><p>Nathan Roberts - user service - data management</p></li>
+<li><p>tony - DevOps and OpenDataCube, docker, code portability, networking and file transfers</p></li>
+</ol>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<p>Today I am privileged to have guest instructors:
+Kagone, Stefanie (Contractor) – and – Boiko, Olena are back for an encore lesson on how to use the bigPangeo - pangeo.chs.usgs.gov to look at refining the sophistication of the model by improving the fidelity of NDVI.</p>
+<p>also …
+Danielson, Patrick (Contractor) – and – Postma, Kory (Contractor) will give an opinionated demo of a notebook on STAC meets one of the mature STAC Catalogs for Sentinel-2-COGs.</p>
+<p>We can talk a little about the data wrangling and scp and rclone we have been doing between the Netapp, Caldera and S3.</p>
+<p>And we can talk about finding Albers Scenes for Landsat Compositing using the young, immature Landsat Stac Catalog.</p>
+<p>Nathan Roberts and Rich Signell are both presenting Pangeo/OpenDataCube papers at conferences this month.</p>
+<p>So the folks attending this class are Early Adopters of technology and infrastructure stacks that will revolutionize science in the next few years.</p>
+</div>
+</div>
+<div class="section" id="prepare-the-pangeo-release-the-kracken">
+<h1>Prepare the Pangeo - release the kracken<a class="headerlink" href="#prepare-the-pangeo-release-the-kracken" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="start-the-pangeo-tony-start-it">
+<h1>start the pangeo tony START IT<a class="headerlink" href="#start-the-pangeo-tony-start-it" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pangeo.cr.usgs.gov">https://pangeo.cr.usgs.gov</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id12">
+<h1>Overview<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="steffi-and-olena">
+<h2>Steffi and Olena<a class="headerlink" href="#steffi-and-olena" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modis-derived-ndvi-an-land-surface-temperature">
+<h3>Modis derived NDVI an Land Surface Temperature<a class="headerlink" href="#modis-derived-ndvi-an-land-surface-temperature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Uses the big pangeo</p></li>
+<li><p>uses R**2 to evaluate hypothesis</p></li>
+<li><p>ran in a $200 mini-pangeo - now runs in the freeFREEfree https://pangeo.chs.usgs.gov</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="pat-and-kory">
+<h2>Pat and Kory<a class="headerlink" href="#pat-and-kory" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>so far many have come up to speed with Jupyter Lab/Notebook quickly</p>
+<ul>
+<li><p>The ability to share snippets of code, concepts, visualizations - is a gamechanger</p></li>
+<li><p>Jupyter is not a full-blown IDE - i say so what!</p></li>
+</ul>
+</li>
+<li><p>these few weeks will look at composites with HLS, sentinel and Landsat - starting with data discover via STAC.</p></li>
+</ul>
+<hr class="docutils" />
+</div>
+<hr class="docutils" />
+<div class="section" id="make-friends-with-git">
+<h2>Make friends with git<a class="headerlink" href="#make-friends-with-git" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>https:/code.usgs.gov</p></li>
+</ul>
+</div>
+<div class="section" id="quit-hiding-your-code-and-data">
+<h2>quit hiding your code and data -<a class="headerlink" href="#quit-hiding-your-code-and-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="from-kindergarten">
+<h3>From Kindergarten<a class="headerlink" href="#from-kindergarten" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Share everything.
+
+Play fair.
+
+Don’t hit people.
+
+Put things back where you found them.
+
+Clean up your own mess.
+
+Don’t take things that aren’t yours.
+
+Say you’re sorry when you hurt somebody.
+
+Wash your hands before you eat.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="landsat-albers-by-way-of-bt-detour">
+<h2>Landsat Albers by way of BT detour.<a class="headerlink" href="#landsat-albers-by-way-of-bt-detour" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="data-transfer-how-do-i-get-my-data-to-and-from-the-cloud">
+<h2>Data transfer - how do I get my data to and from the cloud<a class="headerlink" href="#data-transfer-how-do-i-get-my-data-to-and-from-the-cloud" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>to is always free</p></li>
+<li><p>from can come with egress costs unless</p>
+<ul>
+<li><p>you use rclone or some other sneaky method</p></li>
+</ul>
+</li>
+<li><p>we were able to get these rates</p>
+<ul>
+<li><p>40 MBytes per second from cladera –&gt; s3</p></li>
+<li><p>2 Mbytes per second using VDI machines for most transfers</p></li>
+<li><p>.5 Mbytes when using windows and the VPN/PulseSecure</p></li>
+</ul>
+</li>
+<li><p>we have played with many fileTransfer agents</p>
+<ul>
+<li><p>tony’s favorites are scp and rclone and perhaps some of their derivatives - like lftp</p></li>
+<li><p>more to come - more help available ….</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">rclone</span> <span class="n">copy</span> <span class="o">-</span><span class="n">P</span> <span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="ow">in</span><span class="o">/</span><span class="n">DelawareRiverBasin</span><span class="o">/</span><span class="n">PPT</span><span class="o">/</span><span class="mi">2000</span><span class="o">/</span> <span class="n">tallgrass</span><span class="p">:</span><span class="o">/</span><span class="n">caldera</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">usgs</span><span class="o">/</span><span class="n">water</span><span class="o">/</span><span class="n">impd</span><span class="o">/</span><span class="n">butzer</span><span class="o">/</span><span class="n">PPT</span><span class="o">/</span><span class="mi">2000</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="question-of-the-week-partial-git-clones">
+<h2>Question of the Week - Partial Git Clones<a class="headerlink" href="#question-of-the-week-partial-git-clones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/bash</span>
+
+<span class="k">function</span> git_sparse_clone<span class="o">()</span> <span class="o">(</span>
+  <span class="nv">rurl</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="nv">localdir</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">shift</span> <span class="m">2</span>
+
+  mkdir -p <span class="s2">&quot;</span><span class="nv">$localdir</span><span class="s2">&quot;</span>
+  git config core.sparseCheckout <span class="nb">true</span>
+
+  <span class="c1"># Loops over remaining args</span>
+  <span class="k">for</span> i<span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span> &gt;&gt; .git/info/sparse-checkout
+</pre></div>
+</div>
+<div class="section" id="use-wget-for-single-notebooks">
+<h3>use wget for single notebooks<a class="headerlink" href="#use-wget-for-single-notebooks" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>find the raw link in github</p>
+<ul class="simple">
+<li><p>https://raw.githubusercontent.com/tonybutzer/composite/main/01-danielson/1_LANDSAT_ALBERS_MAINE/0_maine_landsat_albers.ipynb</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tonybutzer</span><span class="o">/</span><span class="n">composite</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">danielson</span><span class="o">/</span><span class="mi">1</span><span class="n">_LANDSAT_ALBERS_MAINE</span><span class="o">/</span><span class="mi">0</span><span class="n">_maine_landsat_albers</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="costs">
+<h3>Costs<a class="headerlink" href="#costs" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@ip-10-12-68-246:~$ docker run tbutzer/aws-price python awsprice.py butzer
+[&#39;awsprice.py&#39;, &#39;butzer&#39;]
+butzer
+     state                     name            ip       i_type  monthly_cost
+0  running  butzer-et-mini-pangeo-0  10.12.68.246  t3a.2xlarge       219.584
+1  stopped        butzer-bigsship-0   10.12.69.45  m5a.4xlarge       502.240
+2  running       butzer-tendollar-a  10.12.68.236     t2.micro         8.468
+==========================================================================================
+==========================================================================================
+     state                     name            ip       i_type  monthly_cost
+0  running  butzer-et-mini-pangeo-0  10.12.68.246  t3a.2xlarge       219.584
+2  running       butzer-tendollar-a  10.12.68.236     t2.micro         8.468
+========================================================================================================================
+=====================================================================
+</pre></div>
+</div>
+<p><a class="reference external" href="https://support.chs.usgs.gov/pages/viewpage.action?pageId=40370588">Harry House on Cost - The truthful answer to this question is “it’s complex, and it depends.</a></p>
+<blockquote>
+<div><p>One would presume that most private companies would be aware of the total cost of ownership within their borders and may well be more likely to adopt the Cloud sooner from a cost perspective if nothing else.</p>
+</div></blockquote>
+<p>Here is a list of considerations when contemplating the Cloud or on-premises from the viewpoint of comparable expenses:</p>
+<p>For Using On-premises</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cost</span> <span class="n">to</span> <span class="n">purchase</span> <span class="n">the</span> <span class="n">on</span><span class="o">-</span><span class="n">premises</span> <span class="n">equipment</span>
+
+<span class="n">Cost</span> <span class="n">to</span> <span class="n">configure</span> <span class="ow">and</span> <span class="n">manage</span> <span class="n">the</span> <span class="n">on</span><span class="o">-</span><span class="n">premises</span> <span class="n">equipment</span>
+
+<span class="n">Cost</span> <span class="n">to</span> <span class="n">maintain</span> <span class="n">the</span> <span class="n">power</span> <span class="ow">and</span> <span class="n">air</span> <span class="n">conditioning</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">computer</span> <span class="n">room</span>
+
+<span class="n">Cost</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span> <span class="n">administrators</span> <span class="n">to</span> <span class="n">support</span> <span class="n">the</span> <span class="n">computer</span> <span class="n">room</span> <span class="ow">and</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">devices</span> <span class="n">therein</span>
+
+<span class="n">Cost</span> <span class="n">of</span> <span class="n">the</span> <span class="n">floor</span> <span class="n">space</span> <span class="p">(</span><span class="n">rented</span> <span class="ow">or</span> <span class="n">owned</span> <span class="n">but</span> <span class="ow">not</span> <span class="n">usable</span> <span class="k">for</span> <span class="n">other</span> <span class="n">purposes</span><span class="p">)</span> <span class="k">for</span> <span class="n">the</span> <span class="n">on</span><span class="o">-</span><span class="n">premises</span> <span class="n">system</span>
+
+<span class="n">Cost</span> <span class="n">of</span> <span class="n">on</span><span class="o">-</span><span class="n">site</span> <span class="n">backups</span>
+
+<span class="n">Cost</span> <span class="n">of</span> <span class="n">network</span> <span class="n">connectivity</span>
+
+<span class="n">Cost</span> <span class="n">of</span> <span class="n">meeting</span> <span class="n">security</span> <span class="n">controls</span> <span class="n">related</span> <span class="n">to</span> <span class="n">the</span> <span class="n">facility</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="devops-consulting-tony">
+<h2>DevOps Consulting - tony<a class="headerlink" href="#devops-consulting-tony" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>terraform</p></li>
+<li><p>s3 tricks and traps</p></li>
+<li><p>docker</p></li>
+<li><p>ec2 and costs</p></li>
+</ul>
+</div>
+<div class="section" id="prior-videos-are-available-in-m-stream">
+<h2>Prior videos are available in M$-stream<a class="headerlink" href="#prior-videos-are-available-in-m-stream" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>you can watch these in 2x speed and skip around.</p></li>
+</ul>
+</div>
+<div class="section" id="rich-signell-hidden-gem">
+<h2>Rich SigNELL hidden gem<a class="headerlink" href="#rich-signell-hidden-gem" title="Permalink to this headline">¶</a></h2>
+<p>BTW, I don’t know if you think this is cool, but I found out something new about fsspec this morning… .It’s more than just for s3!<br />https://nbviewer.jupyter.org/gist/rsignell-usgs/8e3051974d0e3a1722369cafe9e0005e</p>
+</div>
+</div>
+<div class="section" id="week-17-google-cloud-and-aws-oh-my">
+<h1>Week 17 Google Cloud and AWS Oh My<a class="headerlink" href="#week-17-google-cloud-and-aws-oh-my" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>so many technical options and choices - so little time.</p></li>
+</ul>
+<div class="section" id="what-does-this-class-teach-again">
+<h2>What does this class teach again?<a class="headerlink" href="#what-does-this-class-teach-again" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>How to exploit the AWS Cloud via CHS</p></li>
+<li><p>PANGEO - Xarray, Pandas, Holoviews …</p></li>
+<li><p>DevOps for the science guys</p></li>
+<li><p>Moving, Wrangling Data with less effort and less time</p></li>
+<li><p>Don’t MOVE your data - teleport to Oregon - us-west-2</p></li>
+<li><p>Jupyter and Python - easy to write - easy to run</p></li>
+<li><p>Docker its in there</p></li>
+</ol>
+</div>
+<div class="section" id="id13">
+<h2>Future Classes<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Logan - HLS experiments for ECO-invasive</p></li>
+<li><p>Aaron - s3 direct access LPDAAC HLS</p></li>
+<li><p>Kelcy - time series landsat</p></li>
+<li><p>Pat Danielson, Kory, Brett, Brian Tolk – Compositing - NLCD and FireScience</p></li>
+<li><p>Simson –&gt; Jupyter Quick Start</p></li>
+<li><p>Erica Degagga –&gt; Landfire Initiatives in the Cloud</p></li>
+<li><p>Tony –&gt; Searching disorganized git repos</p></li>
+<li><p>Neal CoP presentation on using Cloud + Cloud + HPC + AI/ML/DL</p></li>
+</ol>
+</div>
+<div class="section" id="past-videos">
+<h2>Past Videos<a class="headerlink" href="#past-videos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>teams does not make it easy to share for new users</p>
+<ul>
+<li><p>past channel is not available</p></li>
+<li><p>test with Simson negative result</p></li>
+</ul>
+</li>
+<li><p>Game of Thrones is 67 hours – this is less than 20 so far</p></li>
+</ul>
+<div class="section" id="k-90daytemp">
+<h3>K 90daytemp<a class="headerlink" href="#k-90daytemp" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>k:/90daytemp/butzer/AWS_PANGEO_VIDEOS</p></li>
+</ul>
+<div class="section" id="featured-video">
+<h4>Featured Video<a class="headerlink" href="#featured-video" title="Permalink to this headline">¶</a></h4>
+<p>K:\90daytemp\butzer\AWS_PANGEO_VIDEOS\2020_12_08_AWS_PANGEO On-boarding with Tony and Neal.mp4</p>
+</div>
+</div>
+</div>
+<div class="section" id="pangeo-access">
+<h2>Pangeo Access<a class="headerlink" href="#pangeo-access" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>https://taskmgr.chs.usgs.gov/servicedesk/customer/portal/10/create/251</p></li>
+<li><p>https://taskmgr.chs.usgs.gov/servicedesk/customer/portal/10</p></li>
+</ul>
+<div class="section" id="evapo-cartoon">
+<h3>Evapo Cartoon<a class="headerlink" href="#evapo-cartoon" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/tonybutzer/et/blob/master/docs/source/00status">https://github.com/tonybutzer/et/blob/master/docs/source/00status.md</a></p>
+<ul class="simple">
+<li><p>https://github.com/tonybutzer/et/blob/master/docs/source/00status.md</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="class-context">
+<h2>Class Context<a class="headerlink" href="#class-context" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Projects that use mutiple modern compute resources</p></li>
+<li><p>CHS AWS development accounts - EC2 elastic, ephemeral computer – with S3 and git for persistence</p></li>
+<li><p>HPC - especially Tallgrass - cause its availabkle and has GPUs</p></li>
+<li><p>Part of our model family SSEBop is computed/modeled using Google Cloud Platform and GEE</p></li>
+<li><p>GSUTIL and RCLONE featured</p></li>
+<li><p>Refresher on DOCKER and SINGULARITY</p></li>
+<li><p>using pangeo.chs.usgs.gov for displaying ssebop</p></li>
+<li><p>Open Data Cube abstractions BUT with PANGEO for Landsat Albers Scenes</p></li>
+</ol>
+</div>
+<div class="section" id="demo-overview">
+<h2>Demo Overview<a class="headerlink" href="#demo-overview" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Look at google cloud bucket assets - ssebop</p></li>
+<li><p>demo how to replicate/sync/copy those to our AWS DataLake</p></li>
+<li><p>demo using docker to build an image for gsutil – google utility</p></li>
+<li><p>demo running the container on AWS</p></li>
+<li><p>demo running the container/sif on Tallgrass</p></li>
+<li><p>demo looking at the tif file with Pangeo on tallgrass via ssh tunnel of port 8888</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="simple">
+<li><p>redo Nate’s Waubay for albers and rgb</p>
+<ul class="simple">
+<li><p>composite repo?</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>https://console.cloud.google.com/storage/browser/ssebop-modis/Annual</p></li>
+</ul>
+</div>
+<div class="section" id="rclone-examples">
+<h2>Rclone Examples<a class="headerlink" href="#rclone-examples" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>tony –&gt; umyssh minipangeo</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">1984</span>  <span class="n">cat</span> <span class="n">Dockerfile</span>
+ <span class="mi">1985</span>  <span class="n">cat</span> <span class="n">Makefile</span>
+ <span class="mi">1986</span>  <span class="n">cd</span>
+ <span class="mi">1987</span>  <span class="n">ls</span>
+ <span class="mi">1988</span>  <span class="n">rclone</span> <span class="n">config</span>
+ <span class="mi">1989</span>  <span class="n">ls</span>
+ <span class="mi">1990</span>  <span class="n">rclone</span> <span class="n">listremotes</span>
+ <span class="mi">1991</span>  <span class="n">rclone</span> <span class="n">config</span>
+ <span class="mi">1992</span>  <span class="n">rlone</span> <span class="n">ls</span> <span class="n">sbop</span><span class="p">:</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span><span class="o">/</span>
+ <span class="mi">1993</span>  <span class="n">rclone</span> <span class="n">ls</span> <span class="n">sbop</span><span class="p">:</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span><span class="o">/</span>
+ <span class="mi">1994</span>  <span class="n">rclone</span> <span class="n">sync</span> <span class="o">-</span><span class="n">P</span> <span class="n">sbop</span><span class="p">:</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span><span class="o">/</span><span class="n">Annual</span> <span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">datalake</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span><span class="o">/</span><span class="n">Annual</span><span class="o">/</span>
+ <span class="mi">1995</span>  <span class="n">aws</span> <span class="n">s3</span> <span class="n">ls</span> <span class="n">dev</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">datalake</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span><span class="o">/</span><span class="n">Annual</span><span class="o">/</span>
+ <span class="mi">1996</span>  <span class="n">aws</span> <span class="n">s3</span> <span class="n">ls</span> <span class="n">dev</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">datalake</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span><span class="o">/</span><span class="n">Annual</span><span class="o">/</span> <span class="o">--</span><span class="n">human</span>
+ <span class="mi">1997</span>  <span class="n">gdalinfo</span> <span class="o">/</span><span class="n">vsis3</span><span class="o">/</span><span class="n">dev</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">datalake</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span><span class="o">/</span><span class="n">Annual</span><span class="o">/</span><span class="n">y2003_modisSSEBopETv4_actual_mm</span><span class="o">.</span><span class="n">tif</span>
+ <span class="mi">1998</span>  <span class="n">ls</span>
+ <span class="mi">1999</span>  <span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+ <span class="mi">2000</span>  <span class="n">rclone</span> <span class="n">listremotes</span>
+ <span class="mi">2001</span>  <span class="n">rclone</span> <span class="n">ls</span> <span class="n">sbop</span><span class="p">:</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span>
+ <span class="mi">2002</span>  <span class="n">rclone</span> <span class="n">ls</span> <span class="n">sbop</span><span class="p">:</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span> <span class="o">--</span><span class="n">help</span>
+ <span class="mi">2003</span>  <span class="n">rclone</span> <span class="n">lsjson</span> <span class="n">sbop</span><span class="p">:</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span>
+ <span class="mi">2004</span>  <span class="n">rclone</span> <span class="n">lsjson</span> <span class="n">sbop</span><span class="p">:</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span><span class="o">/</span><span class="n">Annual</span>
+ <span class="mi">2005</span>  <span class="n">rclone</span> <span class="n">ls</span> <span class="n">sbop</span><span class="p">:</span><span class="o">/</span><span class="n">ssebop</span><span class="o">-</span><span class="n">modis</span><span class="o">/</span><span class="n">Annual</span>
+ <span class="mi">2006</span>  <span class="n">history</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arcpy-vs-open-source">
+<h2>ARCPY vs. Open Source<a class="headerlink" href="#arcpy-vs-open-source" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="databases-are-so-yesterday">
+<h2>Databases are so yesterday<a class="headerlink" href="#databases-are-so-yesterday" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="but-if-you-insist-on-postgres">
+<h2>But if you insist on postgres<a class="headerlink" href="#but-if-you-insist-on-postgres" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i-am-talking-to-you-opendatacube">
+<h3>I am talking to you OpenDataCube<a class="headerlink" href="#i-am-talking-to-you-opendatacube" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>THEN - at least use docker to minimize the PAIN!</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@ip-10-12-68-246:/opt/cube-in-a-box$ more docker-compose.yml
+version: &#39;3&#39;
+
+services:
+  postgres:
+    image: postgis/postgis:10-2.5
+    environment:
+      - POSTGRES_DB=opendatacube
+      - POSTGRES_PASSWORD=opendatacubepassword
+      - POSTGRES_USER=opendatacube
+    ports:
+      - 5432:5432
+    restart: always
+
+  jupyter:
+    build: .
+    environment:
+      - DB_HOSTNAME=postgres
+      - DB_USERNAME=opendatacube
+      - DB_PASSWORD=opendatacubepassword
+      - DB_DATABASE=opendatacube
+      - AWS_NO_SIGN_REQUEST=true
+      - STAC_API_URL=https://earth-search.aws.element84.com/v0/
+    ports:
+      - &quot;8080:8888&quot;
+    volumes:
+      - ./notebooks:/notebooks
+    restart: always
+    command: jupyter notebook --allow-root --ip=&quot;0.0.0.0&quot; --NotebookApp.token=&#39;secretpassword&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="what-does-a-world-class-data-center-look-like">
+<h2>What does a world class data center look like?<a class="headerlink" href="#what-does-a-world-class-data-center-look-like" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>lean and agile</p></li>
+<li><p>Highly TRAINED</p></li>
+<li><p>communicates across informal channels</p></li>
+<li><p>Common Goal - effective use of the planet’s limited resources -</p></li>
+<li><p>A world or universe view</p></li>
+<li><p>fosters the right CULTURE</p>
+<ul class="simple">
+<li><p>sharing and confidence</p></li>
+<li><p>respects each other’s expertise</p></li>
+<li><p>has each other’s back</p></li>
+<li><p>has fun at work</p></li>
+<li><p>rejects management styles that don’t inspire</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="these-classes-propose-pangeo-as-a-way-for-science">
+<h2>These classes propose PANGEO as a way for science<a class="headerlink" href="#these-classes-propose-pangeo-as-a-way-for-science" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Open Data Cube - is an instance of PANGEO</p>
+<ul>
+<li><p>its database for me represents a barrier to entry</p></li>
+<li><p>that said its a cool and powerful abstraction for building xarray timeseries applications that run in Pangeos</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sandbox">
+<h2>Sandbox<a class="headerlink" href="#sandbox" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="prototyping-phase">
+<h2>Prototyping Phase<a class="headerlink" href="#prototyping-phase" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="goals-characteristics">
+<h3>Goals/Characteristics<a class="headerlink" href="#goals-characteristics" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Must allow nonUSGS Collaboration</p></li>
+<li><p>Be affordable</p></li>
+<li><p>Be Easy to use</p></li>
+<li><p>Allow access to data bucket <code class="docutils literal notranslate"><span class="pre">dev-et-data</span></code></p></li>
+<li><p>Easy to slurp/clone github repos</p>
+<ul class="simple">
+<li><p>VegET repo here</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="user-tl-dr">
+<h2>USER TL;DR<a class="headerlink" href="#user-tl-dr" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="new-usgs-chs-sandbox">
+<h2>NEW USGS CHS SANDBOX<a class="headerlink" href="#new-usgs-chs-sandbox" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="http-tbd">
+<h2>http://TBD<a class="headerlink" href="#http-tbd" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="what-about-the-big-pangeo">
+<h2>What about the big pangeo<a class="headerlink" href="#what-about-the-big-pangeo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="technical-stack">
+<h3>Technical Stack<a class="headerlink" href="#technical-stack" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>uses TLJH - fairly nice for this purpose</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="week-18-hls-from-s3-aaron-friesz">
+<h1>Week 18 HLS from S3 Aaron Friesz<a class="headerlink" href="#week-18-hls-from-s3-aaron-friesz" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="science-without-the-suffering">
+<h2>Science without the suffering<a class="headerlink" href="#science-without-the-suffering" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="data-without-the-dukkha">
+<h2>Data without the dukkha<a class="headerlink" href="#data-without-the-dukkha" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="manifestations-without-the-maya">
+<h2>Manifestations without the maya<a class="headerlink" href="#manifestations-without-the-maya" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="aaron-friesz">
+<h2>Aaron Friesz<a class="headerlink" href="#aaron-friesz" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">LP</span> <span class="n">DAAC</span>
+<span class="o">-</span> <span class="n">Works</span> <span class="k">with</span> <span class="n">the</span> <span class="n">USGS</span> <span class="ow">and</span> <span class="n">NASA</span>
+<span class="o">-</span> <span class="n">Develops</span> <span class="n">Science</span> <span class="n">Outreach</span> <span class="n">Programs</span>
+<span class="o">-</span> <span class="n">Cole</span> <span class="n">K</span><span class="o">.</span> <span class="ow">is</span> <span class="n">one</span> <span class="n">of</span> <span class="n">his</span> <span class="n">colleagues</span> <span class="ow">in</span> <span class="n">crime</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>Future Classes<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">May</span> <span class="mi">4</span><span class="n">th</span> <span class="o">--</span> <span class="n">Fire</span> <span class="n">applications</span> <span class="n">made</span> <span class="n">easy</span> <span class="n">by</span> <span class="n">Pangeo</span> <span class="ow">in</span> <span class="n">AWS</span> <span class="o">--</span> <span class="n">tony</span>
+<span class="o">-</span> <span class="n">May</span> <span class="mi">11</span><span class="n">th</span> <span class="o">--</span> <span class="n">musings</span> <span class="ow">in</span> <span class="n">change</span> <span class="n">detection</span> <span class="n">notebooks</span> <span class="n">Kelcy</span> <span class="n">Smith</span>
+<span class="o">-</span> <span class="n">May</span> <span class="mi">17</span><span class="n">th</span> <span class="o">-</span> <span class="n">Erica</span> <span class="n">Degaga</span> <span class="o">-</span> <span class="n">How</span> <span class="n">we</span> <span class="n">approach</span> <span class="n">Explainable</span> <span class="n">AI</span> <span class="o">-</span> <span class="n">XAI</span>
+    <span class="o">-</span> <span class="n">Tensorflow</span><span class="p">,</span> <span class="n">Sagemaker</span><span class="p">,</span> <span class="n">Tools</span> <span class="ow">and</span> <span class="n">Techniques</span> <span class="o">-</span> <span class="n">Tesnsorflow</span> <span class="n">demo</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">bigPangeo</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hackathon-problem-solving">
+<h2>Hackathon, Problem Solving<a class="headerlink" href="#hackathon-problem-solving" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Some</span> <span class="n">Examples</span> <span class="p">:</span>
+<span class="o">-</span> <span class="n">Update</span> <span class="kn">from</span> <span class="nn">Devandra</span>
+    <span class="o">-</span> <span class="n">UTM</span> <span class="n">to</span> <span class="n">Albers</span> <span class="n">to</span> <span class="n">Merging</span> <span class="n">of</span> <span class="n">cross</span> <span class="n">zone</span> <span class="n">tiles</span> <span class="o">-</span> <span class="n">Sujan</span>
+<span class="o">-</span> <span class="n">Dealing</span> <span class="k">with</span> <span class="n">HDF4</span> <span class="n">until</span> <span class="n">there</span> <span class="n">are</span> <span class="n">COGs</span>
+<span class="o">-</span> <span class="n">Zonal</span> <span class="n">stats</span> <span class="o">-</span> <span class="n">be</span> <span class="n">careful</span> <span class="k">with</span> <span class="n">some</span> <span class="n">of</span> <span class="n">the</span> <span class="n">libraries</span> <span class="o">-</span> <span class="n">to</span> <span class="n">be</span> <span class="n">continued</span> <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cogs-good-says-og-the-caveman">
+<h2>“COGs good!” - says OG (the caveman).<a class="headerlink" href="#cogs-good-says-og-the-caveman" title="Permalink to this headline">¶</a></h2>
+<p><img alt="https://kokoalberti.com/articles/geotiff-compression-optimization-guide/tiled_vs_stripped.png" src="https://kokoalberti.com/articles/geotiff-compression-optimization-guide/tiled_vs_stripped.png" /></p>
+</div>
+<div class="section" id="campfire-anyone">
+<h2>Campfire Anyone?<a class="headerlink" href="#campfire-anyone" title="Permalink to this headline">¶</a></h2>
+<p><img alt="https://www.inforum.com/incoming/6976312-fkwbls-47-badlands-images.jpeg/alternates/BASE_FREE/47%20badlands%20images.jpeg" src="https://www.inforum.com/incoming/6976312-fkwbls-47-badlands-images.jpeg/alternates/BASE_FREE/47%20badlands%20images.jpeg" /></p>
+<div class="section" id="past-pangeo-videos-here">
+<h3>Past Pangeo Videos Here<a class="headerlink" href="#past-pangeo-videos-here" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>K:\90daytemp\butzer\AWS_PANGEO_VIDEOS</p></li>
+</ul>
+</div>
+<div class="section" id="in-other-news-don-t-get-your-nads-mixed-up">
+<h3>In other news - don’t get your NADs mixed up<a class="headerlink" href="#in-other-news-don-t-get-your-nads-mixed-up" title="Permalink to this headline">¶</a></h3>
+<p>Subject: REGISTER for 2021 Geospatial Summit, NGS/NOAA - May 4-5 - status for replacement of NAD 83 &amp; NAVD 88 in 2022</p>
+<p>To all –</p>
+<p>The National Geodetic Survey/NOAA plans to replace the North American Datum of 1983 (NAD 83) and the North American Vertical Datum of 1988 (NAVD 88) as part of modernizing the National Spatial Reference System (NSRS).</p>
+<p>The purpose of the Geospatial Summit is to learn about the status and schedule for replacement of NAD 83 and NAVD 88, and the impact the transition to the modernized NSRS will have on USGS georeferenced products.</p>
+<p>Below is a link to a draft agenda and to documents for background information.</p>
+</div>
+</div>
+</div>
+<div class="section" id="week-19-fire-science-with-landsat-albers-scenes">
+<h1>Week 19 Fire Science with Landsat Albers Scenes<a class="headerlink" href="#week-19-fire-science-with-landsat-albers-scenes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="two-demo-notebooks">
+<h2>Two demo Notebooks<a class="headerlink" href="#two-demo-notebooks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aaron-friesz-lake-isabella-fire-2016-animations">
+<h3>Aaron Friesz - Lake Isabella Fire 2016 Animations<a class="headerlink" href="#aaron-friesz-lake-isabella-fire-2016-animations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Start with git</p></li>
+<li><p>Pangeo</p></li>
+<li><p>STAC and COGS</p></li>
+<li><p>Albers Scenes</p></li>
+<li><p>Pandas DataFrames</p></li>
+<li><p>Xarray eco-system</p></li>
+</ul>
+<div class="section" id="benefits-of-these-quick-collaborations">
+<h4>Benefits of these quick collaborations<a class="headerlink" href="#benefits-of-these-quick-collaborations" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>found several areas of improvement</p>
+<ul>
+<li><p>implement measurement filtering</p></li>
+<li><p>improve xarray attribute description</p></li>
+<li><p>found a bug in the scale factor and offset in the xarray</p></li>
+<li><p>“the biggest room in the house should be the room for improvement” - John Thune</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="this-class-will-evolve-to-a-series-of-independent-small-labs-and-a-class-sylabus-with-luck-and-effort">
+<h3>This class will evolve to a series of independent small labs and a class sylabus. - with luck and effort :-)<a class="headerlink" href="#this-class-will-evolve-to-a-series-of-independent-small-labs-and-a-class-sylabus-with-luck-and-effort" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="tony-butzer">
+<h3>Tony Butzer<a class="headerlink" href="#tony-butzer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Teddy Roosevelt</p></li>
+<li><p>How do you get to true color with R G and B</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>Future Classes<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="next-week-may-11-kelcy-smith-dask-and-land-change-detection">
+<h3>Next week May 11 - Kelcy Smith - Dask and Land Change Detection<a class="headerlink" href="#next-week-may-11-kelcy-smith-dask-and-land-change-detection" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Tony will be out of the office for the next class - Pat and Kelcy to run the session</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="class-moving-to-mondays-at-noon">
+<h2>Class Moving to Mondays at Noon<a class="headerlink" href="#class-moving-to-mondays-at-noon" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="composites">
+<h3>Composites<a class="headerlink" href="#composites" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>This week was a quick detour into Fires with Albers Landsat Scenes</p></li>
+<li><p>In two weeks we will look at time series and composites in Maine</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Planning for the Prototype Parallel Cluster &mdash; uberBrandon HPC AWS Parallel Computer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Concept" href="0ws.html" />
+    <link rel="prev" title="Welcome uberBrandon - no queues - now serving Science" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> uberBrandon HPC AWS Parallel Computer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Planning for the Prototype Parallel Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gantt-chart">GANTT CHART</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#current-week-ending-10-27-2023">Current Week Ending 10/27/2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#terraform-terragrunt-gitlab-runners">terraform/terragrunt gitlab-runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#allowing-pat-and-kory-on-the-cluster-it-takes-a-village">Allowing Pat and Kory on the Cluster - It takes a village</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kelcy-s-roadmap">Kelcy’s Roadmap</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#current-week-ending-october-27-2023">Current Week Ending October 27, 2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#chaosmonkey-4-node-parallel-cluster-in-watersmart-iac">chaosMonkey 4 node parallel cluster in watersmart IAC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#current-sprint">Current Sprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#analysis-focus">Analysis Focus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#planning-focus">Planning Focus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sdlc-phase-summary">SDLC Phase Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#user-story">User Story</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html">Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html#watersmart-cluster">WaterSMart Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iac-journey">IAC Journey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#so-vpcs">SO VPCs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#ws">WS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#therefore-the-usable-host-addresses-in-the-network-10-12-64-0-21-are-2046-2-2044-addresses">Therefore, the usable host addresses in the network <code class="docutils literal notranslate"><span class="pre">10.12.64.0/21</span></code> are (2046 - 2 = 2044) addresses.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#subnets">3 subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#nlcd-vpc">NLCD VPC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#availability-issues-in-the-not-quite-infinite-cloud">Availability Issues in the not quite infinite cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iam-roles-and-policies-cluster">IAM Roles and Policies Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0chaosMonkeyWIP.html">Chaos is Good</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0chaosMonkeyWIP.html#chaosmonkey">ChaosMonkey</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="000_stage0.html">Stage 0: Feasibility and Concept Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="111_stage1.html">Stage 1: Project Planning.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="222_stage2.html">Stage 2: Gathering Requirements &amp; Analysis.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="333_stage3.html">Stage 3: Design and Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="444_stage4.html">Stage 4: Coding or Implementation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#reading">Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#authentication-moving-parts-too-many-some-old-and-dusty">Authentication Moving Parts - too many - some old and dusty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-coding-trials">LDAP Coding Trials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#build-an-ldap-test-server-in-ws-account">Build an LDAP Test Server in ws account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#install-ldap">install ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#configure-ldap">configure ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#db-ldif">db.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#adding-users-to-ldap">Adding Users to LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#notional-tony-ldif">Notional tony.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#terraform-the-test-host-for-ldap">Terraform the test host for LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#demo-terraform-for-brandon">Demo Terraform for Brandon</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#install-and-learn-ldap">Install and Learn LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#docker-ldap-tests">Docker LDAP tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#m-active-directory-service-brandon">M$ Active Directory Service - Brandon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldappasswd-example">ldappasswd EXAMPLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#the-ldappasswd-command-is-used-to-change-a-user-s-password-in-an-ldap-lightweight-directory-access-protocol-directory-below-is-an-example-of-how-to-use-the-ldappasswd-command">The <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command is used to change a user’s password in an LDAP (Lightweight Directory Access Protocol) directory. Below is an example of how to use the <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-jargon">LDAP Jargon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="555_stage5.html">Stage 5: Testing and Documentation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="555_stage5.html#science-workload-alpha-tesing">SCience Workload Alpha Tesing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="555_stage5.html#pat-danielson-dynamic-surface-water-extent">Pat Danielson Dynamic Surface Water Extent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="555_stage5.html#wbs">WBS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html">Stage 6: Deployment.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#manual-deployment-steps-for-uberbrandon">Manual Deployment Steps for uberBrandon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#help-me">HELP ME</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#iac-steps-for-chaosmonkey">IaC Steps for chaosMonkey</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#manual-choas">Manual choas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="666_stage6.html#building-with-the-cli">Building with the CLI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#estimating">Estimating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#monitoring">Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="777_stage7.html">Stage 7: Maintenance.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="800_user_guide.html">Stage 8: User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="900_admin_guide.html">Stage 9: Admin Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#post-install-stuff">Post Install Stuff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#monitoring-the-cluster-with-prometheus-and-grafana">Monitoring The Cluster with Prometheus and Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-cluster-level-dashboard">Monitor Cluster Level Dashboard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#prometheus-slurm-exporter">prometheus-slurm-exporter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-node-level-dashboad">Monitor Node Level Dashboad</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#node-exporter">Node Exporter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#getting-the-compute-node-ip-addresses">Getting the Compute Node IP Addresses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#mpi-considerations">MPI Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#mpi-centos-installations">MPI Centos Installations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aaa_appendix.html">Stage A: Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html">Parallel Cluster Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#tldr-is-the-parallel-cluster-feasible-and-applicable-for-lcnext-yes">tldr; - Is the Parallel Cluster feasible and applicable for LCNext? <code class="docutils literal notranslate"><span class="pre">YES!</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#elevator-pitch">Elevator Pitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#genius">Genius!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#plans">Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#progress">Progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#problems">Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#gantt-chart-rough-order-of-magnitude">GANTT CHART - Rough order of Magnitude</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#context-danny-howard">Context Danny Howard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#butzer-dev-10-12-71-5-t3a-2xlarge-219-584-month">butzer-dev  10.12.71.5  t3a.2xlarge       $219.584/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#headnode-10-12-64-196-t3-medium-30-368-month">HeadNode  10.12.64.196    t3.medium        $30.368/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#ws-gparrish-dev-10-12-65-226-m6i-2xlarge-280-320-month">ws-gparrish-dev  10.12.65.226  m6i.2xlarge       $280.320/month</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#disclaimers">Disclaimers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#engineering-research-scope-responsibilities">Engineering Research Scope - Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#production-devops-items">Production DevOps Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#scientist-teams-responsibilities">Scientist Teams Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#pc-benefits">PC Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#easier-than-most-scale-out-technologies">Easier than most scale out technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm">SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm-benefits">SLURM Benefits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#the-demo">The Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#creating-the-creator-ws-pc-admin-box">Creating the Creator ws-pc-admin-box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#terraform-variables">Terraform Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-cluster-itself-is-created-from-pure-yaml-cool">The Cluster itself is Created from pure yaml - COOL!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#shut-er-down">Shut’er Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#demo-again-with-instruments">Demo Again with Instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#prometheus">Prometheus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#grafana">Grafana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#what-have-we-learned">What Have we Learned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-stac-browser">the stac browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#usgs-stac-browser"></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next">Whats Next?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#more">more</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next-at-high-level">Whats Next at High Level?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#deep-dive-on-cluster-tech-things">Deep Dive on Cluster Tech Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#a-look-deeper-at-only-one-thing-observability">A look deeper at only one thing –&gt; Observability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#no">No</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#yes-but-we-will-charge-you-and-move-the-schedule-to-the-right">Yes - but we will charge you and move the schedule to the right.</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">uberBrandon HPC AWS Parallel Computer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Planning for the Prototype Parallel Cluster</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/0_agg.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="planning-for-the-prototype-parallel-cluster">
+<h1>Planning for the Prototype Parallel Cluster<a class="headerlink" href="#planning-for-the-prototype-parallel-cluster" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gantt-chart">
+<h2>GANTT CHART<a class="headerlink" href="#gantt-chart" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://tonybutzer.github.io/bslurm2/pc_gantt.html">GANTT CHART</a></p>
+<ul class="simple">
+<li><p>gantt chart here
+<img alt="gantt" src="https://github.com/tonybutzer/bslurm2/blob/main/1_gantt/pc_gantt.png?raw=true" /></p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>code name uberBrandon</p></li>
+<li><p>code name chaosMonkey - terraform creation IaC</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="current-week-ending-10-27-2023">
+<h1>Current Week Ending 10/27/2023<a class="headerlink" href="#current-week-ending-10-27-2023" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>very busy - too busy</p></li>
+</ul>
+<div class="section" id="terraform-terragrunt-gitlab-runners">
+<h2>terraform/terragrunt gitlab-runners<a class="headerlink" href="#terraform-terragrunt-gitlab-runners" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>setup gilab-runner on ws-ldap-test and practice connecting to eroslab</p>
+<ul>
+<li><p>turn off enterprise runners in tfiac repo</p></li>
+</ul>
+</li>
+<li><p>build initial tf scripts for AWS Resources</p>
+<ul>
+<li><p>ws-pc-keypair</p></li>
+<li><p>ws-pc-adminbox</p></li>
+</ul>
+</li>
+<li><p>start with pure terraform and look at terragrunt - not likely anytime soon</p></li>
+</ul>
+</div>
+<div class="section" id="allowing-pat-and-kory-on-the-cluster-it-takes-a-village">
+<h2>Allowing Pat and Kory on the Cluster - It takes a village<a class="headerlink" href="#allowing-pat-and-kory-on-the-cluster-it-takes-a-village" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>action brandon schulz</p></li>
+</ul>
+<div class="section" id="kelcy-s-roadmap">
+<h3>Kelcy’s Roadmap<a class="headerlink" href="#kelcy-s-roadmap" title="Permalink to this headline">¶</a></h3>
+<p>Initial Tasks:</p>
+<ul class="simple">
+<li><p>Parallel Cluster access for Pat ©</p></li>
+<li><p>Parallel Cluster access for Kory ©</p>
+<ul>
+<li><p>Stand up development EC-2 instance</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Derive</span> <span class="pre">maximum</span> <span class="pre">water</span> <span class="pre">extent</span> <span class="pre">for</span> <span class="pre">one</span> <span class="pre">year</span> <span class="pre">for</span> <span class="pre">tile</span> <span class="pre">h16v05</span></code>
+- Derive earliest date pixel was called water for one year for test tile h16v05
+- Derive latest date pixel was called water for one year for test tile h16v05
+- Derive percentage pixel was called water for one year for test tile h16v05
+- Build complete annual product suite 1985-2023 for test tile</p></li>
+<li><p>Build job array orchestration for a list of tiles</p></li>
+<li><p>Produce annual (1985-2023) products for CONUS</p>
+<ul>
+<li><p>Produce annual (1985-2023) product mosaics for CONUS</p></li>
+<li><p>Deliver final product mosaics to Ceph</p></li>
+</ul>
+</li>
+</ul>
+<p>Outside Scope
+Enable user environment OpenMPI # Tony has no experience with OpenMPI - so he won’t help here. ©
+Access C2 L3 DSWE data products on S3</p>
+</div>
+</div>
+</div>
+<div class="section" id="current-week-ending-october-27-2023">
+<h1>Current Week Ending October 27, 2023<a class="headerlink" href="#current-week-ending-october-27-2023" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="chaosmonkey-4-node-parallel-cluster-in-watersmart-iac">
+<h2>chaosMonkey 4 node parallel cluster in watersmart IAC<a class="headerlink" href="#chaosmonkey-4-node-parallel-cluster-in-watersmart-iac" title="Permalink to this headline">¶</a></h2>
+<p><strong>Steps one per day</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Set</span> <span class="n">up</span> <span class="n">GitLab</span> <span class="n">project</span> <span class="n">repository</span>
+<span class="n">Create</span> <span class="n">the</span> <span class="n">Terraform</span> <span class="n">configuration</span> <span class="n">files</span>
+<span class="n">Set</span> <span class="n">up</span> <span class="n">pipelines</span> <span class="n">using</span> <span class="o">.</span><span class="n">gitlab</span><span class="o">-</span><span class="n">ci</span><span class="o">.</span><span class="n">yml</span> <span class="n">file</span>
+<span class="n">Set</span> <span class="n">up</span> <span class="n">AWS</span> <span class="n">Credentials</span> <span class="ow">in</span> <span class="n">Gitlab</span>
+<span class="n">Set</span> <span class="n">up</span> <span class="n">the</span> <span class="n">remote</span> <span class="n">backend</span> <span class="k">for</span> <span class="n">Terraform</span> <span class="n">on</span> <span class="n">Gitlab</span>
+<span class="n">Configure</span> <span class="n">the</span> <span class="n">backend</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">provider</span> <span class="n">block</span> <span class="k">for</span> <span class="n">local</span> <span class="n">development</span>
+<span class="n">Implement</span> <span class="n">conditions</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">destroy</span> <span class="n">operation</span> <span class="n">using</span> <span class="n">pipeline</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create cluster Config and Deploy</p></li>
+<li><p>btw LDAP Sucks even more than Postgres</p>
+<ul>
+<li><p>databases will always suck - thanks Larry Elison.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="current-sprint">
+<h1>Current Sprint<a class="headerlink" href="#current-sprint" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Ending November 3, 2023</p></li>
+<li><p>weekly status</p></li>
+</ul>
+<div class="section" id="analysis-focus">
+<h2>Analysis Focus<a class="headerlink" href="#analysis-focus" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Develop LDAP Skills</p></li>
+<li><p>Trade Study on M$ Active Directory vs. Pure LDAP</p>
+<ul class="simple">
+<li><p>these user management platforms are potential rabbit holes - there be dragons</p></li>
+<li><p>LDAP - likely the MVP (minimal viable product) - ssh keys will be used in production</p></li>
+<li><p>M$ ActiveDirectory Enterprise to be used in Deployment Phase</p></li>
+<li><p>to explore pythin-ldap for management of users and passwords - perhaps next sprint</p></li>
+</ul>
+</li>
+<li><p>Integration - connecting LDAP to parallel cluster from startup yaml file</p>
+<ul class="simple">
+<li><p>Goal is to support user, password initiation for cluster access</p></li>
+<li><p>Instead of hard-coded sh keys - we can certainly use this for alpha testers - to be scheduled in a sprint</p></li>
+<li><p>first planned science user test is Tonian’s Composite Parallel Slurm Test - depending on when the code is ready</p></li>
+</ul>
+</li>
+<li><p>Terraform analysis and CICD pipeline for SDLC Deployment Phase - chaosMonkey</p></li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="planning-focus">
+<h2>Planning Focus<a class="headerlink" href="#planning-focus" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Writing Project Plan with SDLC Phases</p>
+<ul class="simple">
+<li><p>strategy is to use this meeting time for internal planning blocks until our project matures or gels</p></li>
+</ul>
+</li>
+<li><p>Developing the project plan - draft to be published November 3.</p></li>
+</ol>
+<div class="section" id="sdlc-phase-summary">
+<h3>SDLC Phase Summary<a class="headerlink" href="#sdlc-phase-summary" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Stage 0: Feasibility and Concept Development
+Stage 1: Project Planning. The first stage of SDLC is all about “What do we want?” ...
+Stage 2: Gathering Requirements &amp; Analysis. ...
+Stage 3: Design and Documentation. ...
+Stage 4: Coding or Implementation. ...
+Stage 5: Testing and Documentation. ...
+Stage 6: Deployment. ...
+Stage 7: Maintenance.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="user-story">
+<h2>User Story<a class="headerlink" href="#user-story" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>scientist walks into a website, types a username and password and runs a slurm, sbatch job ported from Tallgrass.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>minimal effort is needed to move from Tallgrass</p></li>
+<li><p>alpha test is ARD animations - Butzer</p></li>
+<li><p><strong>WE WILL BE USING SIMPLE SSH KEYS FOR THE FIRST 2 maybe 3 BETA TESTS</strong></p>
+<ul>
+<li><p>LDAP and AD is the juice worth the squeeze?</p></li>
+</ul>
+</li>
+<li><p>beta test 1 NOVEMBER - dynamic-surface-water-extent-science-product - Pat Danielson</p>
+<ul>
+<li><p>https://www.usgs.gov/landsat-missions/landsat-collection-2-level-3-dynamic-surface-water-extent-science-product
+<img alt="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/info_block/public/media/images/L8_CU_021010_20210412__02_DSWE_Wabash_OH.jpg?itok=_rNv8YYS" src="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/info_block/public/media/images/L8_CU_021010_20210412__02_DSWE_Wabash_OH.jpg?itok=_rNv8YYS" /></p></li>
+</ul>
+</li>
+<li><p>beta test 2 in ARD composites - Tonian Robinson</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="0ws.html" class="btn btn-neutral float-right" title="Concept" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome uberBrandon - no queues - now serving Science" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

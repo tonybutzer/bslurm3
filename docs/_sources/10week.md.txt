@@ -1,0 +1,92 @@
+# Week 10 - We are Really on to Something Here:
+
+---
+![](http://ontheworldmap.com/usa/state/maine/map-of-maine.jpg)
+
+
+---
+
+### A lot to cover today
+
+- Remember: - Tony does topical small sessions on specific topics as part of the Pangeo/Open Data Cube outreach project
+
+---
+---
+
+---
+[UTM Link svg](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system#/media/File:Universal_Transverse_Mercator_zones.svg)
+
+
+### Tony yamls on 
+- http://www.yamllint.com/
+- https://jsonlint.com/
+
+## Next 2 classes - Yaml
+```
+Today: '2-16-2021'
+  Theme: 'Sentinel Data Exploration and Discovery'
+  Title: 'Cloud Based Sentinel CogS'
+  Sensor: 'Sentinel'
+  Data_Tier: 'L2A'
+  Projection: 'UTM'
+  Science_Application: 'Compositing'
+  Sandbox: 'pangeo.chs.usgs.gov'
+  Status: 'Exploration early R&D'
+  Purpose: 'Class Example'
+  AWS_Document: 'https://registry.opendata.aws/sentinel-2-l2a-cogs/'
+  AOI: 'Maine'
+  City: 'Augusta'
+  Subtopics: ['Browse', 'Tiles', 'Clouds', 'Geojson', 'Google_Maps']
+  Git_Repo_Ref: 'https://github.com/tonybutzer/composite/tree/main/00-notebooks/00-wip-geojson-viewer'
+```
+
+---
+
+
+
+---
+
+## Everyone loves a Grid
+
+---
+![hls](./Assets/hls-grid-conus.PNG)
+
+---
+
+![a](https://dragon3.esa.int/documents/247904/266366/Sentinel-2-MSI_Product_Types_Figure_1_v3/262f604c-de1e-4cf7-b4f6-abdd7f0dc5fd?t=1523262257162)
+https://earth-info.nga.mil/GandG/update/index.php?action=home#tab_coord-data
+
+![](https://earth-info.nga.mil/GandG/update/img/MGRS_1km_Polygon_Shapefiles_Coverage.jpg)
+
+https://www.usgs.gov/centers/eros/science/usgs-eros-archive-sentinel-2?qt-science_center_objects=0#qt-science_center_objects
+
+- The Sentinel-2 tiling grid is referenced to the U.S. Military Grid Reference System (MGRS). 
+- Tiles can be fully or `partially` covered by image data. 
+    - Partially covered tiles correspond to those at the edge of the swath.
+
+
+### Demo - klm - shapefiles - geoviews - maps
+
+```
+--- 
+Notebook: 00-sentinel-klm-study
+Purpose: "geometry vector intersection example"
+AOI: "Maine and tiles"
+Python_Packages: 
+  - geopandas
+  - shapely
+  - feona
+  
+Sandbox: pangeo.chs.usgs.gov
+User: butzer@contractor.usgs.gov
+github: composite
+path: opt/composite00-notebooks/00-wip-geojson-viewer
+Opinion: "geoviews base * maine layers cool - zoom them"
+
+COOL_FEATURES:
+  - prune by geometric intesection operation with state of maine
+  - save as geojson --> geojson.io
+  - save as klm --> maps    https://www.google.com/maps/d/home
+```
+
+---

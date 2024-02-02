@@ -1,0 +1,938 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stage 4: Coding or Implementation. &mdash; uberBrandon HPC AWS Parallel Computer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stage 5: Testing and Documentation." href="555_stage5.html" />
+    <link rel="prev" title="Stage 3: Design and Documentation." href="333_stage3.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> uberBrandon HPC AWS Parallel Computer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html">Planning for the Prototype Parallel Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#gantt-chart">GANTT CHART</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-10-27-2023">Current Week Ending 10/27/2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#terraform-terragrunt-gitlab-runners">terraform/terragrunt gitlab-runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#allowing-pat-and-kory-on-the-cluster-it-takes-a-village">Allowing Pat and Kory on the Cluster - It takes a village</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#kelcy-s-roadmap">Kelcy’s Roadmap</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-october-27-2023">Current Week Ending October 27, 2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#chaosmonkey-4-node-parallel-cluster-in-watersmart-iac">chaosMonkey 4 node parallel cluster in watersmart IAC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-sprint">Current Sprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#analysis-focus">Analysis Focus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#planning-focus">Planning Focus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#sdlc-phase-summary">SDLC Phase Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#user-story">User Story</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html">Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html#watersmart-cluster">WaterSMart Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iac-journey">IAC Journey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#so-vpcs">SO VPCs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#ws">WS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#therefore-the-usable-host-addresses-in-the-network-10-12-64-0-21-are-2046-2-2044-addresses">Therefore, the usable host addresses in the network <code class="docutils literal notranslate"><span class="pre">10.12.64.0/21</span></code> are (2046 - 2 = 2044) addresses.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#subnets">3 subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#nlcd-vpc">NLCD VPC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#availability-issues-in-the-not-quite-infinite-cloud">Availability Issues in the not quite infinite cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iam-roles-and-policies-cluster">IAM Roles and Policies Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0chaosMonkeyWIP.html">Chaos is Good</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0chaosMonkeyWIP.html#chaosmonkey">ChaosMonkey</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="000_stage0.html">Stage 0: Feasibility and Concept Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="111_stage1.html">Stage 1: Project Planning.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="222_stage2.html">Stage 2: Gathering Requirements &amp; Analysis.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="333_stage3.html">Stage 3: Design and Documentation.</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stage 4: Coding or Implementation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reading">Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication-moving-parts-too-many-some-old-and-dusty">Authentication Moving Parts - too many - some old and dusty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ldap-coding-trials">LDAP Coding Trials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-an-ldap-test-server-in-ws-account">Build an LDAP Test Server in ws account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-ldap">install ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-ldap">configure ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#db-ldif">db.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-users-to-ldap">Adding Users to LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notional-tony-ldif">Notional tony.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#terraform-the-test-host-for-ldap">Terraform the test host for LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#demo-terraform-for-brandon">Demo Terraform for Brandon</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#install-and-learn-ldap">Install and Learn LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-ldap-tests">Docker LDAP tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#m-active-directory-service-brandon">M$ Active Directory Service - Brandon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ldappasswd-example">ldappasswd EXAMPLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-ldappasswd-command-is-used-to-change-a-user-s-password-in-an-ldap-lightweight-directory-access-protocol-directory-below-is-an-example-of-how-to-use-the-ldappasswd-command">The <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command is used to change a user’s password in an LDAP (Lightweight Directory Access Protocol) directory. Below is an example of how to use the <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ldap-jargon">LDAP Jargon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="555_stage5.html">Stage 5: Testing and Documentation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="555_stage5.html#science-workload-alpha-tesing">SCience Workload Alpha Tesing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="555_stage5.html#pat-danielson-dynamic-surface-water-extent">Pat Danielson Dynamic Surface Water Extent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="555_stage5.html#wbs">WBS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html">Stage 6: Deployment.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#manual-deployment-steps-for-uberbrandon">Manual Deployment Steps for uberBrandon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#help-me">HELP ME</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#iac-steps-for-chaosmonkey">IaC Steps for chaosMonkey</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#manual-choas">Manual choas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="666_stage6.html#building-with-the-cli">Building with the CLI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#estimating">Estimating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#monitoring">Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="777_stage7.html">Stage 7: Maintenance.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="800_user_guide.html">Stage 8: User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="900_admin_guide.html">Stage 9: Admin Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#post-install-stuff">Post Install Stuff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#monitoring-the-cluster-with-prometheus-and-grafana">Monitoring The Cluster with Prometheus and Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-cluster-level-dashboard">Monitor Cluster Level Dashboard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#prometheus-slurm-exporter">prometheus-slurm-exporter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-node-level-dashboad">Monitor Node Level Dashboad</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#node-exporter">Node Exporter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#getting-the-compute-node-ip-addresses">Getting the Compute Node IP Addresses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#mpi-considerations">MPI Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#mpi-centos-installations">MPI Centos Installations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aaa_appendix.html">Stage A: Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html">Parallel Cluster Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#tldr-is-the-parallel-cluster-feasible-and-applicable-for-lcnext-yes">tldr; - Is the Parallel Cluster feasible and applicable for LCNext? <code class="docutils literal notranslate"><span class="pre">YES!</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#elevator-pitch">Elevator Pitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#genius">Genius!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#plans">Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#progress">Progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#problems">Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#gantt-chart-rough-order-of-magnitude">GANTT CHART - Rough order of Magnitude</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#context-danny-howard">Context Danny Howard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#butzer-dev-10-12-71-5-t3a-2xlarge-219-584-month">butzer-dev  10.12.71.5  t3a.2xlarge       $219.584/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#headnode-10-12-64-196-t3-medium-30-368-month">HeadNode  10.12.64.196    t3.medium        $30.368/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#ws-gparrish-dev-10-12-65-226-m6i-2xlarge-280-320-month">ws-gparrish-dev  10.12.65.226  m6i.2xlarge       $280.320/month</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#disclaimers">Disclaimers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#engineering-research-scope-responsibilities">Engineering Research Scope - Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#production-devops-items">Production DevOps Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#scientist-teams-responsibilities">Scientist Teams Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#pc-benefits">PC Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#easier-than-most-scale-out-technologies">Easier than most scale out technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm">SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm-benefits">SLURM Benefits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#the-demo">The Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#creating-the-creator-ws-pc-admin-box">Creating the Creator ws-pc-admin-box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#terraform-variables">Terraform Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-cluster-itself-is-created-from-pure-yaml-cool">The Cluster itself is Created from pure yaml - COOL!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#shut-er-down">Shut’er Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#demo-again-with-instruments">Demo Again with Instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#prometheus">Prometheus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#grafana">Grafana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#what-have-we-learned">What Have we Learned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-stac-browser">the stac browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#usgs-stac-browser"></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next">Whats Next?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#more">more</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next-at-high-level">Whats Next at High Level?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#deep-dive-on-cluster-tech-things">Deep Dive on Cluster Tech Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#a-look-deeper-at-only-one-thing-observability">A look deeper at only one thing –&gt; Observability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#no">No</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#yes-but-we-will-charge-you-and-move-the-schedule-to-the-right">Yes - but we will charge you and move the schedule to the right.</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">uberBrandon HPC AWS Parallel Computer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Stage 4: Coding or Implementation.</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/444_stage4.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stage-4-coding-or-implementation">
+<h1>Stage 4: Coding or Implementation.<a class="headerlink" href="#stage-4-coding-or-implementation" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Stage 0: Feasibility and Concept Development
+Stage 1: Project Planning. The first stage of SDLC is all about “What do we want?” ...
+Stage 2: Gathering Requirements &amp; Analysis. ...
+Stage 3: Design and Documentation. ...
+Stage 4: Coding or Implementation. ...
+Stage 5: Testing and Documentation. ...
+Stage 6: Deployment. ...
+Stage 7: Maintenance.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>alt174 Registered</p></li>
+<li><p>alt169 Copywrite - COMPLETED ©</p></li>
+</ul>
+<div class="section" id="reading">
+<h2>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h2>
+<p><strong>https://aws.amazon.com/blogs/opensource/managing-aws-parallelcluster-ssh-users-with-openldap/</strong></p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-configuring_authentication</p></li>
+<li><p>https://tldp.org/HOWTO/archived/LDAP-Implementation-HOWTO/pamnss.html</p></li>
+<li><p>https://kbr.percipio.com/books/5c6e78bc-5a7f-4bc1-905b-aafa2f06acc4/chapter/ch003#epubcfi(/6/58!/4/2%5Bepubmain%5D/2%5Bch003_s1_5%5D/2/2/1:0)</p></li>
+<li></li>
+</ul>
+</div>
+<div class="section" id="authentication-moving-parts-too-many-some-old-and-dusty">
+<h2>Authentication Moving Parts - too many - some old and dusty<a class="headerlink" href="#authentication-moving-parts-too-many-some-old-and-dusty" title="Permalink to this headline">¶</a></h2>
+<p>https://community.cloudera.com/t5/Community-Articles/How-PAM-NSS-SSD-work-together-on-Linux-OS/ta-p/247879</p>
+<hr class="docutils" />
+<p>** OverView **</p>
+<blockquote>
+<div><p><strong>LDAP</strong> is a directory service (a type of database) along with a protocol that describes what information is stored, how to search it, etc. All kinds of things can be stored there, but in this case it’d be Unix user and group info. Very loosely, an alternative to /etc/passwd, /etc/shadow, /etc/group, and /etc/gshadow. Or to NIS.</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>NSS is glibc’s name service switch. It lets you (via /etc/nsswitch.conf) configure how various types of ‘names’ are resolved. Names include host names, user names, group names, and several other things. You could tell it to look up user names, group names, and passwords via LDAP instead of files.</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>PAM handles authentication (checking who you claim you are), authorisation (grant or deny access to a given service), session setup, etc. When you’re prompted for a password, that’s usually PAM’s doing. By editing its config you can completely customize that (e.g., you could ask for two passwords, or none at all, or a one-time password, or…). In an LDAP setup, you’d typically configure it to check passwords via the LDAP server. It also handles password changes, which you’d configure to be done in LDAP.</p>
+</div></blockquote>
+<p>LDAP (Lightweight Directory Access Protocol) is a protocol used to access and maintain directory information services over a network. It’s commonly used for centralized user authentication and authorization, as well as for storing other types of information like addresses, phone numbers, and more.</p>
+<p>LDAP Authentication:
+LDAP authentication is a method of validating the identity of a user or system by querying an LDAP server. When a user tries to log in, their credentials (username and password) are sent to the LDAP server. The server checks these credentials against its database and grants access if they match.</p>
+<p>Roles of PAM, sssd, and NSS:</p>
+<ol class="simple">
+<li><p><strong>PAM (Pluggable Authentication Modules):</strong></p>
+<ul class="simple">
+<li><p>PAM is a framework used on Unix and Linux systems for authentication and authorization. It provides a standardized way to manage the authentication process for various applications and services.</p></li>
+<li><p>PAM allows system administrators to configure different authentication methods (e.g., local files, LDAP, Kerberos) without modifying the applications themselves.</p></li>
+<li><p>When it comes to LDAP authentication, PAM is responsible for interfacing with the authentication module that communicates with the LDAP server.</p></li>
+</ul>
+</li>
+<li><p><strong>sssd (System Security Services Daemon):</strong></p>
+<ul class="simple">
+<li><p>sssd is a system daemon used on Linux and Unix systems for centralized identity and authentication management. It’s particularly useful in environments that rely on LDAP or other identity providers.</p></li>
+<li><p>sssd can cache authentication information, which reduces the load on LDAP servers and improves performance.</p></li>
+<li><p>It provides services like caching of credentials, offline authentication, and user and group enumeration.</p></li>
+</ul>
+</li>
+<li><p><strong>NSS (Name Service Switch):</strong></p>
+<ul class="simple">
+<li><p>NSS is a component of the GNU C Library (glibc) used on Unix and Linux systems to configure how system databases (like user accounts, groups, and hostnames) are accessed.</p></li>
+<li><p>It allows system administrators to specify the sources where system information is obtained (e.g., local files, LDAP, NIS).</p></li>
+<li><p>In the context of LDAP, NSS is crucial because it determines where the system looks for information about users, groups, and other entities.</p></li>
+</ul>
+</li>
+</ol>
+<p>The typical flow in a system with LDAP authentication, PAM, sssd, and NSS might look like this:</p>
+<ol class="simple">
+<li><p><strong>User attempts to log in:</strong></p>
+<ul class="simple">
+<li><p>The login request goes through PAM.</p></li>
+</ul>
+</li>
+<li><p><strong>PAM configuration:</strong></p>
+<ul class="simple">
+<li><p>PAM checks its configuration to determine which authentication modules to use.</p></li>
+</ul>
+</li>
+<li><p><strong>PAM communicates with sssd:</strong></p>
+<ul class="simple">
+<li><p>If LDAP authentication is configured, PAM interfaces with the appropriate module (usually provided by sssd) to query the LDAP server.</p></li>
+</ul>
+</li>
+<li><p><strong>sssd communicates with the LDAP server:</strong></p>
+<ul class="simple">
+<li><p>sssd communicates with the LDAP server, passing along the user’s credentials.</p></li>
+</ul>
+</li>
+<li><p><strong>LDAP server authentication:</strong></p>
+<ul class="simple">
+<li><p>The LDAP server checks the credentials against its database.</p></li>
+</ul>
+</li>
+<li><p><strong>Authentication response:</strong></p>
+<ul class="simple">
+<li><p>The result of the authentication is sent back through sssd, PAM, and finally, the user is either granted access or denied based on the LDAP server’s response.</p></li>
+</ul>
+</li>
+</ol>
+<p>These components work together to enable centralized authentication and authorization in a Unix or Linux environment using LDAP.</p>
+</div>
+<div class="section" id="ldap-coding-trials">
+<h2>LDAP Coding Trials<a class="headerlink" href="#ldap-coding-trials" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="build-an-ldap-test-server-in-ws-account">
+<h3>Build an LDAP Test Server in ws account<a class="headerlink" href="#build-an-ldap-test-server-in-ws-account" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>manually create terraform host ®©</p></li>
+<li><p>create ship.tf and variables.tf ©</p>
+<ul class="simple">
+<li><p>use hardened ec2 image - see example hosts</p></li>
+</ul>
+</li>
+<li><p>install ldap</p></li>
+</ol>
+<div class="section" id="install-ldap">
+<h4>install ldap<a class="headerlink" href="#install-ldap" title="Permalink to this headline">¶</a></h4>
+<p><strong>References</strong></p>
+<ul class="simple">
+<li><p>https://linux.die.net/man/1/ldapadd</p></li>
+<li><p>https://help.bizagi.com/bpm-suite/en/index.html?ldap_attributes.htm</p></li>
+<li><p>https://www.freeipa.org/</p></li>
+<li></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DIT</td>
+<td>Directory Information Tree</td>
+<td>https://ldap.com/dit-and-the-ldap-root-dse/</td>
+</tr>
+<tr>
+<td>rootDSE</td>
+<td>the root of the directory data tree on a directory server. The rootDSE is not part of any namespace</td>
+<td>root DSA-specific entry (DSE)</td>
+</tr>
+<tr>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+</tr>
+<tr>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+</tr>
+<tr>
+<td>DN</td>
+<td>Distinguished Name</td>
+<td>https://help.bizagi.com/bpm-suite/en/index.html?ldap_attributes.htm</td>
+</tr>
+</tbody>
+</table><ol class="simple">
+<li><p>ssh ws-ldap-tester</p></li>
+<li><p>sudo yum install openldap*</p></li>
+</ol>
+</div>
+<div class="section" id="configure-ldap">
+<h4>configure ldap<a class="headerlink" href="#configure-ldap" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>sudo bash</p></li>
+<li><p>systemctl start slapd</p></li>
+<li><p>systemctl enable slapd</p></li>
+<li><p>slappasswd</p>
+<ul class="simple">
+<li><p>yaml</p></li>
+<li><p>save the hash</p>
+<ul>
+<li><p>{SSHA}8XZPCTE9V7hyjwNxq9GNNW72NqRROU5N</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>cd /etc/openldap/slapd.d/cn=config/</p></li>
+<li><p>we will edit the hdb adn monitor files using LDIF files and ldapmodify</p></li>
+</ol>
+<ul class="simple">
+<li><p>https://www.youtube.com/watch?v=_zLeO68wZA0&amp;t=40s</p></li>
+</ul>
+</div>
+<div class="section" id="db-ldif">
+<h4>db.ldif<a class="headerlink" href="#db-ldif" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dn</span><span class="p">:</span> <span class="n">olcDatabase</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="n">hdb</span><span class="p">,</span><span class="n">cn</span><span class="o">=</span><span class="n">config</span>
+<span class="n">changetype</span><span class="p">:</span> <span class="n">modify</span>
+<span class="n">replace</span><span class="p">:</span> <span class="n">olcSuffix</span>
+<span class="n">olcSuffix</span><span class="p">:</span> <span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">olcDatabase</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="n">hdb</span><span class="p">,</span><span class="n">cn</span><span class="o">=</span><span class="n">config</span>
+<span class="n">changetype</span><span class="p">:</span> <span class="n">modify</span>
+<span class="n">replace</span><span class="p">:</span> <span class="n">olcRootDN</span>
+<span class="n">olcRootDN</span><span class="p">:</span> <span class="n">cn</span><span class="o">=</span><span class="n">ldapadm</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">olcDatabase</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="n">hdb</span><span class="p">,</span><span class="n">cn</span><span class="o">=</span><span class="n">config</span>
+<span class="n">changetype</span><span class="p">:</span> <span class="n">modify</span>
+<span class="n">replace</span><span class="p">:</span> <span class="n">olcRootPW</span>
+<span class="n">olcRootPW</span><span class="p">:</span> <span class="p">{</span><span class="n">SSHA</span><span class="p">}</span><span class="mi">8</span><span class="n">XZPCTE9V7hyjwNxq9GNNW72NqRROU5N</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>ldapmodify -Y EXTERNAL -H ldapi:/// -f ~/db.ldif</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ip</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="mi">214</span> <span class="n">cn</span><span class="o">=</span><span class="n">config</span><span class="p">]</span><span class="c1"># ldapmodify -Y EXTERNAL -H ldapi:/// -f ~/db.ldif</span>
+<span class="n">SASL</span><span class="o">/</span><span class="n">EXTERNAL</span> <span class="n">authentication</span> <span class="n">started</span>
+<span class="n">SASL</span> <span class="n">username</span><span class="p">:</span> <span class="n">gidNumber</span><span class="o">=</span><span class="mi">0</span><span class="o">+</span><span class="n">uidNumber</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">cn</span><span class="o">=</span><span class="n">peercred</span><span class="p">,</span><span class="n">cn</span><span class="o">=</span><span class="n">external</span><span class="p">,</span><span class="n">cn</span><span class="o">=</span><span class="n">auth</span>
+<span class="n">SASL</span> <span class="n">SSF</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">modifying</span> <span class="n">entry</span> <span class="s2">&quot;olcDatabase=</span><span class="si">{2}</span><span class="s2">hdb,cn=config&quot;</span>
+
+<span class="n">modifying</span> <span class="n">entry</span> <span class="s2">&quot;olcDatabase=</span><span class="si">{2}</span><span class="s2">hdb,cn=config&quot;</span>
+
+<span class="n">modifying</span> <span class="n">entry</span> <span class="s2">&quot;olcDatabase=</span><span class="si">{2}</span><span class="s2">hdb,cn=config&quot;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>edits successful</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">olcSuffix</span><span class="p">:</span> <span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">olcRootDN</span><span class="p">:</span> <span class="n">cn</span><span class="o">=</span><span class="n">ldapadm</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>monitor changes</p></li>
+<li><p>monitor.ldif</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dn</span><span class="p">:</span> <span class="n">olcDatabase</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="n">monitor</span><span class="p">,</span><span class="n">cn</span><span class="o">=</span><span class="n">config</span>
+<span class="n">changetype</span><span class="p">:</span> <span class="n">modify</span>
+<span class="n">replace</span><span class="p">:</span> <span class="n">olcAccess</span>
+<span class="n">olcAccess</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span><span class="n">to</span> <span class="o">*</span> <span class="n">by</span> <span class="n">dn</span><span class="o">.</span><span class="n">base</span><span class="o">=</span><span class="s2">&quot;gidNumber=0+uidNumber=0,cn=peercred,cn=external, cn=auth&quot;</span> <span class="n">read</span> <span class="n">by</span> <span class="n">dn</span><span class="o">.</span><span class="n">base</span><span class="o">=</span><span class="s2">&quot;cn=ldapadm,dc=pcluster,dc=com&quot;</span> <span class="n">read</span> <span class="n">by</span> <span class="o">*</span> <span class="n">none</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>ldapmodify  -Y EXTERNAL -H ldapi:/// -f ~/monitor.ldif</p></li>
+<li><p>Starter Config and Starter SChemas</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">openldap</span><span class="o">-</span><span class="n">servers</span><span class="o">/</span><span class="n">DB_CONFIG</span><span class="o">.</span><span class="n">example</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">ldap</span><span class="o">/</span><span class="n">DB_CONFIG</span>
+<span class="n">chown</span> <span class="n">ldap</span><span class="p">:</span><span class="n">ldap</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">ldap</span><span class="o">/*</span>
+<span class="n">ldapadd</span> <span class="o">-</span><span class="n">Y</span> <span class="n">EXTERNAL</span> <span class="o">-</span><span class="n">H</span> <span class="n">ldapi</span><span class="p">:</span><span class="o">///</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openldap</span><span class="o">/</span><span class="n">schema</span><span class="o">/</span><span class="n">cosine</span><span class="o">.</span><span class="n">ldif</span>
+<span class="n">ldapadd</span> <span class="o">-</span><span class="n">Y</span> <span class="n">EXTERNAL</span> <span class="o">-</span><span class="n">H</span> <span class="n">ldapi</span><span class="p">:</span><span class="o">///</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openldap</span><span class="o">/</span><span class="n">schema</span><span class="o">/</span><span class="n">nis</span><span class="o">.</span><span class="n">ldif</span>
+<span class="n">ldapadd</span> <span class="o">-</span><span class="n">Y</span> <span class="n">EXTERNAL</span> <span class="o">-</span><span class="n">H</span> <span class="n">ldapi</span><span class="p">:</span><span class="o">///</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">openldap</span><span class="o">/</span><span class="n">schema</span><span class="o">/</span><span class="n">inetorgperson</span><span class="o">.</span><span class="n">ldif</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Base ou stuff</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#-----------------base.ldif --------------------#</span>
+<span class="n">dn</span><span class="p">:</span> <span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">dc</span><span class="p">:</span> <span class="n">pcluster</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">domain</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">cn</span><span class="o">=</span><span class="n">ldapadm</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalRole</span>
+<span class="n">cn</span><span class="p">:</span> <span class="n">ldapadm</span>
+<span class="n">description</span><span class="p">:</span> <span class="n">LDAP</span> <span class="n">Manager</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">ou</span><span class="o">=</span><span class="n">People</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="p">:</span> <span class="n">People</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">ou</span><span class="o">=</span><span class="n">Group</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="p">:</span> <span class="n">Group</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>ldapadd -x -W -D “cn=ldapadm,dc=pcluster,dc=com” -f ~/base.ldif</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ip</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="mi">214</span> <span class="n">cn</span><span class="o">=</span><span class="n">config</span><span class="p">]</span><span class="c1">#  ldapadd -x -W -D &quot;cn=ldapadm,dc=pcluster,dc=com&quot; -f ~/base.ldif</span>
+<span class="n">Enter</span> <span class="n">LDAP</span> <span class="n">Password</span><span class="p">:</span>
+<span class="n">adding</span> <span class="n">new</span> <span class="n">entry</span> <span class="s2">&quot;dc=pcluster,dc=com&quot;</span>
+
+<span class="n">adding</span> <span class="n">new</span> <span class="n">entry</span> <span class="s2">&quot;cn=ldapadm,dc=pcluster,dc=com&quot;</span>
+
+<span class="n">adding</span> <span class="n">new</span> <span class="n">entry</span> <span class="s2">&quot;ou=People,dc=pcluster,dc=com&quot;</span>
+
+<span class="n">adding</span> <span class="n">new</span> <span class="n">entry</span> <span class="s2">&quot;ou=Group,dc=pcluster,dc=com&quot;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Test Search</p></li>
+</ol>
+<ul class="simple">
+<li><p>ldapsearch -D cn=”ldapadm,dc=pcluster,dc=com” -W -b “dc=pcluster,dc=com” objectClass=*</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ip</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="mi">214</span> <span class="n">cn</span><span class="o">=</span><span class="n">config</span><span class="p">]</span><span class="c1"># ldapsearch -D cn=&quot;ldapadm,dc=pcluster,dc=com&quot; -W -b &quot;dc=pcluster,dc=com&quot; objectClass=*</span>
+<span class="n">Enter</span> <span class="n">LDAP</span> <span class="n">Password</span><span class="p">:</span>
+<span class="c1"># extended LDIF</span>
+<span class="c1">#</span>
+<span class="c1"># LDAPv3</span>
+<span class="c1"># base &lt;dc=pcluster,dc=com&gt; with scope subtree</span>
+<span class="c1"># filter: objectClass=*</span>
+<span class="c1"># requesting: ALL</span>
+<span class="c1">#</span>
+
+<span class="c1"># pcluster.com</span>
+<span class="n">dn</span><span class="p">:</span> <span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">dc</span><span class="p">:</span> <span class="n">pcluster</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">domain</span>
+
+<span class="c1"># ldapadm, pcluster.com</span>
+<span class="n">dn</span><span class="p">:</span> <span class="n">cn</span><span class="o">=</span><span class="n">ldapadm</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalRole</span>
+<span class="n">cn</span><span class="p">:</span> <span class="n">ldapadm</span>
+<span class="n">description</span><span class="p">:</span> <span class="n">LDAP</span> <span class="n">Manager</span>
+
+<span class="c1"># People, pcluster.com</span>
+<span class="n">dn</span><span class="p">:</span> <span class="n">ou</span><span class="o">=</span><span class="n">People</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="p">:</span> <span class="n">People</span>
+
+<span class="c1"># Group, pcluster.com</span>
+<span class="n">dn</span><span class="p">:</span> <span class="n">ou</span><span class="o">=</span><span class="n">Group</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalUnit</span>
+<span class="n">ou</span><span class="p">:</span> <span class="n">Group</span>
+
+<span class="c1"># search result</span>
+<span class="n">search</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">result</span><span class="p">:</span> <span class="mi">0</span> <span class="n">Success</span>
+
+<span class="c1"># numResponses: 5</span>
+<span class="c1"># numEntries: 4</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@ip</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="mi">214</span> <span class="n">cn</span><span class="o">=</span><span class="n">config</span><span class="p">]</span><span class="c1">#</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Verify Port is listening</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@ip</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">64</span><span class="o">-</span><span class="mi">214</span> <span class="n">cn</span><span class="o">=</span><span class="n">config</span><span class="p">]</span><span class="c1"># netstat -anpl | grep 389</span>
+<span class="n">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">389</span>             <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="p">:</span><span class="o">*</span>               <span class="n">LISTEN</span>      <span class="mi">11736</span><span class="o">/</span><span class="n">slapd</span>
+<span class="n">tcp6</span>       <span class="mi">0</span>      <span class="mi">0</span> <span class="p">:::</span><span class="mi">389</span>                  <span class="p">:::</span><span class="o">*</span>                    <span class="n">LISTEN</span>      <span class="mi">11736</span><span class="o">/</span><span class="n">slapd</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-users-to-ldap">
+<h4>Adding Users to LDAP<a class="headerlink" href="#adding-users-to-ldap" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>sample org chart test</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># slapd_accounting_basic.ldif</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">ou</span><span class="o">=</span><span class="n">Manager</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalUnit</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">top</span>
+<span class="n">ou</span><span class="p">:</span> <span class="n">Manager</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">ou</span><span class="o">=</span><span class="n">Customers</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalUnit</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">top</span>
+<span class="n">ou</span><span class="p">:</span> <span class="n">Customers</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">cn</span><span class="o">=</span><span class="n">customerAccountAdmin</span><span class="p">,</span><span class="n">ou</span><span class="o">=</span><span class="n">Manager</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">cn</span><span class="p">:</span> <span class="n">customerAccountAdmin</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalRole</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">simpleSecurityObject</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">top</span>
+<span class="n">userPassword</span><span class="p">:</span> <span class="p">{</span><span class="n">SSHA</span><span class="p">}</span><span class="mi">8</span><span class="n">XZPCTE9V7hyjwNxq9GNNW72NqRROU5N</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">ou</span><span class="o">=</span><span class="n">Users</span><span class="p">,</span><span class="n">ou</span><span class="o">=</span><span class="n">Customers</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalUnit</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">top</span>
+<span class="n">ou</span><span class="p">:</span> <span class="n">Users</span>
+
+<span class="n">dn</span><span class="p">:</span> <span class="n">ou</span><span class="o">=</span><span class="n">Groups</span><span class="p">,</span><span class="n">ou</span><span class="o">=</span><span class="n">Customers</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">organizationalUnit</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">top</span>
+<span class="n">ou</span><span class="p">:</span> <span class="n">Groups</span>
+
+<span class="c1">#--- end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="notional-tony-ldif">
+<h4>Notional tony.ldif<a class="headerlink" href="#notional-tony-ldif" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dn</span><span class="p">:</span> <span class="n">uid</span><span class="o">=</span><span class="n">tony</span><span class="p">,</span><span class="n">ou</span><span class="o">=</span><span class="n">People</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">pcluster</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span>
+<span class="n">uid</span><span class="p">:</span> <span class="n">tony</span>
+<span class="n">cn</span><span class="p">:</span> <span class="n">tony</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">account</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">posixAccount</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">top</span>
+<span class="n">objectClass</span><span class="p">:</span> <span class="n">shadowAccount</span>
+<span class="n">userPassword</span><span class="p">:</span> <span class="p">{</span><span class="n">SSHA</span><span class="p">}</span><span class="mi">8</span><span class="n">XZPCTE9V7hyjwNxq9GNNW72NqRROU5N</span>
+<span class="n">shadowLastChange</span><span class="p">:</span> <span class="mi">10000</span>
+<span class="n">shadowMax</span><span class="p">:</span> <span class="mi">99999</span>
+<span class="n">shadowWarning</span><span class="p">:</span> <span class="mi">7</span>
+<span class="n">loginShell</span><span class="p">:</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="n">uidNumber</span><span class="p">:</span> <span class="mi">1001</span>
+<span class="n">gidNumber</span><span class="p">:</span> <span class="mi">1000</span>
+<span class="n">homeDirectory</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">tony</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>add this user and pray</p>
+<ul class="simple">
+<li><p>ldapadd -x -W -D “cn=ldapadm,dc=pcluster,dc=com” -f ~/tony.ldif</p>
+<ul>
+<li><p>adding new entry “uid=Gecko,ou=users,dc=linuxaholics,dc=com”</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>ldapsearch -D cn=”ldapadm,dc=pcluster,dc=com” -W -b “uid=tony,ou=People,dc=pcluster,dc=com” objectClass=*</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/tonybutzer/bslurm/blob/main/3_notebooks/get_user_tony.py"> get_user_tony.py</a></p>
+</div>
+<div class="section" id="terraform-the-test-host-for-ldap">
+<h4>Terraform the test host for LDAP<a class="headerlink" href="#terraform-the-test-host-for-ldap" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>manual</p></li>
+<li><p>IAM Role = butzer-devops-policy</p></li>
+<li><p>Other Important AWS Things</p>
+<ul>
+<li><p>vpc id subnet</p>
+<ul>
+<li><p>csr-vpc-dev-internal-Subnet-A subnet-08f1118dd59133513	Available	vpc-0055752230db6161d</p></li>
+</ul>
+</li>
+<li><p>security groups sg sg-00005b1b65e6ec0bb - SG-SSH-Server-Internal-lcmap-dev</p></li>
+</ul>
+</li>
+<li><p>nevermind ws-costanalyzer exists with all of the ingredients</p></li>
+<li></li>
+</ul>
+</div>
+<div class="section" id="demo-terraform-for-brandon">
+<h4>Demo Terraform for Brandon<a class="headerlink" href="#demo-terraform-for-brandon" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>et-cost</p></li>
+<li><p>iac repo</p></li>
+<li><p>tfinit</p></li>
+<li><p>docker terraform</p></li>
+<li><p>ship.tf</p></li>
+<li><p>variables.tf</p></li>
+<li><p>book?</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="install-and-learn-ldap">
+<h3>Install and Learn LDAP<a class="headerlink" href="#install-and-learn-ldap" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>git clone https://github.com/tonybutzer/the_libs.git</p></li>
+<li><p>build libTest6</p></li>
+<li><p>start jupyter</p></li>
+<li><p>create training notebooks</p></li>
+</ul>
+</div>
+<div class="section" id="docker-ldap-tests">
+<h3>Docker LDAP tests<a class="headerlink" href="#docker-ldap-tests" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="m-active-directory-service-brandon">
+<h2>M$ Active Directory Service - Brandon<a class="headerlink" href="#m-active-directory-service-brandon" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>document steps here</p></li>
+<li><p>plans, problems, progress</p></li>
+</ul>
+</div>
+<div class="section" id="ldappasswd-example">
+<h2>ldappasswd EXAMPLE<a class="headerlink" href="#ldappasswd-example" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="the-ldappasswd-command-is-used-to-change-a-user-s-password-in-an-ldap-lightweight-directory-access-protocol-directory-below-is-an-example-of-how-to-use-the-ldappasswd-command">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command is used to change a user’s password in an LDAP (Lightweight Directory Access Protocol) directory. Below is an example of how to use the <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command:<a class="headerlink" href="#the-ldappasswd-command-is-used-to-change-a-user-s-password-in-an-ldap-lightweight-directory-access-protocol-directory-below-is-an-example-of-how-to-use-the-ldappasswd-command" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># prompts for passwd instead of random</span>
+
+$ ldappasswd -H ldap://localhost -D <span class="s2">&quot;cn=ldapadm,dc=pcluster,dc=com&quot;</span> -w yaml -x <span class="s2">&quot;uid=tony,ou=People,dc=pcluster,dc=com&quot;</span> -S
+New password:
+Re-enter new password:
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ldappasswd -H ldap://your_ldap_server -D <span class="s2">&quot;cn=admin,dc=example,dc=com&quot;</span> -w admin_password -x <span class="s2">&quot;uid=johndoe,ou=users,dc=example,dc=com&quot;</span>
+</pre></div>
+</div>
+<p>Explanation of the command:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code>: This is the command itself.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-H</span> <span class="pre">ldap://your_ldap_server</span></code>: Specifies the URI of the LDAP server. Replace <code class="docutils literal notranslate"><span class="pre">your_ldap_server</span></code> with the actual address of your LDAP server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">&quot;cn=admin,dc=example,dc=com&quot;</span></code>: This option specifies the LDAP bind DN (Distinguished Name) to use for authentication. In this example, it’s using the admin account’s DN. Make sure to replace it with your actual admin DN.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-w</span> <span class="pre">admin_password</span></code>: Specifies the password for the LDAP admin account specified in the <code class="docutils literal notranslate"><span class="pre">-D</span></code> option.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-x</span></code>: This option specifies that simple authentication should be used. It’s commonly used for LDAP servers that don’t require strong authentication mechanisms.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;uid=johndoe,ou=users,dc=example,dc=com&quot;</span></code>: This is the DN of the user whose password you want to change. Replace <code class="docutils literal notranslate"><span class="pre">johndoe</span></code>, <code class="docutils literal notranslate"><span class="pre">ou=users</span></code>, <code class="docutils literal notranslate"><span class="pre">dc=example,dc=com</span></code> with the actual username, organizational unit, and LDAP base domain, respectively.</p></li>
+</ul>
+<p>After executing this command, you will be prompted to enter the new password for the user. Once you provide and confirm the new password, the user’s password will be updated in the LDAP directory.</p>
+<p>Please ensure you have appropriate permissions and authentication details to perform this operation. Additionally, always exercise caution when working with administrative tasks like changing passwords.</p>
+</div>
+<div class="section" id="ldap-jargon">
+<h2>LDAP Jargon<a class="headerlink" href="#ldap-jargon" title="Permalink to this headline">¶</a></h2>
+<p>LDAP (Lightweight Directory Access Protocol) is a protocol used to access and maintain directory information services over a network. It’s commonly used for centralized user authentication and authorization, as well as for storing other types of information like addresses, phone numbers, and more.</p>
+<p>LDAP Authentication:
+LDAP authentication is a method of validating the identity of a user or system by querying an LDAP server. When a user tries to log in, their credentials (username and password) are sent to the LDAP server. The server checks these credentials against its database and grants access if they match.</p>
+<p>Roles of PAM, sssd, and NSS:</p>
+<ol class="simple">
+<li><p><strong>PAM (Pluggable Authentication Modules):</strong></p>
+<ul class="simple">
+<li><p>PAM is a framework used on Unix and Linux systems for authentication and authorization. It provides a standardized way to manage the authentication process for various applications and services.</p></li>
+<li><p>PAM allows system administrators to configure different authentication methods (e.g., local files, LDAP, Kerberos) without modifying the applications themselves.</p></li>
+<li><p>When it comes to LDAP authentication, PAM is responsible for interfacing with the authentication module that communicates with the LDAP server.</p></li>
+</ul>
+</li>
+<li><p><strong>sssd (System Security Services Daemon):</strong></p>
+<ul class="simple">
+<li><p>sssd is a system daemon used on Linux and Unix systems for centralized identity and authentication management. It’s particularly useful in environments that rely on LDAP or other identity providers.</p></li>
+<li><p>sssd can cache authentication information, which reduces the load on LDAP servers and improves performance.</p></li>
+<li><p>It provides services like caching of credentials, offline authentication, and user and group enumeration.</p></li>
+</ul>
+</li>
+<li><p><strong>NSS (Name Service Switch):</strong></p>
+<ul class="simple">
+<li><p>NSS is a component of the GNU C Library (glibc) used on Unix and Linux systems to configure how system databases (like user accounts, groups, and hostnames) are accessed.</p></li>
+<li><p>It allows system administrators to specify the sources where system information is obtained (e.g., local files, LDAP, NIS).</p></li>
+<li><p>In the context of LDAP, NSS is crucial because it determines where the system looks for information about users, groups, and other entities.</p></li>
+</ul>
+</li>
+</ol>
+<p>The typical flow in a system with LDAP authentication, PAM, sssd, and NSS might look like this:</p>
+<ol class="simple">
+<li><p><strong>User attempts to log in:</strong></p>
+<ul class="simple">
+<li><p>The login request goes through PAM.</p></li>
+</ul>
+</li>
+<li><p><strong>PAM configuration:</strong></p>
+<ul class="simple">
+<li><p>PAM checks its configuration to determine which authentication modules to use.</p></li>
+</ul>
+</li>
+<li><p><strong>PAM communicates with sssd:</strong></p>
+<ul class="simple">
+<li><p>If LDAP authentication is configured, PAM interfaces with the appropriate module (usually provided by sssd) to query the LDAP server.</p></li>
+</ul>
+</li>
+<li><p><strong>sssd communicates with the LDAP server:</strong></p>
+<ul class="simple">
+<li><p>sssd communicates with the LDAP server, passing along the user’s credentials.</p></li>
+</ul>
+</li>
+<li><p><strong>LDAP server authentication:</strong></p>
+<ul class="simple">
+<li><p>The LDAP server checks the credentials against its database.</p></li>
+</ul>
+</li>
+<li><p><strong>Authentication response:</strong></p>
+<ul class="simple">
+<li><p>The result of the authentication is sent back through sssd, PAM, and finally, the user is either granted access or denied based on the LDAP server’s response.</p></li>
+</ul>
+</li>
+</ol>
+<p>These components work together to enable centralized authentication and authorization in a Unix or Linux environment using LDAP.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="555_stage5.html" class="btn btn-neutral float-right" title="Stage 5: Testing and Documentation." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="333_stage3.html" class="btn btn-neutral float-left" title="Stage 3: Design and Documentation." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

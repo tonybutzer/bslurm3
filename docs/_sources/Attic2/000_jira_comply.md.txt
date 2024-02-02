@@ -1,0 +1,51 @@
+# Planning for the Prototype Parallel Cluster
+
+- code name uberBrandon
+- code name chaosMonkey - terraform creation IaC
+
+# Current Sprint 
+- Ending November 3, 2023 
+- weekly status
+
+## Analysis Focus
+
+1. Develop LDAP Skills
+2. Trade Study on M$ Active Directory vs. Pure LDAP
+    - these user management platforms are potential rabbit holes - there be dragons
+    - LDAP - likely the MVP
+    - M$ ActiveDirectory Enetrprise to be used in Deployment Phase
+    - to explore pythin-ldap for mangement of users and passwords - perhaps next sprint
+3. Integration - connecting LDAP to parallel cluster from startup yaml file 
+    - Goal is to support user, password initiation for cluster access
+    - Instead of hard-coded sh keys - we can certainly use this for alpha testers - to be scheduled in a sprint
+    - first planned science user test is Tonian's Composite Parallel Slurm Test - depending on when the code is ready
+4. Terraform analysis and CICD pipeline for SDLC Deployment Phase - chaosMonkey
+
+--- 
+## Planning Focus
+1. Writing Project Plan with SDLC Phases
+    - strategy is to use this meeting time for internal planning blocks until our project matures or gels
+2. Developing the project plan - draft to be published November 3.
+
+
+### SDLC Phase Summary
+
+    Stage 0: Feasibility and Concept Development
+    Stage 1: Project Planning. The first stage of SDLC is all about “What do we want?” ...
+    Stage 2: Gathering Requirements & Analysis. ...
+    Stage 3: Design and Documentation. ...
+    Stage 4: Coding or Implementation. ...
+    Stage 5: Testing and Documentation. ...
+    Stage 6: Deployment. ...
+    Stage 7: Maintenance.
+
+
+## User Story
+
+> scientist walks into a website, types a username and password and runs a slurm, sbatch job ported from Tallgrass.
+
+- minimal effort is needed to move from Tallgrass
+- alpha test is ARD animations - Butzer
+- beta test in ARD composites - Tonian Robinson
+
+

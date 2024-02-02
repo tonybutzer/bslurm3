@@ -1,0 +1,1032 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Parallel Cluster Demo &mdash; uberBrandon HPC AWS Parallel Computer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Stage A: Appendix" href="aaa_appendix.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> uberBrandon HPC AWS Parallel Computer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html">Planning for the Prototype Parallel Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#gantt-chart">GANTT CHART</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-10-27-2023">Current Week Ending 10/27/2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#terraform-terragrunt-gitlab-runners">terraform/terragrunt gitlab-runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#allowing-pat-and-kory-on-the-cluster-it-takes-a-village">Allowing Pat and Kory on the Cluster - It takes a village</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#kelcy-s-roadmap">Kelcy’s Roadmap</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-october-27-2023">Current Week Ending October 27, 2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#chaosmonkey-4-node-parallel-cluster-in-watersmart-iac">chaosMonkey 4 node parallel cluster in watersmart IAC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-sprint">Current Sprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#analysis-focus">Analysis Focus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#planning-focus">Planning Focus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#sdlc-phase-summary">SDLC Phase Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#user-story">User Story</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html">Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html#watersmart-cluster">WaterSMart Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iac-journey">IAC Journey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#so-vpcs">SO VPCs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#ws">WS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#therefore-the-usable-host-addresses-in-the-network-10-12-64-0-21-are-2046-2-2044-addresses">Therefore, the usable host addresses in the network <code class="docutils literal notranslate"><span class="pre">10.12.64.0/21</span></code> are (2046 - 2 = 2044) addresses.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#subnets">3 subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#nlcd-vpc">NLCD VPC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#availability-issues-in-the-not-quite-infinite-cloud">Availability Issues in the not quite infinite cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iam-roles-and-policies-cluster">IAM Roles and Policies Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0chaosMonkeyWIP.html">Chaos is Good</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0chaosMonkeyWIP.html#chaosmonkey">ChaosMonkey</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="000_stage0.html">Stage 0: Feasibility and Concept Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="111_stage1.html">Stage 1: Project Planning.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="222_stage2.html">Stage 2: Gathering Requirements &amp; Analysis.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="333_stage3.html">Stage 3: Design and Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="444_stage4.html">Stage 4: Coding or Implementation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#reading">Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#authentication-moving-parts-too-many-some-old-and-dusty">Authentication Moving Parts - too many - some old and dusty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-coding-trials">LDAP Coding Trials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#build-an-ldap-test-server-in-ws-account">Build an LDAP Test Server in ws account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#install-ldap">install ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#configure-ldap">configure ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#db-ldif">db.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#adding-users-to-ldap">Adding Users to LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#notional-tony-ldif">Notional tony.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#terraform-the-test-host-for-ldap">Terraform the test host for LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#demo-terraform-for-brandon">Demo Terraform for Brandon</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#install-and-learn-ldap">Install and Learn LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#docker-ldap-tests">Docker LDAP tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#m-active-directory-service-brandon">M$ Active Directory Service - Brandon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldappasswd-example">ldappasswd EXAMPLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#the-ldappasswd-command-is-used-to-change-a-user-s-password-in-an-ldap-lightweight-directory-access-protocol-directory-below-is-an-example-of-how-to-use-the-ldappasswd-command">The <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command is used to change a user’s password in an LDAP (Lightweight Directory Access Protocol) directory. Below is an example of how to use the <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-jargon">LDAP Jargon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="555_stage5.html">Stage 5: Testing and Documentation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="555_stage5.html#science-workload-alpha-tesing">SCience Workload Alpha Tesing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="555_stage5.html#pat-danielson-dynamic-surface-water-extent">Pat Danielson Dynamic Surface Water Extent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="555_stage5.html#wbs">WBS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html">Stage 6: Deployment.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#manual-deployment-steps-for-uberbrandon">Manual Deployment Steps for uberBrandon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#help-me">HELP ME</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#iac-steps-for-chaosmonkey">IaC Steps for chaosMonkey</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#manual-choas">Manual choas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="666_stage6.html#building-with-the-cli">Building with the CLI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#estimating">Estimating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#monitoring">Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="777_stage7.html">Stage 7: Maintenance.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="800_user_guide.html">Stage 8: User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="900_admin_guide.html">Stage 9: Admin Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#post-install-stuff">Post Install Stuff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#monitoring-the-cluster-with-prometheus-and-grafana">Monitoring The Cluster with Prometheus and Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-cluster-level-dashboard">Monitor Cluster Level Dashboard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#prometheus-slurm-exporter">prometheus-slurm-exporter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-node-level-dashboad">Monitor Node Level Dashboad</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#node-exporter">Node Exporter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#getting-the-compute-node-ip-addresses">Getting the Compute Node IP Addresses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#mpi-considerations">MPI Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#mpi-centos-installations">MPI Centos Installations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aaa_appendix.html">Stage A: Appendix</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel Cluster Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#tldr-is-the-parallel-cluster-feasible-and-applicable-for-lcnext-yes">tldr; - Is the Parallel Cluster feasible and applicable for LCNext? <code class="docutils literal notranslate"><span class="pre">YES!</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#elevator-pitch">Elevator Pitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#genius">Genius!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#plans">Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#progress">Progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#problems">Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gantt-chart-rough-order-of-magnitude">GANTT CHART - Rough order of Magnitude</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#context-danny-howard">Context Danny Howard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#butzer-dev-10-12-71-5-t3a-2xlarge-219-584-month">butzer-dev  10.12.71.5  t3a.2xlarge       $219.584/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#headnode-10-12-64-196-t3-medium-30-368-month">HeadNode  10.12.64.196    t3.medium        $30.368/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ws-gparrish-dev-10-12-65-226-m6i-2xlarge-280-320-month">ws-gparrish-dev  10.12.65.226  m6i.2xlarge       $280.320/month</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#disclaimers">Disclaimers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#engineering-research-scope-responsibilities">Engineering Research Scope - Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#production-devops-items">Production DevOps Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scientist-teams-responsibilities">Scientist Teams Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pc-benefits">PC Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#easier-than-most-scale-out-technologies">Easier than most scale out technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slurm">SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slurm-benefits">SLURM Benefits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#the-demo">The Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-the-creator-ws-pc-admin-box">Creating the Creator ws-pc-admin-box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terraform-variables">Terraform Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-cluster-itself-is-created-from-pure-yaml-cool">The Cluster itself is Created from pure yaml - COOL!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shut-er-down">Shut’er Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demo-again-with-instruments">Demo Again with Instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prometheus">Prometheus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grafana">Grafana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-have-we-learned">What Have we Learned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-stac-browser">the stac browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usgs-stac-browser"></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#whats-next">Whats Next?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#more">more</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#whats-next-at-high-level">Whats Next at High Level?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#deep-dive-on-cluster-tech-things">Deep Dive on Cluster Tech Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-look-deeper-at-only-one-thing-observability">A look deeper at only one thing –&gt; Observability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#no">No</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#yes-but-we-will-charge-you-and-move-the-schedule-to-the-right">Yes - but we will charge you and move the schedule to the right.</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">uberBrandon HPC AWS Parallel Computer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Parallel Cluster Demo</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/99_demo.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parallel-cluster-demo">
+<h1>Parallel Cluster Demo<a class="headerlink" href="#parallel-cluster-demo" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="tldr-is-the-parallel-cluster-feasible-and-applicable-for-lcnext-yes">
+<h1>tldr; - Is the Parallel Cluster feasible and applicable for LCNext? <code class="docutils literal notranslate"><span class="pre">YES!</span></code><a class="headerlink" href="#tldr-is-the-parallel-cluster-feasible-and-applicable-for-lcnext-yes" title="Permalink to this headline">¶</a></h1>
+<p><img alt="still here" src="https://media4.giphy.com/media/3FA2atHHZaOZi/200w.gif?cid=6c09b9526cp1t4offlvc4ntxukwgaxem1y7j8gs12j9jcjsg&amp;ep=v1_gifs_search&amp;rid=200w.gif&amp;ct=g" /></p>
+</div>
+<div class="section" id="elevator-pitch">
+<h1>Elevator Pitch<a class="headerlink" href="#elevator-pitch" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Computers out of thin air</p></li>
+<li><p>Experienced Powerful Orchestration</p></li>
+<li><p>Elastic Compute</p></li>
+<li><p>Infinite Reliable Storage</p></li>
+<li><p>Synergies with Cray Supercomputers</p></li>
+<li><p>A pangeo trained python science force</p></li>
+</ul>
+</div>
+<div class="section" id="genius">
+<h1>Genius!<a class="headerlink" href="#genius" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"> <span class="pre">Genius</span></code>
+<strong>amazing</strong></p>
+<blockquote>
+<div><p>lets save the planet now - then drink wine tonight!</p>
+</div></blockquote>
+<blockquote>
+<div><p>a one to one comparison between HPC and Cloud Parallel Cluster - is reductive in both directions.</p>
+</div></blockquote>
+<blockquote>
+<div><p>the cloud is waiting/begging to accelerate science</p>
+</div></blockquote>
+</div>
+<div class="section" id="plans">
+<h1>Plans<a class="headerlink" href="#plans" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>wait for the team to get formed with critical mass</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">parallel</span> <span class="pre">cluster</span> <span class="pre">with</span> <span class="pre">Watersmart</span> <span class="pre">Production</span></code></p></li>
+<li><p>trade study of 3 scaling methods</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Parallel</span> <span class="pre">Cluster</span></code></p></li>
+<li><p>gitlab scheduler</p></li>
+<li><p>AWS Batch</p></li>
+</ul>
+</li>
+<li><p>eliminated from the trade study</p>
+<ul>
+<li><p>kubernetes</p></li>
+<li><p>dask</p></li>
+<li><p>mpi</p></li>
+<li><p>home grown docker orchestration</p></li>
+<li><p>docker swarm</p></li>
+<li><p>ARGO</p></li>
+<li><p>Airflow</p></li>
+<li><p>Nifi</p></li>
+<li><p>dask again!</p></li>
+<li><p>the next two are totally unrelated - just want to hate on em a bit:</p>
+<ul>
+<li><p>SuperSet</p></li>
+<li><p>NGINX Traefic</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>custom aws cost prometheous exporter - in Python</p></li>
+<li><p>automated Compute node IP and dynamic prometheous</p></li>
+<li><p>Implement a SARF like system to manage my time</p></li>
+</ul>
+</div>
+<div class="section" id="progress">
+<h1>Progress<a class="headerlink" href="#progress" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>set up 3 parallel clusters</p>
+<ul>
+<li><p>Thanks Brandon Schulz for setting up the first one.</p></li>
+</ul>
+</li>
+<li><p>wrote code for resource profiling</p></li>
+<li><p>wrote code to represent a minimal ARD case</p>
+<ul>
+<li><p>ARD Tile Animator</p></li>
+<li><p>Top 100 most populated cities - Sentinel-2 Animations</p>
+<ul>
+<li><p>I like Sentinel way more than Landsat.</p>
+<ul>
+<li><p>request-payer bugs = will never end and will hinder science</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>stress tested the small cluster</p></li>
+<li><p>got prometheus and grafana to work</p>
+<ul>
+<li><p>exporter for node, cluster and docker(soon)</p></li>
+<li><p>dash boards for node cluster and docker(soon)</p></li>
+</ul>
+</li>
+<li><p>IAC progress</p>
+<ul>
+<li><p>initial terraform snippets for ec2 - security groups - basically all resources needed</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="problems">
+<h1>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Slurm prometheus exporter is written in GO</p></li>
+<li><p>prometheus has its own query language so in order</p>
+<ul>
+<li><p>I love pandas</p></li>
+<li><p>I tolerate SQL</p></li>
+<li><p>I am confused by promQL</p></li>
+</ul>
+</li>
+<li><p>AWS Cost models even just for ec2 - are ridiculous - pandas to the rescue</p></li>
+<li><p>AWS throws an error - Guy walks into a bar.</p></li>
+<li><p>AwS throws and error - availability of a particular node - C6i queue only and have noticed it in immature clusters, spot instances AMD processors - etc etc -</p></li>
+<li><p>Active Directory still needs careful study</p>
+<ul>
+<li><p>start with ROOT - DONE</p></li>
+<li><p>test a single dumb user - dopey&#64;10.12.70.70</p></li>
+</ul>
+</li>
+<li><p>AWS security groups can take time to refine</p>
+<ul>
+<li><p>if that is the case then Roles - Permissions - Rules/Policies takes time times ten</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="gantt-chart-rough-order-of-magnitude">
+<h2>GANTT CHART - Rough order of Magnitude<a class="headerlink" href="#gantt-chart-rough-order-of-magnitude" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Because exact deadlines don’t take into account the uncertainties and challenges that may arise during the process, they are often counterproductive. Leaders who are deadline-focused can create disappointment and disillusionment as the hard targets they set are frequently missed.</p>
+</div></blockquote>
+<p><a class="reference external" href="https://tonybutzer.github.io/bslurm2/pc_gantt.html">GANTT CHART</a></p>
+</div>
+</div>
+<div class="section" id="context-danny-howard">
+<h1>Context Danny Howard<a class="headerlink" href="#context-danny-howard" title="Permalink to this headline">¶</a></h1>
+<p>Some general content I’d like to squeeze in there —
+stage-setting stuff: Cover environmental variables….</p>
+<ol class="simple">
+<li><p>Where we stand as science organization….</p>
+<ul class="simple">
+<li><p>Reliant on HPC / on prem systems; big investments and push to Cloud by leadership</p></li>
+<li><p>BUT - Learning curve and challenges related to doing R&amp;D in the cloud</p></li>
+<li><p>AND - Unknown costs in that pay as you go model</p></li>
+</ul>
+</li>
+<li><p>Introduce Parallel Cluster Concept… alternate pathways to the cloud (lower barrier to entry)</p></li>
+<li><p>Where LCNext is at w/ setting this up and leveraging this</p>
+<ul class="simple">
+<li><p>What we’ve learned?</p></li>
+<li><p>Where do we go from here?</p></li>
+<li><p>Currently have: Protections against run-away jobs (Slurm / configurations)</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="costs">
+<h1>Costs<a class="headerlink" href="#costs" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ daily-ws-costs
+[&#39;awsprice.py&#39;, &#39;&#39;]
+
+      state                name            ip       i_type  monthly_cost
+0   running     ws-costanalyzer  10.12.65.189     t3.small        15.184
+1   stopped       ws-butzer-dev  10.12.65.180  t3a.2xlarge       219.584
+2   stopped     ws-gparrish-dev  10.12.65.226  m6i.2xlarge       280.320
+3   stopped      ws-pc-adminbox   10.12.65.33   t3a.medium        27.448
+4   stopped     ws-ami-examiner  10.12.67.113   t3a.medium        27.448
+5   stopped            ws-ami-2  10.12.67.199   t3a.medium        27.448
+6   stopped      ws-ldap-tester  10.12.64.214   t3a.medium        27.448
+7   stopped        ws-data-xfer  10.12.64.158   t3a.xlarge       109.792
+8   stopped  ws-machinelearning  10.12.66.139  t3a.2xlarge       219.584
+9   stopped      ws-ssebop-prod   10.12.66.40   m5.8xlarge      1121.280
+10  stopped        ws-veget-dev  10.12.67.239  m6i.2xlarge       280.320
+11  stopped          ws-kul-dev  10.12.64.123  r6a.2xlarge       331.128
+12  stopped            HeadNode  10.12.64.196    t3.medium        30.368
+==========================================================================================
+==========================================================================================
+     state             name            ip    i_type  monthly_cost
+0  running  ws-costanalyzer  10.12.65.189  t3.small        15.184
+========================================================================================================================
+========================================================================================================================
+[&#39;awsprice.py&#39;, &#39;&#39;]
+
+     state            name            ip       i_type  monthly_cost
+0  stopped      mhasan-dev   10.12.71.39    t3a.large        54.896
+1  running      butzer-dev    10.12.71.5  t3a.2xlarge       219.584
+2  stopped  kruslander-dev  10.12.71.114    t3a.large        54.896
+3  stopped      mlubke-dev  10.12.70.140    t3a.large        54.896
+4  stopped      ashish-dev   10.12.70.88   r5a.xlarge       164.980
+5  stopped    asampath-dev  10.12.70.199  t3a.2xlarge       219.584
+==========================================================================================
+==========================================================================================
+     state        name          ip       i_type  monthly_cost
+1  running  butzer-dev  10.12.71.5  t3a.2xlarge       219.584
+========================================================================================================================
+========================================================================================================================
+</pre></div>
+</div>
+<div class="section" id="butzer-dev-10-12-71-5-t3a-2xlarge-219-584-month">
+<h2>butzer-dev  10.12.71.5  t3a.2xlarge       $219.584/month<a class="headerlink" href="#butzer-dev-10-12-71-5-t3a-2xlarge-219-584-month" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>8 cpus</p></li>
+<li><p>32 gig memory</p></li>
+<li><p>8 Exabytes of Disk</p></li>
+<li><p>Infinite s3 storage at 3 cents per gig</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="headnode-10-12-64-196-t3-medium-30-368-month">
+<h2>HeadNode  10.12.64.196    t3.medium        $30.368/month<a class="headerlink" href="#headnode-10-12-64-196-t3-medium-30-368-month" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ws-gparrish-dev-10-12-65-226-m6i-2xlarge-280-320-month">
+<h2>ws-gparrish-dev  10.12.65.226  m6i.2xlarge       $280.320/month<a class="headerlink" href="#ws-gparrish-dev-10-12-65-226-m6i-2xlarge-280-320-month" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>8 cpus</p></li>
+<li><p>32 gig memory</p></li>
+<li><p>60 bucks more - why</p></li>
+<li><p>intel verus amd is a factor</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="disclaimers">
+<h1>Disclaimers<a class="headerlink" href="#disclaimers" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>this is an very early prototype cluster demo</p></li>
+<li><p>this is a PATHFINDER PROTOTYPE</p></li>
+<li><p>the parallel cluster expert is finding his way back to the project</p></li>
+<li><p>this demo is scoped for a specific science project and works well there</p>
+<ul>
+<li><p>this is no guarantee that other workloads will work as expected in this type of cluster</p></li>
+</ul>
+</li>
+<li><p>this demo was specifically scaled back to be in-expensive - more work on cost containment is needed</p></li>
+<li><p>that said we could do all of watersmart processing with this small 3 node cluster and it will be cost effective with simple cost guardrails and automatically shut down when not in use</p></li>
+<li><p>I want to improve Cost Containment, Observability, Customization, Instance Selection, Queue Optimization - basically do some robust engineering before turning it over</p></li>
+</ul>
+<div class="section" id="engineering-research-scope-responsibilities">
+<h2>Engineering Research Scope - Responsibilities<a class="headerlink" href="#engineering-research-scope-responsibilities" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Technology Capability Research - not production grade</p></li>
+<li><p>Solve Problems for:</p>
+<ul class="simple">
+<li><p>Observability</p></li>
+<li><p>baseline conda environment and possible solutions for conda env</p>
+<ul>
+<li><p>per application</p></li>
+<li><p>containers likely the best solution</p></li>
+</ul>
+</li>
+<li><p>cost estimator for ec2 - ballpark</p>
+<ul>
+<li><p>detailed cost analysis outside this scope</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="production-devops-items">
+<h2>Production DevOps Items<a class="headerlink" href="#production-devops-items" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Multiple users permissions</p></li>
+<li><p>Cost Accounting</p></li>
+<li></li>
+</ol>
+</div>
+<div class="section" id="scientist-teams-responsibilities">
+<h2>Scientist Teams Responsibilities<a class="headerlink" href="#scientist-teams-responsibilities" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Choosing between the cluster and other options</p></li>
+<li><p>Best practices python development</p></li>
+<li><p>Technology Debt collecting</p></li>
+<li><p>Ready to run apps - simplification - containers</p></li>
+</ol>
+</div>
+<div class="section" id="pc-benefits">
+<h2>PC Benefits<a class="headerlink" href="#pc-benefits" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="easier-than-most-scale-out-technologies">
+<h2>Easier than most scale out technologies<a class="headerlink" href="#easier-than-most-scale-out-technologies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Same scaling language as HPCs:  Tallgrass, Denali, Hovenweep</p></li>
+<li><p>Very little scaffolding compared to Kubernetes</p></li>
+<li><p>Very Flexible on how many nodes and what size</p></li>
+<li><p>Cost containment and cost planning can easily be accomplished</p>
+<ul>
+<li><p>with Developer and Cluster Admins working side by side.</p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><p><strong>DevOps</strong> is a combination of software development (dev) and operations (ops). It is defined as a software engineering methodology which aims to integrate the work of development teams and operations teams by facilitating a culture of collaboration and shared responsibility.</p>
+</div></blockquote>
+</div>
+<div class="section" id="slurm">
+<h2>SLURM<a class="headerlink" href="#slurm" title="Permalink to this headline">¶</a></h2>
+<p>SLURM is a queue management system and stands for i</p>
+<ul class="simple">
+<li><p>Simple</p></li>
+<li><p>Linux</p></li>
+<li><p>Utility for</p></li>
+<li><p>Resource (CPU, MEMORY) Management.</p></li>
+</ul>
+</div>
+<div class="section" id="slurm-benefits">
+<h2>SLURM Benefits<a class="headerlink" href="#slurm-benefits" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Slurm Benefits:</p>
+<p>Highly scalable and configurable.
+Optimized resource allocations for network topology and on-node topology.
+Sophisticated multifactor job prioritization algorithms.
+Real-time accounting down to the task level (identify specific tasks with high CPU or memory usage)</p>
+</li>
+<li><p>Slurm may be the most widely accepted framework for AI applications, both in enterprise and academic use,</p></li>
+<li><p>HPC and the cloud look the same for orchestration</p></li>
+</ul>
+<p><a class="reference external" href="https://slurm.schedmd.com/testimonials.html">slurm testimonials</a></p>
+<ul class="simple">
+<li><p><strong>Slurm Overview:</strong></p>
+<ul>
+<li><p>Slurm is an open-source cluster management and job scheduling system designed for Linux clusters, catering to both large and small setups.</p></li>
+<li><p>It boasts fault-tolerance and high scalability, without requiring kernel modifications for operation.</p></li>
+</ul>
+</li>
+<li><p><strong>Key Functions:</strong></p>
+<ul>
+<li><p><strong>Resource Allocation:</strong></p>
+<ul>
+<li><p>Slurm allocates exclusive and/or non-exclusive access to compute nodes for users, allowing them to perform work for a specified duration.</p></li>
+</ul>
+</li>
+<li><p><strong>Work Execution Framework:</strong></p>
+<ul>
+<li><p>It provides a framework for initiating, executing, and monitoring work, typically parallel jobs, on the allocated set of nodes.</p></li>
+</ul>
+</li>
+<li><p><strong>Contending Resource Arbitration:</strong></p>
+<ul>
+<li><p>Slurm manages a queue of pending work to arbitrate contention for resources, ensuring a smooth and organized workflow.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Optional Features and Plugins:</strong></p>
+<ul>
+<li><p><strong>Accounting:</strong></p>
+<ul>
+<li><p>Optional plugins can be employed for accounting purposes, tracking resource usage and job statistics.</p></li>
+</ul>
+</li>
+<li><p><strong>Advanced Reservation:</strong></p>
+<ul>
+<li><p>Slurm supports advanced reservation of resources, allowing users to plan and reserve resources for future work.</p></li>
+</ul>
+</li>
+<li><p><strong>Backfill Scheduling:</strong></p>
+<ul>
+<li><p>Slurm supports backfill scheduling, optimizing resource utilization by filling gaps in the schedule with suitable jobs.</p></li>
+</ul>
+</li>
+<li><p><strong>Topology Optimized Resource Selection:</strong></p>
+<ul>
+<li><p>The system enables the selection of resources based on the cluster’s topology, optimizing performance.</p></li>
+</ul>
+</li>
+<li><p><strong>Resource Limits and Prioritization:</strong></p>
+<ul>
+<li><p>Optional plugins allow setting resource limits by user or bank account, and Slurm employs sophisticated multifactor job prioritization algorithms.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Self-Containment:</strong></p>
+<ul>
+<li><p>Slurm is relatively self-contained, contributing to its operational simplicity and ease of integration with existing systems.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-demo">
+<h1>The Demo<a class="headerlink" href="#the-demo" title="Permalink to this headline">¶</a></h1>
+<p><img alt="cluster_create" src="https://github.com/tonybutzer/assets/blob/master/0_cluster/parallel_cluster_concept_to_real.JPG?raw=true" /></p>
+<div class="section" id="creating-the-creator-ws-pc-admin-box">
+<h2>Creating the Creator ws-pc-admin-box<a class="headerlink" href="#creating-the-creator-ws-pc-admin-box" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="terraform-variables">
+<h3>Terraform Variables<a class="headerlink" href="#terraform-variables" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span> <span class="s2">&quot;region&quot;</span> <span class="p">{</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;The AWS region.&quot;</span>
+  <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;us-west-2&quot;</span>
+<span class="p">}</span>
+
+<span class="n">variable</span> <span class="s2">&quot;ship_instance_type&quot;</span> <span class="p">{</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;ships - The instance type.&quot;</span>
+  <span class="c1"># default = &quot;c5.9xlarge&quot;</span>
+  <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;t3a.medium&quot;</span>
+<span class="p">}</span>
+
+<span class="n">variable</span> <span class="s2">&quot;subnet_id&quot;</span> <span class="p">{</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;The AWS network id representing the allowed vpc&quot;</span>
+  <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;subnet-08f1118dd59133513&quot;</span>
+<span class="p">}</span>
+
+<span class="n">variable</span> <span class="s2">&quot;ship_userdata&quot;</span> <span class="p">{</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;user data os startup scripts&quot;</span>
+  <span class="n">default</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ship0.sh&quot;</span><span class="p">,</span> <span class="s2">&quot;ship1.sh&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">variable</span> <span class="s2">&quot;ship_name&quot;</span> <span class="p">{</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;ship names - DUH!&quot;</span>
+  <span class="n">default</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ws-pc-adminbox&quot;</span><span class="p">,</span> <span class="s2">&quot;ws-gen-test-sship-1&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">variable</span> <span class="s2">&quot;key_name&quot;</span> <span class="p">{</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;The AWS key pair to use for resources.&quot;</span>
+  <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;butzer@IGSKMNCNLT01529&quot;</span>
+<span class="p">}</span>
+
+<span class="n">variable</span> <span class="s2">&quot;ami&quot;</span> <span class="p">{</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;watersmart-developer&quot;</span>
+  <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;ami-0258c61d5a80b6572&quot;</span>
+<span class="p">}</span>
+
+<span class="n">variable</span> <span class="s2">&quot;security_group_ssh&quot;</span> <span class="p">{</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;The AWS security group (privateinstancesSSH-sg)&quot;</span>
+  <span class="c1"># the bastion holds usgs vpn and eros class b addresses..</span>
+  <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;sg-067d5d0cb608f6af9&quot;</span>
+<span class="p">}</span>
+
+<span class="n">variable</span> <span class="s2">&quot;iam_role&quot;</span> <span class="p">{</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;The AWS iam role - limited access on these ec2s&quot;</span>
+  <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;butzer-devops-profile&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-cluster-itself-is-created-from-pure-yaml-cool">
+<h2>The Cluster itself is Created from pure yaml - COOL!<a class="headerlink" href="#the-cluster-itself-is-created-from-pure-yaml-cool" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(aws-parallel-cluster) [ec2-user@ip-10-12-65-33 8a_ws_pcluster_admin]$ cat bbb.yaml
+Region: us-west-2
+CustomS3Bucket: dev-ws-parallelcluster-testbucket
+Image:
+  Os: alinux2
+  CustomAmi: ami-067d504ae48dd3252
+HeadNode:
+  InstanceType: t3.medium
+  Networking:
+    SubnetId: subnet-08f1118dd59133513
+    SecurityGroups:
+      - sg-06842c1ea45eb2039
+  Ssh:
+    KeyName: ws-pcluster-keypair
+  Iam:
+    AdditionalIamPolicies:
+      - Policy: arn:aws:iam::427491229895:policy/developer-policy
+      - Policy: arn:aws:iam::aws:policy/AmazonS3FullAccess
+    S3Access:
+      - BucketName: ws-out
+Scheduling:
+  Scheduler: slurm
+  SlurmSettings:
+    Dns:
+      DisableManagedDns: true
+      UseEc2Hostnames: true
+  SlurmQueues:
+  - Name: eco
+    ComputeResources:
+    - Name: t3a2x
+      Instances:
+      - InstanceType: t3a.2xlarge
+      MinCount: 0
+      MaxCount: 3
+    Networking:
+      SubnetIds:
+      - subnet-08f1118dd59133513
+      SecurityGroups:
+        - sg-06842c1ea45eb2039
+    Image:
+      CustomAmi: ami-058297c4b7911f4e4
+    Iam:
+      AdditionalIamPolicies:
+        - Policy: arn:aws:iam::427491229895:policy/developer-policy
+        - Policy: arn:aws:iam::aws:policy/AmazonS3FullAccess
+      S3Access:
+        - BucketName: ws-out
+Iam:
+  PermissionsBoundary: arn:aws:iam::427491229895:policy/csr-Developer-Permissions-Boundary
+SharedStorage:
+  - MountDir: /wspcefs
+    Name: wspcefs
+    StorageType: Efs
+    EfsSettings:
+      Encrypted: false
+      DeletionPolicy: Delete
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>start the headnode water smart</p></li>
+<li><p>run ardanim/1_HPC/0_app/  ./bbb_v3……</p></li>
+<li><p>watch -n 10 squeue</p></li>
+<li><p>look at the Compute Nodes coming up</p></li>
+<li><p>look at /wpcefs/opt/tony … ls -l</p></li>
+<li><p>look at .out logfiles</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ec2-user@ip-10-12-64-196 .out]$ pwd
+/home/ec2-user/tony/ardanim/1_HPC/0_app/.out
+[ec2-user@ip-10-12-64-196 .out]$ tail 20_13_2022.out
+/wspcefs/opt/tony/browse_20_13/LC08_CU_020013_20220704_20220711_02_thumb_large.jpeg
+/wspcefs/opt/tony/browse_20_13/LC09_CU_020013_20221115_20230325_02_thumb_large.jpeg
+/wspcefs/opt/tony/browse_20_13/LC09_CU_020013_20220117_20230504_02_thumb_large.jpeg
+/wspcefs/opt/tony/browse_20_13/LC09_CU_020013_20220930_20230330_02_thumb_large.jpeg
+/wspcefs/opt/tony/browse_20_13/LC08_CU_020013_20220305_20220318_02_thumb_large.jpeg
+/wspcefs/opt/tony/browse_20_13/LC09_CU_020013_20220516_20230420_02_thumb_large.jpeg
+/wspcefs/opt/tony/browse_20_13/LC08_CU_020013_20221109_20221125_02_thumb_large.jpeg
+/wspcefs/opt/tony/browse_20_13/LC09_CU_020013_20220218_20230430_02_thumb_large.jpeg
+Building the animation ...
+SUCCESS /wspcefs/opt/tony/animations/2022_20_13.gif created!
+</pre></div>
+</div>
+<p><img alt="email" src="https://github.com/tonybutzer/assets/blob/master/0_cluster/email_from_slurm.JPG?raw=true" /></p>
+<p><img alt="detail" src="https://github.com/tonybutzer/assets/blob/master/0_cluster/email_time..JPG?raw=true" /></p>
+</div>
+<div class="section" id="shut-er-down">
+<h2>Shut’er Down<a class="headerlink" href="#shut-er-down" title="Permalink to this headline">¶</a></h2>
+<p><img alt="shutdown" src="https://github.com/tonybutzer/assets/blob/master/0_cluster/compute_terminated.JPG?raw=true" /></p>
+</div>
+<div class="section" id="demo-again-with-instruments">
+<h2>Demo Again with Instruments<a class="headerlink" href="#demo-again-with-instruments" title="Permalink to this headline">¶</a></h2>
+<p><img alt="instruments" src="https://media.tenor.com/iIKNUVgwi8kAAAAC/airplane-movies.gif" /></p>
+</div>
+<div class="section" id="prometheus">
+<h2>Prometheus<a class="headerlink" href="#prometheus" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="grafana">
+<h2>Grafana<a class="headerlink" href="#grafana" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="what-have-we-learned">
+<h2>What Have we Learned<a class="headerlink" href="#what-have-we-learned" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>parallel clusters <code class="docutils literal notranslate"><span class="pre">rock</span></code> and will be an instrumental tool for science products</p>
+<ul>
+<li><p>especially ARD tile time-series applications</p></li>
+</ul>
+</li>
+<li><p>Monthly Patch Day - will create work for Parallel Cluster Managers and small aggravations for users.</p>
+<ul>
+<li><p>building AMIs for the cluster is one of the slower things we do - and initially quite painful.</p></li>
+</ul>
+</li>
+<li><p>You can get a Boatload of work done with cheap ec2 computers</p></li>
+<li><p>not all work will be in cheap in the cloud - Vigilance and Diligence.</p>
+<ul>
+<li><p>GPUS in the cloud hands-off for now - don’t weep cause Hovenweep</p></li>
+<li><p>pyCCD looks expensive wherever you run it.</p></li>
+</ul>
+</li>
+<li><p>Its nice to have a mature scheduler like SLURM to manage resources</p>
+<ul>
+<li><p>especially when it turns of the lights and contains costs automagically</p></li>
+</ul>
+</li>
+<li><p>“Docker containers and gratitude share a common trait - they both possess superpowers.” - Tony Butzer</p></li>
+</ul>
+</div>
+<div class="section" id="the-stac-browser">
+<h2>the stac browser<a class="headerlink" href="#the-stac-browser" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>https://landsatlook.usgs.gov/stac-browser/collection02/DSWE/1991/CU/004/004/LT05_CU_004004_19910319_20210423_02_DSWE</p></li>
+<li><p><a class="reference external" href="https://landsatlook.usgs.gov/stac-browser/collection02/DSWE/1991/CU/004/004/LT05_CU_004004_19910319_20210423_02_DSWE">browse away</a></p></li>
+<li><p>these data first ARD data FIRST</p></li>
+<li><p>this software has a nice look</p></li>
+</ul>
+</div>
+<div class="section" id="usgs-stac-browser">
+<h2><img alt="USGS STAC BROWSER" src="https://github.com/tonybutzer/assets/blob/master/0_cluster/stack_browser_noice.JPG?raw=true" /><a class="headerlink" href="#usgs-stac-browser" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="whats-next">
+<h1>Whats Next?<a class="headerlink" href="#whats-next" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Test run Pat Danielsons - ARD Science Product Flows in an optimized cluster</p></li>
+<li><p>Refine Cluster - betterFasterCheaper - spot instances - resource groups - mitigate instance availability issues</p></li>
+<li><p>Hire a coder - make her malleable - Princess Malleable</p>
+<ul>
+<li><p>reduce current technology debt</p></li>
+<li><p>minimize future technology debt</p></li>
+<li><p>develop a set of reusable python 2nd level libraries worth of the parallel cluster</p></li>
+</ul>
+</li>
+</ul>
+<img src="https://github.com/tonybutzer/assets/blob/master/0_cluster/rico_lindsay.JPG?raw=true" alt="clone" title="Clone Rico Title" width="40%"/>
+-- Clone Rylie!<hr class="docutils" />
+<div class="section" id="more">
+<h2>more<a class="headerlink" href="#more" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Disrupt the IT Service model</p>
+<ul>
+<li><p>should be better integrated with our team</p></li>
+<li><p>Quality and responsiveness needs to improve to match the Speed of Cloud.</p></li>
+<li><p>DevOps by definition is a tightly coupled partnership</p></li>
+</ul>
+</li>
+<li><p>Improve Training for everyone.</p></li>
+<li><p>Develop a Path to the Cluster</p>
+<ul>
+<li><p>tested code</p></li>
+<li><p>cluster appropriate test gate</p></li>
+<li><p>bench mark and profile - compute and memory requirement analysis</p></li>
+<li><p>instance type and number from the newTBD pcluster_resource_wizard</p></li>
+<li><p>test one ARD or one scalable unit (one year, one tile)</p></li>
+<li><p>storage strategy</p></li>
+</ul>
+</li>
+<li><p>Determine mitigations for python conda hell</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="whats-next-at-high-level">
+<h1>Whats Next at High Level?<a class="headerlink" href="#whats-next-at-high-level" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://tonybutzer.github.io/bslurm2/pc_gantt.html">GANTT CHART</a></p>
+<div class="section" id="deep-dive-on-cluster-tech-things">
+<h2>Deep Dive on Cluster Tech Things<a class="headerlink" href="#deep-dive-on-cluster-tech-things" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-look-deeper-at-only-one-thing-observability">
+<h3>A look deeper at only one thing –&gt; Observability<a class="headerlink" href="#a-look-deeper-at-only-one-thing-observability" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">docker</span> <span class="n">dashboard</span> <span class="p">(</span><span class="n">prometheus</span><span class="o">/</span><span class="n">grafana</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">cost</span> <span class="n">taxi</span> <span class="n">cab</span> <span class="n">meter</span> <span class="p">(</span><span class="n">tbd</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">log</span> <span class="n">managment</span> <span class="ow">and</span> <span class="n">analysis</span>
+<span class="o">-</span> <span class="n">alerting</span>
+<span class="o">-</span> <span class="n">pipeline</span> <span class="n">health</span> <span class="n">instrumentation</span> <span class="o">-</span> <span class="ow">and</span> <span class="n">retrys</span> <span class="o">-</span> <span class="n">like</span> <span class="n">gitlab</span><span class="o">-</span><span class="n">runners</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">a</span> <span class="n">second</span> <span class="n">look</span> <span class="n">at</span> <span class="n">elastic</span> <span class="ow">and</span> <span class="n">kibana</span> <span class="k">for</span> <span class="n">some</span> <span class="n">of</span> <span class="n">these</span> <span class="n">items</span>
+<span class="o">-</span> <span class="n">application</span> <span class="n">observability</span> <span class="o">-</span> <span class="n">openTelemtry</span> <span class="ow">and</span> <span class="n">Xray</span>
+<span class="o">-</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">superuser</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">questions</span><span class="o">/</span><span class="mi">1330824</span><span class="o">/</span><span class="n">how</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">stop</span><span class="o">-</span><span class="n">tmux</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">launching</span><span class="o">-</span><span class="n">login</span><span class="o">-</span><span class="n">shells</span>
+<span class="o">-</span> <span class="s2">&quot;Who invented liquid soap and why?&quot;</span> <span class="o">-</span> <span class="n">The</span> <span class="n">Sure</span> <span class="n">Thing</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://last9.io/blog/observability-vs-telemetry-vs-monitoring/">observe monitor</a></p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Perfectionism is a refusal to accept any standard short of perfection.</p></li>
+<li><p>Idealism is the practice of pursuing ideals, even if they are unrealistic.</p></li>
+<li><p>Perfectionism is about rejection.</p></li>
+<li><p>Idealism is about practice.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="no">
+<h1>No<a class="headerlink" href="#no" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="yes-but-we-will-charge-you-and-move-the-schedule-to-the-right">
+<h1>Yes - but we will charge you and move the schedule to the right.<a class="headerlink" href="#yes-but-we-will-charge-you-and-move-the-schedule-to-the-right" title="Permalink to this headline">¶</a></h1>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="aaa_appendix.html" class="btn btn-neutral float-left" title="Stage A: Appendix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

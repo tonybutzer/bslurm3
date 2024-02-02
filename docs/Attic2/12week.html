@@ -1,0 +1,1410 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Week 12 &mdash; uberBrandon HPC AWS Parallel Computer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> uberBrandon HPC AWS Parallel Computer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../0_agg.html">Planning for the Prototype Parallel Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../0_agg.html#current-sprint">Current Sprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../0_agg.html#analysis-focus">Analysis Focus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../0_agg.html#planning-focus">Planning Focus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../0_agg.html#sdlc-phase-summary">SDLC Phase Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../0_agg.html#user-story">User Story</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html">Week 10 - We are Really on to Something Here:</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#a-lot-to-cover-today">A lot to cover today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#tony-yamls-on">Tony yamls on</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#next-2-classes-yaml">Next 2 classes - Yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#everyone-loves-a-grid">Everyone loves a Grid</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#demo-klm-shapefiles-geoviews-maps">Demo - klm - shapefiles - geoviews - maps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#week-11">Week 11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#class-recap">Class Recap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#what-s-happening-in-pangeo-land">What’s Happening in Pangeo Land</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#data-wrangling-working-group">Data Wrangling Working Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#data-lake-work">Data Lake Work</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#signell-reading-list">Signell Reading List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#now-a-word-from-ssh-its-the-key-to-every-door">Now a word from ssh - its the key to every door</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#ssh-keys">ssh keys</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../1_agg.html#ssh-summary">SSH Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../1_agg.html#where-they-go">Where they go</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../1_agg.html#they-look-like-this">They look like this</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../1_agg.html#the-belong-here">The belong here</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#ssh-use-cases">SSH Use Cases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#github-and-code-usgs-gov">Github and code.usgs.gov</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#create-a-repo-add-a-file-edit-a-file-git-add-git-push">Create a repo - add a file - edit a file - git add - git push</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#windows-git-tools">Windows Git Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#hls-next-week">HLS - Next WEEK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#brave-sir-logan-and-the-cmr">Brave Sir Logan and The CMR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#geojson-io-and-google-measure-distances-klm">geojson.io and google - measure distances - klm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#hls-grid">HLS GRID</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#sentinel">Sentinel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#composite-work">Composite Work</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#pangeo-startup-sequence">Pangeo Startup Sequence</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#landsat-8-toa">Landsat-8 TOA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#simple-animations-using-landsat-8-toa">Simple Animations using Landsat-8 TOA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#denali-integration-scenarios">Denali integration Scenarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#cloud">Cloud</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#unpacking-the-aws-cloud">Unpacking the AWS Cloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#location-location-location">Location Location Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#aws-data-centers">AWS Data Centers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#cloud-advantages">Cloud Advantages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#cloud-disadvantages">Cloud Disadvantages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#managing-costs">Managing Costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#cattle-versus-pets">Cattle versus Pets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#pets-service-model">Pets Service Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#cattle-service-model">Cattle Service Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#bucket-permissions">Bucket Permissions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#cross-account">Cross Account</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#week-12">Week 12</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#future-classes">Future Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#direct-s3-or-portal-or-something-in-between">Direct S3 or portal or something in between</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#some-folks-just-cannot-let-go-of-portals-https-landsatlook-usgs-gov-data">Some Folks Just Cannot Let Go of Portals https://landsatlook.usgs.gov/data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#kelcy-notebook">Kelcy Notebook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#nathan-s-less-obvious-method-to-cheat-http-by-using-s3">Nathan’s less obvious method to cheat http by using s3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#sentinel-cog-example">Sentinel COG Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#sentinel-stac-gets-this-preference-for-direct-s3-access-correct">Sentinel STAC gets this preference for direct S3 access correct</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../1_agg.html#hls-example">HLS Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#everyone-is-moving-to-the-cloud-getting-there-is">Everyone is moving to the cloud – getting there is ________</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id1">Class Recap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#references">References</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../1_agg.html#if-the-mask-fits-understand-it">If the Mask fits .. understand it</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#nice-tutorials-guest-teacher-of-the-week">Nice Tutorials - Guest Teacher of the Week</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#projections-and-geoviews">Projections and Geoviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id2">What’s Happening in Pangeo Land</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#direct-acyclic-graphs">Direct acyclic Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id3">Data Wrangling Working Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id4">Data Lake Work</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#id5">Signell Reading List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#other">Other</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#id6">Pangeo Startup Sequence</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id7">Denali integration Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#end-of-week-12">END OF WEEK 12</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#glossary">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id8"></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#subtitle-don-t-tell-my-boss">subtitle - Don’t Tell My Boss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#real-world-scene">Real World Scene</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#run-the-orchestration">run the orchestration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#community-interest">Community Interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#community-case-studies">Community Case Studies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#day-in-the-life-of-the-low-budget-et-project">Day in the Life of the low budget ET project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id9"></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#below-here-there-be-unfinished-unpolished-work">Below HERE there be unfinished/unpolished work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#project-execution-plan">Project Execution Plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#december-milestone">December Milestone</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#week-14-olena-matplotlib-and-pandas">Week 14 - Olena – matplotlib and pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#eros-items-of-interest">EROS Items of Interest</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#favorite-featured-references">Favorite/Featured References</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#pangeo-jupyter-book-that-ryan-abernathey-has-created">Pangeo Jupyter Book - that Ryan Abernathey has Created –&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#scott-henderson-medium-article">Scott Henderson Medium Article</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#id10">Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#featured-instructors-key-points">Featured Instructors - Key Points</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#open-data-cube-odc-glimpse">Open Data Cube (ODC) - glimpse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#use-open-data-cube-to-extract-dwyer-cube-from-sentinal-s3-cogs">Use Open Data Cube to extract Dwyer Cube from Sentinal S3 COGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#then-use-the-big-pangeo-to-explore-compositing-with-bunde-postma-danielson">Then use the big pangeo to explore Compositing with (Bunde, Postma, Danielson)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#odc-outputs-netcdf-nc-files-in-s3">ODC Outputs (netcdf/nc files in S3)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#maine-masked-s2-all-bands-nc">maine_masked_s2_all_bands.nc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#concept-of-operations">Concept of Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#the-ecosystem">The Ecosystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#github">Github</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#since-everything-in-the-cloud-is-ephemeral-github-is-crucial">since everything in the cloud is EPHEMERAL- GITHUB is CRUCIAL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#compute-aka-ec2-instance-s">Compute aka ec2 instance(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#storage-aka-s3-buckets">Storage aka s3 buckets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#inputs">Inputs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#public-data-sets">Public Data Sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#processing">Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#outputs">Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#questions">Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#pictures">Pictures?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#week-15-hpc-edition-pangeo-singularity">Week 15 HPC Edition Pangeo + Singularity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#next-week-aaron-friesz-teaches-class-on-monday">NEXT WEEK - Aaron Friesz - Teaches class on Monday</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id11">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#around-the-projects">Around the Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#hpc">HPC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#i-like-tallgrass-vs-denali">I like Tallgrass vs. Denali</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#but-salloc-job-1567397-has-exceeded-its-time-limit-and-its-allocation-has-been-revoked">BUT –&gt;  salloc: Job 1567397 has exceeded its time limit and its allocation has been revoked.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#singularity-demo">Singularity Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#singularity-features-why-was-it-created">Singularity Features - why was it created?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#singularity-versus-pure-docker">Singularity Versus pure Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../1_agg.html#hpc-doc-walk-thru">HPC DOC Walk Thru</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#big-data-and-data-cubes">Big Data and Data Cubes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#data-lake-discussion-demo">Data Lake Discussion - Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#two-hpc-pangeo-notebooks-demos">Two HPC Pangeo notebooks demos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#steffi-s-mini-pangeo">Steffi’s mini pangeo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#bigpangeo">bigPangeo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#data-lake">Data Lake</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#approach">approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#dwwg-next-steps">DWWG next steps:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#show-stac-for-maine-and-clipping-and-crs-from-platecarree">Show STAC - for maine and clipping and crs from plateCarree</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#week-16-welcome-landfire">Week 16 - Welcome Landfire</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#what-is-this-class">What is this class?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#teams">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#a-group-of-experts">A group of experts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#today">Today</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#prepare-the-pangeo-release-the-kracken">Prepare the Pangeo - release the kracken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#start-the-pangeo-tony-start-it">start the pangeo tony START IT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#id12">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#steffi-and-olena">Steffi and Olena</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#modis-derived-ndvi-an-land-surface-temperature">Modis derived NDVI an Land Surface Temperature</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#pat-and-kory">Pat and Kory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#make-friends-with-git">Make friends with git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#quit-hiding-your-code-and-data">quit hiding your code and data -</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#from-kindergarten">From Kindergarten</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#landsat-albers-by-way-of-bt-detour">Landsat Albers by way of BT detour.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#data-transfer-how-do-i-get-my-data-to-and-from-the-cloud">Data transfer - how do I get my data to and from the cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#question-of-the-week-partial-git-clones">Question of the Week - Partial Git Clones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#use-wget-for-single-notebooks">use wget for single notebooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#costs">Costs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#devops-consulting-tony">DevOps Consulting - tony</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#prior-videos-are-available-in-m-stream">Prior videos are available in M$-stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#rich-signell-hidden-gem">Rich SigNELL hidden gem</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#week-17-google-cloud-and-aws-oh-my">Week 17 Google Cloud and AWS Oh My</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#what-does-this-class-teach-again">What does this class teach again?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id13">Future Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#past-videos">Past Videos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#k-90daytemp">K 90daytemp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../1_agg.html#featured-video">Featured Video</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#pangeo-access">Pangeo Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#evapo-cartoon">Evapo Cartoon</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#class-context">Class Context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#demo-overview">Demo Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#rclone-examples">Rclone Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#arcpy-vs-open-source">ARCPY vs. Open Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#databases-are-so-yesterday">Databases are so yesterday</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#but-if-you-insist-on-postgres">But if you insist on postgres</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#i-am-talking-to-you-opendatacube">I am talking to you OpenDataCube</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#what-does-a-world-class-data-center-look-like">What does a world class data center look like?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#these-classes-propose-pangeo-as-a-way-for-science">These classes propose PANGEO as a way for science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#sandbox">Sandbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#prototyping-phase">Prototyping Phase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#goals-characteristics">Goals/Characteristics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#user-tl-dr">USER TL;DR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#new-usgs-chs-sandbox">NEW USGS CHS SANDBOX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#http-tbd">http://TBD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#what-about-the-big-pangeo">What about the big pangeo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#technical-stack">Technical Stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#week-18-hls-from-s3-aaron-friesz">Week 18 HLS from S3 Aaron Friesz</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#science-without-the-suffering">Science without the suffering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#data-without-the-dukkha">Data without the dukkha</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#manifestations-without-the-maya">Manifestations without the maya</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#aaron-friesz">Aaron Friesz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id14">Future Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#hackathon-problem-solving">Hackathon, Problem Solving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#cogs-good-says-og-the-caveman">“COGs good!” - says OG (the caveman).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#campfire-anyone">Campfire Anyone?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#past-pangeo-videos-here">Past Pangeo Videos Here</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#in-other-news-don-t-get-your-nads-mixed-up">In other news - don’t get your NADs mixed up</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../1_agg.html#week-19-fire-science-with-landsat-albers-scenes">Week 19 Fire Science with Landsat Albers Scenes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#two-demo-notebooks">Two demo Notebooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#aaron-friesz-lake-isabella-fire-2016-animations">Aaron Friesz - Lake Isabella Fire 2016 Animations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../1_agg.html#benefits-of-these-quick-collaborations">Benefits of these quick collaborations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#this-class-will-evolve-to-a-series-of-independent-small-labs-and-a-class-sylabus-with-luck-and-effort">This class will evolve to a series of independent small labs and a class sylabus. - with luck and effort :-)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#tony-butzer">Tony Butzer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#id15">Future Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#next-week-may-11-kelcy-smith-dask-and-land-change-detection">Next week May 11 - Kelcy Smith - Dask and Land Change Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../1_agg.html#class-moving-to-mondays-at-noon">Class Moving to Mondays at Noon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../1_agg.html#composites">Composites</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_agg.html">Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_agg.html#jupyter-sandbox-in-ga-space">Jupyter Sandbox in GA Space</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#quick-notes">Quick notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_agg.html#project-website">Project Website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_agg.html#k8s">K8s</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#instance-sizing">Instance Sizing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_agg.html#infrastructure-notes">Infrastructure Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#bucket-creation">Bucket Creation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#reference">Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#quick-excerpt">Quick Excerpt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_agg.html#aws-cost-reviews">AWS Cost Reviews</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_agg.html#chs">CHS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_agg.html#infrastructure-devops-cookbook">Infrastructure DevOps Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#devops-details">DEVOPS details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#devops-weekly">DEVOPS WEEKLY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#create-mini-pangeo">Create Mini-Pangeo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#tljh-install">tljh install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../2_agg.html#techno-babble">techno-babble</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#docker-and-docker-logs">docker and docker logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#chs-and-chs-processes">CHS and CHS Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#process-recap-of-requestor-pays">Process recap of requestor pays</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#chs-processes">CHS Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#the-board-cab">The Board CAB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#cab-request-process">CAB Request Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../2_agg.html#synopsys">Synopsys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#chs-example-lsds-s3-dev-et-data">CHS Example lsds-s3-dev-et-data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../2_agg.html#commit">Commit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../2_agg.html#gitlab-repo">gitlab repo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../2_agg.html#cft">CFT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#pangeo-process">Pangeo Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../2_agg.html#need-to-understand-the-gitlab-structure">Need to understand the gitlab structure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#special-iam-users">Special IAM Users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../2_agg.html#bucket">bucket</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#bucket-data-moving">bucket data moving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#getting-data-from-dev-et-data-to-the-netapp">getting data from dev-et-data to the netapp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../2_agg.html#using-filezilla">Using FileZilla</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../2_agg.html#using-pycharm">Using Pycharm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#mounting-s3">Mounting S3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../2_agg.html#pycharm-code-for-ssh-and-for-sftp">Pycharm Code for ssh and for sftp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../2_agg.html#code-example-select-file-pattern-download">Code example select file pattern download</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_agg.html">DataOps Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#data-et-case-study">Data - ET Case Study</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#current-input-data-to-the-veget-model">Current Input data to the VegET model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#detailed-input-description-from-steffi">Detailed Input Description from Steffi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#precipitation">Precipitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#potential-et">Potential ET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#average-air-temperature">Average air temperature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#ndvi-normalized-difference-vegetation-index">NDVI - Normalized Difference Vegetation Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#soil-properties">Soil Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#data-on-aws">Data on AWS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../3_agg.html#available-data-on-aws">Available data on AWS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../3_agg.html#missing-data-on-aws">Missing data on AWS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#questions">Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#assumptions">Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#what-data-is-in-the-cloud">What Data is in the “CLOUD” ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#where">Where</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#how">How</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#aws-registry">AWS Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#more-portals-and-buckets">More Portals and Buckets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#lpdaac">LPDAAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#the-keystone-product-modis-250m-ndvi-16-day-sinusoidal-tiles">The Keystone Product MODIS 250m NDVI 16 Day Sinusoidal Tiles.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#mod13q1-v6">MOD13Q1 v6</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#data-wrangle">Data Wrangle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#rclone-is-the-bomb">rclone is THE BOMB!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_agg.html#using-the-netapp">Using the NETAPP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#id1">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#air-temperature">Air Temperature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#sync-to-bucket">Sync to Bucket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#actual-sync">Actual Sync</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../3_agg.html#dry-run">Dry run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../3_agg.html#for-reals">For Reals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#nuke-prefix">Nuke prefix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#id2">Precipitation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../3_agg.html#id3">For Reals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../3_agg.html#git-issue">Git Issue?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_agg.html#data-science-cookbook">Data Science Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html">Code python ET Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#veget-code">VegET Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#code-readability">Code Readability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#simple-user-interface">Simple User Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#python3-run-veget-py-40n-80e">python3 run_veget.py 40N-80E</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#simple-and-separate-param-files">Simple and Separate Param Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#run-params">run params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#model-params">model params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#path-params">path params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#clean-code-and-code-smells">Clean Code and Code Smells</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../4_agg.html#speculative-generality">Speculative Generality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#code-refactoring">Code Refactoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#id1"></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#github-repo">Github Repo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#author">Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#collaboration-obstacles">Collaboration Obstacles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#mitigations">Mitigations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#chs-tic-cartoon">CHS TIC Cartoon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#scaling-more-to-come">Scaling - more to come</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#pure-simple-threads-scaling-101">pure simple threads scaling 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#docker-swarm-nice">docker swarm - nice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#kubernetes-k8s-only-if-you-have-lots-of-time-to-learn-k8s-or-k3s">kubernetes k8s - only if you have lots of time to learn k8s or k3s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#pangeo-and-dask-promising">Pangeo and Dask - promising</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../4_agg.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_agg.html#aws-batch-i-really-like-this">AWS Batch - I really like this</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_agg.html">National Parks Service Synergy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#the-big-vision-earthmap">The Big Vision EarthMAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#concept">Concept</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#timeframe">Timeframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#project-initiation-mou">Project Initiation MOU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#github-repos">Github Repos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#project-engineering-notebook">Project Engineering Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#pilot-aoi">Pilot AOI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#general-collaboration-outside-usgs">General Collaboration outside USGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#collaboration-communication-plan">Collaboration Communication Plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#philosophy-approach">Philosophy Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#verify-data-inputs">Verify Data Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#parks-service-data-inputs">Parks Service Data Inputs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../7_agg.html#data-storage-model">Data Storage Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../7_agg.html#compute-scaling-model">Compute Scaling Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../7_agg.html#discuss-snow-cover-estimates-versus-aux-data">Discuss Snow Cover Estimates versus Aux Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../7_agg.html#code-structure-and-some-simple-refactoring">Code structure and some simple refactoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../7_agg.html#jupyter-notebooks-for-shared-science">Jupyter Notebooks for shared science</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../7_agg.html#general-sharing">General Sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../7_agg.html#shared-science-open-source-efforts">Shared Science Open Source Efforts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../7_agg.html#the-xarray-abstraction">The Xarray Abstraction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../7_agg.html#input-parameters-and-input-data-discussions">Input Parameters and Input Data Discussions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../7_agg.html#visualizing-the-input-data-the-clay-in-our-fingers">Visualizing the Input Data - the clay in our fingers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../8_agg.html">SCRUM - running</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../8_agg.html#wip">WIP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#goals-week-ending-5-29-2020">Goals Week Ending 5/29/2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#week-ending-5-22-2020">Week Ending 5/22/2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#week-ending-5-15-2020">Week Ending 5/15/2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#week-ending-5-8-2020">Week Ending 5/8/2020</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#accomplishments">Accomplishments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#enabling-technologies">Enabling Technologies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#traditions">Traditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#next-week">Next Week</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#april-25-2020">April 25, 2020</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#code-taxonomy-bigger-pictures">Code Taxonomy - Bigger Pictures</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#april-15-2020-sandbox-and-scaling">April 15, 2020 Sandbox and Scaling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#delaware-gets-hot-then-cold">Delaware Gets HOT then COLD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#march-30-2020-gregory-rouze">March 30, 2020 Gregory Rouze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#march-29-2020">March 29,2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#darin">Darin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#march-27-2020-steffi">March 27, 2020 Steffi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#march-21-2020">March 21, 2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#gabe-steffi">Gabe/Steffi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#id1">Darin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#assignment">Assignment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#tony">Tony</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#march-18-2020">March 18, 2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#id2">Darin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#juxtapose">Juxtapose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#march-17-2020">March 17, 2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#git-memory">Git Memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#animations-and-prism-science-data">Animations and Prism Science Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#temperature">Temperature</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#march-16-2020">March 16, 2020</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#id3">Tony</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#mike-tercek">Mike Tercek</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#march-14-2020">March 14, 2020</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#id4">Tony</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#mar-12-2020">Mar 12 2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#steffi">Steffi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#id5">Mar 12 2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#id6">Steffi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#mar-10-2020">Mar 10, 2020</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#id7">Tony</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#decision-on-land-surface-phonology-lsp-library">Decision on Land Surface Phonology (LSP) Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../8_agg.html#gabe-and-steffi">Gabe and Steffi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#mar-1-2020-its-really-march">Mar 1, 2020 - Its really March?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#pangeo">Pangeo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#feb-29-2020-steffi-gabe-darin">Feb 29, 2020 - Steffi, Gabe, Darin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#this-project-is-taking-off">This project is taking off</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#feb-28-2020-meet-with-steffi">Feb 28, 2020 - meet with Steffi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#feb-27-2020">Feb 27, 2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#detailed-items">Detailed Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../8_agg.html#notes-from-yellowstone">Notes from Yellowstone</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../8_agg.html#wbs">WBS -</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html">ODC Synergy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#odc-who-is-who">ODC Who is Who</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#eros-org-chart">EROS ORG CHART</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#landfire-synergies">LandFire Synergies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#sanath-activities">Sanath Activities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#basic-pangeo-ramp-up-wip">Basic Pangeo Ramp-up - WIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#common-items">Common Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#topics">Topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#landfire-models-in-the-cloud">Landfire Models in the Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#costs">Costs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#sponsor-engagement-strategy">Sponsor Engagement Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#animations">Animations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#indexing-and-histogram-stretch-sadness">Indexing and Histogram Stretch Sadness</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#this-notebook-demonstrates-three-issues">This Notebook Demonstrates Three Issues:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#scene-data-corners-versus-product-corners">1. Scene/Data Corners versus Product Corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#wrs-edge-conditions">2. WRS edge conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#some-contrast-stretch-methods-are-not-smart-about-fill">3. Some contrast stretch methods are not smart about fill</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#agile-terminology">Agile Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#mentor-agreement-example">Mentor Agreement Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#mentoring-contract">MENTORING CONTRACT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#expectations-and-goals">Expectations and Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#meeting-specifics">Meeting Specifics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#topics-and-ground-rules">Topics and Ground Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#focus-and-scope">Focus and Scope</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#data-cube-conf">Data Cube Conf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#highlights">Highlights</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#people">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#presentation-find-the-link">Presentation - find the link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#standards">Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#videos-from-data-cubes-providers">Videos from Data Cubes Providers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#appendix-unstructured-notes">Appendix (Unstructured Notes)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#trivial-details-below">Trivial details below</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#kickoff-email">Kickoff Email</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#slide-fatigue">Slide Fatigue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#notes">Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#from-mac-find-time">From MAC - Find Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#tactical-todo">Tactical Todo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#id1">Costs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#initial-topic-dartboard">Initial Topic Dartboard</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#open-data-cube">Open Data Cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#pangeo">Pangeo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#collection-2">Collection-2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#cloud">Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#evaporation-transpiration-meets-aws-cloud-stefanie-kagone-2-11-2020">01-Evaporation-Transpiration-Meets-AWS-Cloud-Stefanie-Kagone-2-11-2020</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#outline">Outline:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#quote">Quote –</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#purpose-and-mission">&gt;&gt; Purpose and Mission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#storage">&gt;&gt; Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#known-data-lakes">+++ Known Data Lakes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#compute">&gt;&gt; Compute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#network">&gt;&gt; Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#id2">&gt;&gt; Open Data Cube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#id3">PANGEO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#architecture-and-philosophy">&gt;&gt; Architecture and Philosophy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#future-yes-i-can-do-landsat-science-on-my-phone">&gt;&gt; Future - yes I can do Landsat Science on my Phone!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#jupyter-setups-numerous-and-growing">** Jupyter Setups - numerous and growing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#sandboxes-notable">++ Sandboxes Notable</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#jupyter-notebook-and-jupyter-labs">Jupyter Notebook and Jupyter Labs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#what-s-next">What’s Next</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#small-pilots">?? Small Pilots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#action-chs-authorization-for-science">–&gt; Action: CHS authorization for science</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#data">Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#curating-and-optimal-organizing-in-aws-us-west-2-oregon-region">&gt;&gt; Curating and Optimal Organizing in AWS - us-west-2(Oregon) Region</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#data-access">Data Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#s3-is-like-nfs-on-steriods">++ S3 is like NFS on steriods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#xarrays-are-a-powerful-abstraction-where-customized-spatial-temporal-muli-sensor-cubes-are-being-constructed">++ XARRAYs are a powerful abstraction where customized spatial/temporal/muli-sensor cubes are being constructed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#real-time-data-slicing-allows-you-to-just-get-the-pixel-and-qa-data-you-want-now">+++ Real-time data slicing allows you to just get the pixel and qa data you want NOW!</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#map-reduce-concept">Map Reduce Concept</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#can-slice-data-any-way-we-want-down-to-single-pixel-or-pixel-rod-timeseries">Can slice data any way we want down to single pixel or pixel rod timeseries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#xarray-think-about-the-sensor-bands-as-extension-dimensions-to-temp-precip">Xarray - think about the sensor bands as extension dimensions to temp/precip</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#notebook-eclectic-repo-and-demo-s">Notebook eclectic repo and demo’s</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#purpose-and-mission-of-opendatacube-and-pangeo-tony">Purpose and Mission of OpenDataCube and PANGEO … Tony</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#essentially-a-cloud-and-data-concierge-to-the-scientist-role">&gt;&gt;&gt; Essentially a cloud and data concierge to the Scientist (Role)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#path-find-and-demonstrate-cloud-optimized-strategies-for-easy-science-exploitation">&gt;&gt;&gt; Path-find and demonstrate cloud optimized strategies for easy science exploitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#remove-any-residual-intimidation-of-u-cloud-terminology-or-jargen-u">&gt;&gt;&gt; Remove any residual intimidation of <u>cloud terminology or jargen</u></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#id4">Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#s3-aws">S3  (AWS)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#simple">++ Simple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#scalable">++ Scalable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#cost-effective">++ Cost Effective</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#ubiquitous">++ Ubiquitous</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#direct-access-no-damn-portal-no-need-to-buy-local-storage">++ Direct Access - no damn portal - no need to buy local storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#management-of-data-organization-and-migration-policies-is-u-someone-else-s-problem-u">++ Management of data organization and migration policies is <u>”someone else’s problem!” </u></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#id5">Known Data Lakes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#what-aws-region-many-dataset-data-lakes-are-being-pilot-tested-in-us-west-2-oregon">What AWS Region?- many dataset/data-lakes are being pilot tested in us-west-2-oregon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#usa-collection-1-level-2-albers">USA Collection-1 - Level-2 - Albers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#africa-collection-2-provisional-test-data">Africa Collection-2 Provisional Test Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#created-in-the-cloud-lpgs-in-4-days">Created in the cloud LPGS - in 4 days</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#heat-maps-below">Heat maps below</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#diagrams-africa-scene-depth-heatmap-png">diagrams/africa_scene_depth_heatmap.PNG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#collection-2-coming-soon">Collection-2 Coming Soon!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#jupyter-setups-sandboxes">Jupyter Setups/Sandboxes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#ordered-by-eros-scientist-relevance">Ordered by EROS Scientist Relevance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#usgs-pangeo-sandbox">1. USGS PANGEO Sandbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#private-chs-sandboxes-tony-etc">2. Private CHS Sandboxes - Tony etc.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#show-these">Show these</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#pangeo-esip-funded">3. PANGEO ESIP Funded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#open-data-cube-sponsered-by-the-aussies">4. Open Data Cube Sponsered by the Aussies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#id6">Show these</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#id7">Compute:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#click-here-middle">Click here (middle)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#aws-ec2-instance-types-jargon-quick-glimpse">Aws EC2 instance types; Jargon quick glimpse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#scaling">Scaling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#serverless-lambda">+++ Serverless Lambda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#aws-batch">+++ AWS Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#kubernetes-orchestration">+++ Kubernetes Orchestration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#dask">+++ DASK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#auto-scaling-groups">+++ Auto-scaling groups</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#networking-vpcs-subnets-masks-security-groups-out-of-scope">Networking VPCs, subnets/masks, security groups - out of scope</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#suffice-to-say-if-i-am-at-eros-or-on-the-vpn-i-can-get-to-my-aws-chs-instance">Suffice to say - if I am at EROS or on the VPN - I can get to my AWS CHS instance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#ssh">ssh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#port-80-and-8080">Port 80 and 8080</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#ssh-tunnels-are-interesting">ssh tunnels are interesting :-)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#id8">PANGEO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#eros-and-usgs-scientists-should-play-in-esip-sandboxes">&gt;&gt;&gt; EROS and USGS Scientists should play in ESIP Sandboxes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#can-run-in-an-u-hpc-u-if-you-are-into-that-kind-of-setup-i-m-talking-to-you-dr-crawford">&gt;&gt;&gt; Can run in an <u>HPC</u> - if you are into that kind of setup - I’m talking to you Dr. Crawford.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#demo1-africa">DEMO1 - Africa</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#data-lake-landsat8-level-1-sponsored-by-planet-and-amazon-aws-u-public-u">– Data Lake = Landsat8 Level 1 – Sponsored by Planet and Amazon/AWS <u>PUBLIC</u></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#sandbox-aussie-digital-earth-africa-in-aws-us-west-2-u-because-its-the-fastest-u">– Sandbox = Aussie Digital Earth Africa in AWS us-west-2 - <u>because its the fastest</u></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#aoi-lake-rumira-donald-trump-island-u-because-its-small-and-in-africa-u">– AOI = Lake Rumira (Donald Trump Island) - <u> because its small and in africa</u></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#why">Why</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#demonstrates-the-power-of-ubiquitous-cloud-data-in-grabbing-an-aoi-thru-time-u-bit-u">+++ Demonstrates the power of ubiquitous cloud data in grabbing an AOI thru time <u>(BIT)</u></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#introduces-u-xarray-u-in-memory-data-abstraction-so-u-powerful-a-concept-u-i-it-makes-my-head-hurt-i">+++ Introduces <u>XARRAY</u> in-memory data abstraction – so <u>powerful a concept</u> - <i>it makes my head hurt.</i></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#link">LINK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#id9">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#demo2-usa-hayden-island-collection1-level2-albers">Demo2 - USA - Hayden Island Collection1 - Level2 - Albers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#id10">Link</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#id11">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#notebook-github-tonybutzer-eclectic-repo-tour">Notebook github tonybutzer eclectic repo tour</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#id12">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#open-data-cube-internal-details">Open Data Cube Internal Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#mtl-xml-json-yaml-oh-my">MTL, XML, JSON, YAML – Oh My!</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#postgresql-dataset-record-detail-ds-0-metadata-doc">Postgresql - dataset record - detail ds[0].metadata_doc</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#javascript-applications">Javascript Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#id13">What’s Next?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#pilot-evapo-project-in-aws">Pilot Evapo Project in AWS?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#open-data-cube-on-site-eros-u-training-u">Open Data Cube on-site EROS <u>Training </u></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#geoscience-australia-campus-and-remote-dish-for-landsat">GeoScience Australia Campus and Remote Dish for Landsat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#alice-springs-australia">Alice Springs Australia</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#future">Future</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#followon">Followon</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#deep-dives-on-topics">— Deep Dives on topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#outreach-to-other-grass-root-scientists">— Outreach to other grass-root scientists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#mitigating-the-need-to-tile-data-as-a-pre-processing-activity-sensitive-topic">— Mitigating the need to tile data as a pre-processing activity - sensitive topic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#community-for-data-integration">Community for Data Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#q-a">Q&amp;A</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../9_agg.html#satsearch-plus-stac-intake-plus-pangeo-chat">Satsearch plus stac-intake plus pangeo Chat</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#big-pangeo-hints">BIG PANGEO HINTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#credential-tricks">Credential Tricks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#gdal">GDAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../9_agg.html#aws-requester-sure-does-pay">AWS requester - sure does pay!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../9_agg.html#stopping-tljh">Stopping TLJH</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#services">Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../9_agg.html#debugging">Debugging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../zz_0.html">HPC Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#signularity-references">Signularity References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#useful-references">Useful References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#useless-references">Useless References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#useful-videos">Useful Videos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#useless-videos">Useless Videos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#ideas">Ideas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../zz_0.html#key-technologies-that-allow-scaling">Key Technologies that Allow Scaling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zz_0.html#scope">Scope:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zz_0.html#success-criteria">Success Criteria:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zz_0.html#business-case-the-big-why">Business Case;  The BIG WHY!</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#et-staff-contact-list">ET Staff Contact List</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../zz_0.html#stakeholders">Stakeholders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zz_0.html#summary-of-risks">Summary of Risks:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zz_0.html#communication-plan">Communication plan:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#constraints">Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#id1">Stakeholders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zz_0.html#project-success-recipe">Project Success Recipe</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uberBrandon HPC AWS Parallel Computer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Week 12</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Attic2/12week.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <hr class="docutils" />
+<div class="section" id="week-12">
+<h1>Week 12<a class="headerlink" href="#week-12" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Kelcy's</span> <span class="pre">notebook</span></code> – Landsat Collection-2 and STAC</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HLS</span></code> Notebooks for mosaic overlap issue</p>
+<ul>
+<li><p>start with browse for less clouds and more coverage</p></li>
+<li><p>Look for these NASA LPDAAC concepts in today’s notebooks</p>
+<ul>
+<li><p>CMR - Common Metdata Repository</p></li>
+<li><p>UMM – Unified Metadata Model</p></li>
+<li><p>Authentication</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DAGs</p></li>
+<li><p>Data Wrangling</p></li>
+<li><p>Road to Reusable Code - How?</p>
+<ul>
+<li><p>Start with common goals</p>
+<ul>
+<li><p>Open Source Python</p></li>
+<li><p>In the cloud</p>
+<ul>
+<li><p>and in the HPC(s)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Use the same platform for sharing</p>
+<ul>
+<li><p>Jupyter Notebooks</p></li>
+<li><p>github and code.usgs.gov</p></li>
+</ul>
+</li>
+<li><p>Refine and Refactor your Code so people want to reuse it</p>
+<ul>
+<li><p>Self documented or well documented</p></li>
+<li><p>Clean Code – eliminate code smells</p></li>
+<li><p>Make your code so simple people want to use it</p>
+<ul>
+<li><p>good examples</p>
+<ul>
+<li><p>xarray</p></li>
+<li><p>hvplot</p></li>
+<li><p>folium</p></li>
+<li><p>pandas</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Use opinionated approaches</p>
+<ul>
+<li><p>xarray, pandas, geopandas - all reinforce rigor and reusability</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>good reusable code allows for lots of work done in few lines of code</p></li>
+<li><p>good code is always a journey</p></li>
+<li><p>Organize Science by common interests in addition to projects</p>
+<ul>
+<li><p>Promote non-silo Communication</p></li>
+</ul>
+</li>
+<li><p>make it simple to install - advertise it</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="future-classes">
+<h2>Future Classes<a class="headerlink" href="#future-classes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Model Analysis work Olena Boiko is working on for evapo</p>
+<ul>
+<li><p>We will showcase these notebooks in a future class</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="direct-s3-or-portal-or-something-in-between">
+<h3>Direct S3 or portal or something in between<a class="headerlink" href="#direct-s3-or-portal-or-something-in-between" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>STAC Assets</p>
+<ul>
+<li><p>http (portal like)</p></li>
+<li><p>s3://</p></li>
+<li><p>gdal virtual filesystem specifiers /vsicurl/ – /vsis3/</p></li>
+<li><p>Kelcy and Nathan - map the http to s3 for collection2</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="some-folks-just-cannot-let-go-of-portals-https-landsatlook-usgs-gov-data">
+<h3>Some Folks Just Cannot Let Go of Portals https://landsatlook.usgs.gov/data<a class="headerlink" href="#some-folks-just-cannot-let-go-of-portals-https-landsatlook-usgs-gov-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convert_llurl</span><span class="p">(</span><span class="n">ll_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a landsat look url to an S3 url</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">ll_url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;https://landsatlook.usgs.gov/data&#39;</span><span class="p">,</span> <span class="s1">&#39;s3://usgs-landsat&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">open_dateset</span><span class="p">(</span><span class="n">ll_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Open a file with gdal</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">convert_llurl</span><span class="p">(</span><span class="n">ll_url</span><span class="p">))</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">f</span>
+<span class="c1">#     return gdal.Open(path, gdal.ReadOnly)---</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="kelcy-notebook">
+<h2>Kelcy Notebook<a class="headerlink" href="#kelcy-notebook" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://code.usgs.gov/klsmith/pangeo-examples/-/blob/master/lcmap-time-series-ccd.ipynb">https://code.usgs.gov/klsmith/pangeo-examples/-/blob/master/lcmap-time-series-ccd.ipynb</a></p>
+<hr class="docutils" />
+<hr class="docutils" />
+<div class="section" id="nathan-s-less-obvious-method-to-cheat-http-by-using-s3">
+<h3>Nathan’s less obvious method to cheat http by using s3<a class="headerlink" href="#nathan-s-less-obvious-method-to-cheat-http-by-using-s3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove 33 characters and replace them</span>
+<span class="c1">#remove everything forward of /collection from the cloudfront object URL</span>
+<span class="n">greens</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">greens</span><span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">33</span><span class="p">:])</span>
+<span class="n">swirs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">swirs</span><span class="p">[</span><span class="s1">&#39;Swirs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">33</span><span class="p">:])</span>
+<span class="c1">#append s3://usgs-landsat to the front of the URLs</span>
+<span class="n">greens</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="s2">&quot;s3://usgs-landsat&quot;</span><span class="o">+</span><span class="n">greens</span><span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">])</span>
+<span class="n">swirs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="s2">&quot;s3://usgs-landsat&quot;</span><span class="o">+</span><span class="n">swirs</span><span class="p">[</span><span class="s1">&#39;Swirs&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>kelcy’s code is more readable IMHO</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="sentinel-cog-example">
+<h3>Sentinel COG Example<a class="headerlink" href="#sentinel-cog-example" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="sentinel-stac-gets-this-preference-for-direct-s3-access-correct">
+<h3>Sentinel STAC gets this preference for direct S3 access correct<a class="headerlink" href="#sentinel-stac-gets-this-preference-for-direct-s3-access-correct" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/19/T/CJ/2020/10/S2A_19TCJ_20201014_0_L2A/B02.tif&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@ip-10-12-69-188:~$ aws s3 ls sentinel-cogs
+                           PRE sentinel-s2-l2a-cogs/
+ubuntu@ip-10-12-69-188:~$ aws s3 ls sentinel-cogs/sentinel-s2-l2a-cogs/
+                           PRE 1/
+                           PRE 10/
+                           PRE 11/
+                            ...
+</pre></div>
+</div>
+<div class="section" id="hls-example">
+<h4>HLS Example<a class="headerlink" href="#hls-example" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Buckets</p>
+<ul>
+<li><p>lp-prod-protected</p></li>
+<li><p>lp-prod-public</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rasterio</span> <span class="k">as</span> <span class="nn">rio</span>
+<span class="n">e</span><span class="o">=</span><span class="s1">&#39;https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T18TYR.2020278T154121.v1.5.B04.tif&#39;</span>
+<span class="n">b04</span> <span class="o">=</span> <span class="n">rio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="c1">#dir(b09)</span>
+<span class="n">b04</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="s1">&#39;href&#39;</span><span class="p">:</span> <span class="s1">&#39;https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T19TCM.2020278T154121.v1.5.jpg&#39;</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.umm_json">https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.umm_json</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;https://lpdaac.earthdata.nasa.gov/s3credentials&quot;</span>
+
+<span class="n">Description</span><span class="p">:</span>    <span class="s2">&quot;api endpoint to retrieve temporary credentials valid for same-region direct s3 access&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="everyone-is-moving-to-the-cloud-getting-there-is">
+<h2>Everyone is moving to the cloud – getting there is ________<a class="headerlink" href="#everyone-is-moving-to-the-cloud-getting-there-is" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Opening new horizons:</p>
+<ul>
+<li><p>EU</p></li>
+<li><p>How to migrate the Copernicus Global Land Service to a Cloud environment</p></li>
+</ul>
+</li>
+<li><p>conversion of space-based Earth Observation information into <code class="docutils literal notranslate"><span class="pre">actionable</span></code> knowledge</p></li>
+<li><p>Moving Global Land Services to another completely new and technological challenging cloud computing environment is <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">a</span> <span class="pre">trivial</span> <span class="pre">job.</span></code></p></li>
+<li><p>providing <code class="docutils literal notranslate"><span class="pre">clear</span> <span class="pre">suggestions</span></code> for an efficient ‘cloudification’ of the Copernicus global land production lines and user interfaces,</p></li>
+<li><p>Benefits</p>
+<ul>
+<li><p>greater transparency and reproducibility of the data processing chains, enhancing trust</p></li>
+<li><p>better scalability to handle the large volume of data we expect from future satellites</p></li>
+<li><p>better integration with downstream processing chains and thus more value delivered to research and industry</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> 
+<span class="n">Group</span><span class="p">:</span> <span class="s2">&quot;HLS Interest Group&quot;</span>
+<span class="n">HLS</span><span class="p">:</span> 
+  <span class="o">-</span> 
+    <span class="n">ECO</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Sujan Parajuli&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Devandra Dahal&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Logan Megard&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Neal Pastick&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Mike Oimoen&quot;</span>
+    <span class="n">LCMAP</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Kelcy Smith&quot;</span>
+    <span class="n">LPDAAC</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Cole Krehbiel&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Aaron Friesz&quot;</span>
+    <span class="n">PANGEO</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Tony Butzer&quot;</span>
+    <span class="n">VegDyn</span><span class="p">:</span> 
+      <span class="o">-</span> <span class="s2">&quot;Dinesh Shrestha&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;Trenton Benedict&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class-recap">
+<h2>Class Recap<a class="headerlink" href="#class-recap" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Still attacking data wrangling</p></li>
+<li><p>people should get friendly with github/gitlab – code.usgs.gov</p></li>
+<li><p>pangeo.chs.usgs.gov and other subsidized infrastructure platforms</p></li>
+</ul>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="if-the-mask-fits-understand-it">
+<h4>If the Mask fits .. understand it<a class="headerlink" href="#if-the-mask-fits-understand-it" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://rasterio.readthedocs.io/en/latest/topics/masks.html">https://rasterio.readthedocs.io/en/latest/topics/masks.html</a></p>
+</div>
+</div>
+<div class="section" id="nice-tutorials-guest-teacher-of-the-week">
+<h3>Nice Tutorials - Guest Teacher of the Week<a class="headerlink" href="#nice-tutorials-guest-teacher-of-the-week" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.earthdatascience.org/courses/use-data-open-source-python/multispectral-remote-sensing/landsat-in-Python/">https://www.earthdatascience.org/courses/use-data-open-source-python/multispectral-remote-sensing/landsat-in-Python/</a></p></li>
+<li><p>Pat Danielson - volunteer</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="projections-and-geoviews">
+<h2>Projections and Geoviews<a class="headerlink" href="#projections-and-geoviews" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://geoviews.org/user_guide/Projections.html">https://geoviews.org/user_guide/Projections.html</a></p>
+<ul class="simple">
+<li><p>Managing Overlap in Albers</p></li>
+<li><p>pangeo demos</p></li>
+<li><p>github albers-mosiac repo</p>
+<ul>
+<li><p>https://github.com/tonybutzer/albers-mosaic</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="what-s-happening-in-pangeo-land">
+<h2>What’s Happening in Pangeo Land<a class="headerlink" href="#what-s-happening-in-pangeo-land" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ECO team will continue to get high speed data access to HLS</p>
+<ul>
+<li><p>we have just scratched the surface on how to scale</p></li>
+<li><p>looking for an open source, xarray perhaps, solution to mosiacing like ARCMAP</p>
+<ul>
+<li><p>needs to handle overlapping scenes intelligently</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Scotty H - has lots of great tutorials - a little over my head - but i’m learning.</p></li>
+<li><p>DataLake</p>
+<ul>
+<li><p>interim - s3://dev-et-data/data-lake - can access it from pangeo.cr.usgs.gov</p></li>
+<li><p>Now that Kristi Kline is on the case we may get more attention on a USGS cloud S3 based Data Lake.</p></li>
+</ul>
+</li>
+<li><p>Binder is pretty cool - more free pangeo compute -</p></li>
+<li><p>The scientist is the critical resource on the planet - never compute</p></li>
+</ul>
+</div>
+<div class="section" id="direct-acyclic-graphs">
+<h2>Direct acyclic Graphs<a class="headerlink" href="#direct-acyclic-graphs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>used in DASK</p></li>
+<li><p>used in python code graphing/flow charting - dependency trees</p></li>
+<li><p>graphviz and pyan3 # python analyzer</p>
+<ul>
+<li><p><a class="reference external" href="https://graphviz.org/">https://graphviz.org/</a></p></li>
+</ul>
+</li>
+<li><p>consists of vertices and edges (also called arcs), with each edge directed from one vertex to another, such that following those directions will never form a closed loop.</p></li>
+</ul>
+<p><img alt="dag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Tred-G.svg/440px-Tred-G.svg.png" /></p>
+</div>
+<div class="section" id="data-wrangling-working-group">
+<h2>Data Wrangling Working Group<a class="headerlink" href="#data-wrangling-working-group" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="data-lake-work">
+<h2>Data Lake Work<a class="headerlink" href="#data-lake-work" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Class A Data Assets</p>
+<ul>
+<li><p>Landsat Collection-2</p></li>
+<li><p>Sentinel Cogs</p></li>
+<li><p>Harmonized Landsat Sentinel (1.5)</p></li>
+</ul>
+</li>
+<li><p>Class B Data Assets</p>
+<ul>
+<li><p>NLCD</p></li>
+<li><p>LCMAP Products</p></li>
+</ul>
+</li>
+<li><p>Class C Data Assets</p>
+<ul>
+<li><p>Soil …</p></li>
+</ul>
+</li>
+</ul>
+<p>Concepts:</p>
+<ul class="simple">
+<li><p>shared data - makes less wrangling</p></li>
+<li><p>shared python code - allows reuse</p></li>
+<li><p>cross-project communication - breaks silos and diverse teams build better solutions</p></li>
+<li><p>data deluge is coming - lets be ready to filter and use what we want</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="signell-reading-list">
+<h1>Signell Reading List<a class="headerlink" href="#signell-reading-list" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>https://github.com/pangeo-data/cog-best-practices</p></li>
+<li><p>https://github.com/intake/intake-stac/tree/main/examples</p></li>
+</ul>
+<div class="section" id="other">
+<h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>https://www.earthdatascience.org/courses/use-data-open-source-python/multispectral-remote-sensing/landsat-in-Python/</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="pangeo-startup-sequence">
+<h3>Pangeo Startup Sequence<a class="headerlink" href="#pangeo-startup-sequence" title="Permalink to this headline">¶</a></h3>
+<p><img alt="pang" src="Attic2/./Assets/pangeo-k8s-startup-event-log.PNG" /></p>
+<hr class="docutils" />
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="denali-integration-scenarios">
+<h2>Denali integration Scenarios<a class="headerlink" href="#denali-integration-scenarios" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>composite on AWS — Characterize on Denali or Tallgrass</p></li>
+<li><p>Water Evaporation and Runoff on AWS — Evaluate Water Balance Model fidelity on Denali using Stream Guage Data</p>
+<ul>
+<li><p>brand new USGS <code class="docutils literal notranslate"><span class="pre">Landsat</span> <span class="pre">Collection2</span></code> - Surface Reflectance in UTM</p>
+<ul>
+<li><p>coming soon Albers</p></li>
+</ul>
+</li>
+<li><p>Experimental <code class="docutils literal notranslate"><span class="pre">Harmonized</span> <span class="pre">Landsat-Sentinel</span></code></p></li>
+<li><p>nearFuture Suomi NPP will carry five science instruments</p>
+<ul>
+<li><p>Suomi NPP is the first satellite mission to address the challenge of acquiring a wide range of land, ocean, and atmospheric measurements</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Synergies with google maps and geojson.io</p></li>
+<li><p>NO LICENSE FEES</p></li>
+<li><p>Jen Rover is in HPC school</p></li>
+<li><p>Should be able to use notebooks in both environments - cloud and HPC</p>
+<ul>
+<li><p>IF the python <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">monster</span></code> does not get you!</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="end-of-week-12">
+<h2>END OF WEEK 12<a class="headerlink" href="#end-of-week-12" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

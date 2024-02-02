@@ -1,0 +1,52 @@
+Region: us-west-2
+CustomS3Bucket: dev-ws-parallelcluster-testbucket
+Image:
+  Os: alinux2
+  CustomAmi: ami-04ffb7fc649545d7f
+HeadNode:
+  InstanceType: t2.medium
+  Networking:
+    SubnetId: subnet-08f1118dd59133513
+    SecurityGroups:
+      - sg-067d5d0cb608f6af9
+  Ssh:
+    KeyName: ws-pcluster-keypair
+  Iam:
+    AdditionalIamPolicies:
+      - Policy: arn:aws:iam::427491229895:policy/developer-policy
+    S3Access:
+      - BucketName: ws-out
+Scheduling:
+  Scheduler: slurm
+  SlurmSettings:
+    Dns:
+      DisableManagedDns: true
+      UseEc2Hostnames: true
+  SlurmQueues:
+  - Name: economy
+    ComputeResources:
+    - Name: t2medium
+      Instances:
+      - InstanceType: t2.medium
+      MinCount: 0
+      MaxCount: 4
+    Networking:
+      SubnetIds:
+      - subnet-08f1118dd59133513
+      SecurityGroups:
+        - sg-067d5d0cb608f6af9
+    Image:
+      CustomAmi: ami-04ffb7fc649545d7f
+    Iam:
+      AdditionalIamPolicies:
+        - Policy: arn:aws:iam::427491229895:policy/developer-policy
+      S3Access:
+        - BucketName: ws-out
+          # SharedStorage:
+          # - MountDir: /wsefs
+          # Name: wsefs
+          # StorageType: Efs
+          # EfsSettings:
+          # Encrypted: false
+          # DeletionPolicy: Delete
+

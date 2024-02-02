@@ -1,0 +1,661 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DataOps Cookbook &mdash; uberBrandon HPC AWS Parallel Computer 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> uberBrandon HPC AWS Parallel Computer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html">Planning for the Prototype Parallel Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#gantt-chart">GANTT CHART</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-10-27-2023">Current Week Ending 10/27/2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#terraform-terragrunt-gitlab-runners">terraform/terragrunt gitlab-runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#allowing-pat-and-kory-on-the-cluster-it-takes-a-village">Allowing Pat and Kory on the Cluster - It takes a village</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#kelcy-s-roadmap">Kelcy’s Roadmap</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-week-ending-october-27-2023">Current Week Ending October 27, 2023</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#chaosmonkey-4-node-parallel-cluster-in-watersmart-iac">chaosMonkey 4 node parallel cluster in watersmart IAC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0_agg.html#current-sprint">Current Sprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#analysis-focus">Analysis Focus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#planning-focus">Planning Focus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0_agg.html#sdlc-phase-summary">SDLC Phase Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0_agg.html#user-story">User Story</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html">Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0ws.html#watersmart-cluster">WaterSMart Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iac-journey">IAC Journey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#so-vpcs">SO VPCs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#ws">WS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#therefore-the-usable-host-addresses-in-the-network-10-12-64-0-21-are-2046-2-2044-addresses">Therefore, the usable host addresses in the network <code class="docutils literal notranslate"><span class="pre">10.12.64.0/21</span></code> are (2046 - 2 = 2044) addresses.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#subnets">3 subnets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="0ws.html#nlcd-vpc">NLCD VPC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#availability-issues-in-the-not-quite-infinite-cloud">Availability Issues in the not quite infinite cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0ws.html#iam-roles-and-policies-cluster">IAM Roles and Policies Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="0chaosMonkeyWIP.html">Chaos is Good</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="0chaosMonkeyWIP.html#chaosmonkey">ChaosMonkey</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="000_stage0.html">Stage 0: Feasibility and Concept Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="111_stage1.html">Stage 1: Project Planning.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="222_stage2.html">Stage 2: Gathering Requirements &amp; Analysis.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="333_stage3.html">Stage 3: Design and Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="444_stage4.html">Stage 4: Coding or Implementation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#reading">Reading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#authentication-moving-parts-too-many-some-old-and-dusty">Authentication Moving Parts - too many - some old and dusty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-coding-trials">LDAP Coding Trials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#build-an-ldap-test-server-in-ws-account">Build an LDAP Test Server in ws account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#install-ldap">install ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#configure-ldap">configure ldap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#db-ldif">db.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#adding-users-to-ldap">Adding Users to LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#notional-tony-ldif">Notional tony.ldif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#terraform-the-test-host-for-ldap">Terraform the test host for LDAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="444_stage4.html#demo-terraform-for-brandon">Demo Terraform for Brandon</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#install-and-learn-ldap">Install and Learn LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="444_stage4.html#docker-ldap-tests">Docker LDAP tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#m-active-directory-service-brandon">M$ Active Directory Service - Brandon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldappasswd-example">ldappasswd EXAMPLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#the-ldappasswd-command-is-used-to-change-a-user-s-password-in-an-ldap-lightweight-directory-access-protocol-directory-below-is-an-example-of-how-to-use-the-ldappasswd-command">The <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command is used to change a user’s password in an LDAP (Lightweight Directory Access Protocol) directory. Below is an example of how to use the <code class="docutils literal notranslate"><span class="pre">ldappasswd</span></code> command:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="444_stage4.html#ldap-jargon">LDAP Jargon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="555_stage5.html">Stage 5: Testing and Documentation.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="555_stage5.html#science-workload-alpha-tesing">SCience Workload Alpha Tesing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="555_stage5.html#pat-danielson-dynamic-surface-water-extent">Pat Danielson Dynamic Surface Water Extent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="555_stage5.html#wbs">WBS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html">Stage 6: Deployment.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#manual-deployment-steps-for-uberbrandon">Manual Deployment Steps for uberBrandon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#help-me">HELP ME</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#iac-steps-for-chaosmonkey">IaC Steps for chaosMonkey</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#manual-choas">Manual choas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="666_stage6.html#building-with-the-cli">Building with the CLI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="666_stage6.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#estimating">Estimating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="666_stage6.html#monitoring">Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="777_stage7.html">Stage 7: Maintenance.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="800_user_guide.html">Stage 8: User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="900_admin_guide.html">Stage 9: Admin Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#post-install-stuff">Post Install Stuff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#monitoring-the-cluster-with-prometheus-and-grafana">Monitoring The Cluster with Prometheus and Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-cluster-level-dashboard">Monitor Cluster Level Dashboard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#prometheus-slurm-exporter">prometheus-slurm-exporter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#monitor-node-level-dashboad">Monitor Node Level Dashboad</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#node-exporter">Node Exporter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="900_admin_guide.html#getting-the-compute-node-ip-addresses">Getting the Compute Node IP Addresses</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="900_admin_guide.html#mpi-considerations">MPI Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="900_admin_guide.html#mpi-centos-installations">MPI Centos Installations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aaa_appendix.html">Stage A: Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html">Parallel Cluster Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#tldr-is-the-parallel-cluster-feasible-and-applicable-for-lcnext-yes">tldr; - Is the Parallel Cluster feasible and applicable for LCNext? <code class="docutils literal notranslate"><span class="pre">YES!</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#elevator-pitch">Elevator Pitch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#genius">Genius!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#plans">Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#progress">Progress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#problems">Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#gantt-chart-rough-order-of-magnitude">GANTT CHART - Rough order of Magnitude</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#context-danny-howard">Context Danny Howard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#costs">Costs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#butzer-dev-10-12-71-5-t3a-2xlarge-219-584-month">butzer-dev  10.12.71.5  t3a.2xlarge       $219.584/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#headnode-10-12-64-196-t3-medium-30-368-month">HeadNode  10.12.64.196    t3.medium        $30.368/month</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#ws-gparrish-dev-10-12-65-226-m6i-2xlarge-280-320-month">ws-gparrish-dev  10.12.65.226  m6i.2xlarge       $280.320/month</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#disclaimers">Disclaimers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#engineering-research-scope-responsibilities">Engineering Research Scope - Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#production-devops-items">Production DevOps Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#scientist-teams-responsibilities">Scientist Teams Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#pc-benefits">PC Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#easier-than-most-scale-out-technologies">Easier than most scale out technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm">SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#slurm-benefits">SLURM Benefits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#the-demo">The Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#creating-the-creator-ws-pc-admin-box">Creating the Creator ws-pc-admin-box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#terraform-variables">Terraform Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-cluster-itself-is-created-from-pure-yaml-cool">The Cluster itself is Created from pure yaml - COOL!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#shut-er-down">Shut’er Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#demo-again-with-instruments">Demo Again with Instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#prometheus">Prometheus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#grafana">Grafana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#what-have-we-learned">What Have we Learned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#the-stac-browser">the stac browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#usgs-stac-browser"></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next">Whats Next?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#more">more</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#whats-next-at-high-level">Whats Next at High Level?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="99_demo.html#deep-dive-on-cluster-tech-things">Deep Dive on Cluster Tech Things</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="99_demo.html#a-look-deeper-at-only-one-thing-observability">A look deeper at only one thing –&gt; Observability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#no">No</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_demo.html#yes-but-we-will-charge-you-and-move-the-schedule-to-the-right">Yes - but we will charge you and move the schedule to the right.</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">uberBrandon HPC AWS Parallel Computer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>DataOps Cookbook</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/3_agg.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dataops-cookbook">
+<h1>DataOps Cookbook<a class="headerlink" href="#dataops-cookbook" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-et-case-study">
+<h2>Data - ET Case Study<a class="headerlink" href="#data-et-case-study" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>more to come …</p></li>
+</ul>
+</div>
+<div class="section" id="current-input-data-to-the-veget-model">
+<h2>Current Input data to the VegET model<a class="headerlink" href="#current-input-data-to-the-veget-model" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="detailed-input-description-from-steffi">
+<h2>Detailed Input Description from Steffi<a class="headerlink" href="#detailed-input-description-from-steffi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="precipitation">
+<h3>Precipitation<a class="headerlink" href="#precipitation" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<p><strong>Gridmet precipitation</strong><br /><br> gridMET is a dataset of daily high-spatial resolution (~4-km, 1/24th degree) surface meteorological data covering the contiguous US from 1979-yesterday.</p>
+<ul class="simple">
+<li><p>http://www.climatologylab.org/gridmet.html</p></li>
+<li><p>The format is in netcdf4 format and is updated daily with a 4-5 day delay.</p></li>
+</ul>
+</div>
+<div class="section" id="potential-et">
+<h3>Potential ET<a class="headerlink" href="#potential-et" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<p><strong>Gridmet potential ET (PET)</strong>
+<br> gridMET is a dataset of daily high-spatial resolution (~4-km, 1/24th degree) surface meteorological data covering the contiguous US from 1979-yesterday.</p>
+<ul class="simple">
+<li><p>http://www.climatologylab.org/gridmet.html</p></li>
+<li><p>The format is in netcdf4 format and is updated daily with a 4-5 day delay.</p></li>
+</ul>
+</div>
+<div class="section" id="average-air-temperature">
+<h3>Average air temperature<a class="headerlink" href="#average-air-temperature" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<p><strong>Worldmet temperature</strong> –&gt; Daymet data for North America
+<br> The Daymet dataset provides gridded estimates of daily weather parameters. Seven surface weather parameters are available at a daily time step, 1 km x 1 km spatial resolution, with a North American spatial extent. Access to the Daymet dataset is available from the ORNL DAAC through a variety of tools and formats allowing a rich resource of daily surface meteorology.
+Daymet is supported by NASA through the Earth Science Data and Information System(ESDIS).</p>
+<ul class="simple">
+<li><p>https://daymet.ornl.gov/</p></li>
+<li><p>The data is updated once a year at the beginning of the calendar year.</p></li>
+<li><p>netCDF file format that follow netCDF Climate and Forecast (CF) Metadata conventions</p></li>
+</ul>
+<p><strong>Future use - Gridmet air temperature</strong>
+<br> gridMET is a dataset of daily high-spatial resolution (~4-km, 1/24th degree) surface meteorological data covering the contiguous US from 1979-yesterday.</p>
+<ul class="simple">
+<li><p>http://www.climatologylab.org/gridmet.html</p></li>
+<li><p>The format is in netcdf4 format and is updated daily.</p></li>
+</ul>
+</div>
+<div class="section" id="ndvi-normalized-difference-vegetation-index">
+<h3>NDVI - Normalized Difference Vegetation Index<a class="headerlink" href="#ndvi-normalized-difference-vegetation-index" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<p><strong>MODIS product MOD13Q1 - 1km</strong>
+<br> The MOD13Q1 Version 6 product provides Vegetation Index (VI) values at a per pixel basis at 250 meter (m) spatial resolution. There are two primary vegetation layers. The first is the Normalized Difference Vegetation Index (NDVI), which is referred to as the continuity index to the existing National Oceanic and Atmospheric Administration-Advanced Very High Resolution Radiometer (NOAA-AVHRR) derived NDVI.https://lpdaac.usgs.gov/products/mod13q1v006/</p>
+<ul class="simple">
+<li><p>https://e4ftl01.cr.usgs.gov/MOLT/MOD13Q1.006/ what is the NASA Land Processes Distributed Active Archive Center (LP DAAC) Distribution Server hosted at the USGS Earth Resources Observation and Science (EROS) Center.</p></li>
+<li><p>the format is hdf</p></li>
+<li><p>the data is updated every 8-days, 2-5 days after an eight day period is completed
+<br> Alternative is NDVI at 1km scale (https://lpdaac.usgs.gov/products/mod13a2v006/). The same properties apply.</p></li>
+</ul>
+<p><strong>Possible Landsat 8 for NDVI calculation on the fly?</strong></p>
+</div>
+<div class="section" id="soil-properties">
+<h3>Soil Properties<a class="headerlink" href="#soil-properties" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<p><strong>SoilGrids</strong>
+SoilGrids is a system for global digital soil mapping that uses state-of-the-art machine learning methods to map the spatial distribution of soil properties across the globe.</p>
+<ul class="simple">
+<li><p>https://www.isric.org/explore/soilgrids</p></li>
+<li><p>Those are static datasets for the globe</p></li>
+</ul>
+<p><strong>U.S. soil data (gNATSGO)</strong>
+<br> The gridded National Soil Survey Geographic Database (gNATSGO) is a USDA-NRCS Soil &amp; Plant Science Division (SPSD) composite database that provides complete coverage of the best available soils information for all areas of the United States and Island Territories. It was created by combining data from the Soil Survey Geographic Database (SSURGO), State Soil Geographic Database (STATSGO2), and Raster Soil Survey Databases (RSS) into a single seamless ESRI file geodatabase. The gNATSGO database contains a 10-meter raster of the soil map units and 70 related tables of soil properties and interpretations. It is designed to work with the SPSD gSSURGO ArcTools. Users can create full coverage thematic maps and grids of soil properties and interpretations for large geographic areas, such as the extent of a State or the conterminous United States.
+https://www.nrcs.usda.gov/wps/portal/nrcs/detail/soils/survey/geo/?cid=NRCSEPRD1464625</p>
+<ul class="simple">
+<li><p>the data is in a file geodatabase originally</p></li>
+<li><p>processing required to get the data needed - output are geotiff files</p></li>
+</ul>
+</div>
+<div class="section" id="data-on-aws">
+<h3>Data on AWS<a class="headerlink" href="#data-on-aws" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="available-data-on-aws">
+<h4>Available data on AWS<a class="headerlink" href="#available-data-on-aws" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Landsat 8  -  NDVI calculation? not ideal(yet)</p></li>
+<li><p>NEXRAD precipitation  -  its daily data, updated daily. We have a python script running downloading NEXRAD data everyday</p></li>
+<li><p>GOES 16 and 17  -</p></li>
+<li><p>NASA NEX - includes MOD13Q1(250m)</p></li>
+<li><p>MODIS MYD13A1, MOD13A1, MYD11A1, MOD11A1, MCD43A4  -  NDVI 500m</p></li>
+<li><p>ECMWF ERA5 Reanalysis - possible air temperature source?  https://github.com/planet-os/notebooks/blob/master/aws/era5-pds.md</p></li>
+</ul>
+</div>
+<div class="section" id="missing-data-on-aws">
+<h4>Missing data on AWS<a class="headerlink" href="#missing-data-on-aws" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>potential ET data
+<br> We could use our own creation of climatology dataset!!
+<br> ETo dataset, daily 1984-2017 - 366 files = 1.23 GB</p></li>
+<li><p>air temperature
+<br> air temp to be discussed</p></li>
+<li><p>soil data</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="questions">
+<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Landsat data is the big gorilla in the room.</p>
+<ul class="simple">
+<li><p>Collection-2 is relevant?</p>
+<ul>
+<li><p>Which Bands?</p>
+<ul>
+<li><p>Surface Temperature?</p></li>
+<li><p>Surface Reflectance?</p></li>
+<li><p>Aerosols?</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ANSWER - Not yet except for some possible animations for show of AOI</p></li>
+<li><p>LATER - ET will explore bands in Collection-2 in a merged ET product - SSEBop and VegET and Landsat - TBD</p></li>
+</ul>
+</li>
+<li></li>
+</ol>
+</div>
+<div class="section" id="assumptions">
+<h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Direct access to data in object buckets is useful</p></li>
+<li><p>Xarray abstractions will provide the right slicing methods to leverage the ET time series information</p></li>
+<li><p>Spelling is not important in this website :-)</p></li>
+<li></li>
+</ol>
+</div>
+<div class="section" id="what-data-is-in-the-cloud">
+<h2>What Data is in the “CLOUD” ?<a class="headerlink" href="#what-data-is-in-the-cloud" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="where">
+<h2>Where<a class="headerlink" href="#where" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="how">
+<h2>How<a class="headerlink" href="#how" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>https://explorer.digitalearth.africa/ga_ls8c_gm_2_annual</p>
+</div>
+<div class="section" id="aws-registry">
+<h2>AWS Registry<a class="headerlink" href="#aws-registry" title="Permalink to this headline">¶</a></h2>
+<p>https://aws.amazon.com/earth/</p>
+</div>
+<div class="section" id="more-portals-and-buckets">
+<h2>More Portals and Buckets<a class="headerlink" href="#more-portals-and-buckets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>look at the nasa catalogs and portals</p></li>
+<li><p>Earth Explorer</p></li>
+<li><p>Sentinel Hub</p></li>
+<li><p>list from MacKenzie F - place in notes for now</p></li>
+<li><p>find chris holmes talk on death of the portal</p></li>
+</ul>
+</div>
+<div class="section" id="lpdaac">
+<h2>LPDAAC<a class="headerlink" href="#lpdaac" title="Permalink to this headline">¶</a></h2>
+<p><img alt="lpdaac" src="https://github.com/tonybutzer/assets/blob/master/et/lpdaac_data.png?raw=true" /></p>
+</div>
+<div class="section" id="the-keystone-product-modis-250m-ndvi-16-day-sinusoidal-tiles">
+<h2>The Keystone Product MODIS 250m NDVI 16 Day Sinusoidal Tiles.<a class="headerlink" href="#the-keystone-product-modis-250m-ndvi-16-day-sinusoidal-tiles" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mod13q1-v6">
+<h3>MOD13Q1 v6<a class="headerlink" href="#mod13q1-v6" title="Permalink to this headline">¶</a></h3>
+<p><img alt="https://github.com/tonybutzer/assets/blob/master/et/great-skew.jpg?raw=true" src="https://github.com/tonybutzer/assets/blob/master/et/great-skew.jpg?raw=true" /></p>
+<hr class="docutils" />
+<p><img alt="https://github.com/tonybutzer/assets/blob/master/et/imgo.jpg?raw=true" src="https://github.com/tonybutzer/assets/blob/master/et/imgo.jpg?raw=true" /></p>
+</div>
+</div>
+<div class="section" id="data-wrangle">
+<h2>Data Wrangle<a class="headerlink" href="#data-wrangle" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rclone-is-the-bomb">
+<h2>rclone is THE BOMB!<a class="headerlink" href="#rclone-is-the-bomb" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">rclone</span> <span class="pre">copy</span> <span class="pre">MODIS_NDVI/</span> <span class="pre">et-data:/ga-et-data/MODIS_NDVI/</span>&#160; <span class="pre">-P</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tony@qotom ~ $ rclone copy MODIS_NDVI/ et-data:/ga-et-data/MODIS_NDVI/  -P 
+Transferred:   	   43.191G / 46.937 GBytes, 92%, 1.255 MBytes/s, ETA 50m56s
+Transferred:         1009 / 1099, 92%
+Elapsed time:   9h47m18.8s
+Transferring:
+ *            2016/2016335.1_km_16_days_NDVI.tif: 91% /131.284M, 66.102k/s, 2m51s
+Transferred:   	   43.241G / 46.937 GBytes, 92%, 1.255 MBytes/s, ETA 50m15s
+Transferred:         1009 / 1099, 92%
+Elapsed time:   9h47m59.3s
+Transferring:
+ *            2016/2016335.1_km_16_days_NDVI.tif: 95% /131.284M, 106.963k/s, 1m0s
+Transferred:   	   43.959G / 46.937 GBytes, 94%, 1.255 MBytes/s, ETA 40m29s
+Transferred:         1033 / 1099, 94%
+Elapsed time:   9h57m47.3s
+Transferring:
+ *            2016/2016343.1_km_16_days_NDVI.tif: 27% /131.284M, 296.605k/s, 5m29s
+ *            2016/2016344.1_km_16_days_NDVI.tif: 22% /131.284M, 312.016k/s, 5m32s
+ *            2016/2016345.1_km_16_days_NDVI.tif: 19% /131.284M, 281.528k/s, 6m22s
+ *            2016/2016346.1_km_16_days_NDVI.tif: 17% /131.284M, 405.909k/s, 4m33s
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-netapp">
+<h2>Using the NETAPP<a class="headerlink" href="#using-the-netapp" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>docker container on llsrlscd04</p></li>
+<li><p>rclone container</p></li>
+<li><p>docker exec -it rclone bash</p></li>
+<li><p>su butzer</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rclone</span> <span class="n">copy</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">Projects</span><span class="o">/</span><span class="n">Cloud_Veg_ET</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">ETO</span><span class="o">/</span> <span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="n">ga</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">Cloud_Veg_ET</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">ETO</span><span class="o">/</span> <span class="o">-</span><span class="n">P</span>
+
+<span class="n">rclone</span> <span class="n">copy</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">Projects</span><span class="o">/</span><span class="n">Cloud_Veg_ET</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">NDVI</span> <span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="n">ga</span><span class="o">-</span><span class="n">et</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">Cloud_Veg_ET</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">NDVI</span> <span class="o">-</span><span class="n">P</span>
+
+<span class="n">PPT</span>
+</pre></div>
+</div>
+<p>rclone copy et-data:ga-et-data/v1DRB_outputs/model_outputs/ /mnt/Projects/Cloud_Veg_ET/fromtony/ -P</p>
+<div class="section" id="id1">
+<h3>Notes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="air-temperature">
+<h3>Air Temperature<a class="headerlink" href="#air-temperature" title="Permalink to this headline">¶</a></h3>
+<p><em>./push-scp-ga.sh air_temperature</em>:</p>
+<p>loading from local disk to cloud EBS</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mon</span><span class="p">,</span> <span class="n">Feb</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2020</span>  <span class="mi">1</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">16</span> <span class="n">PM</span>
+
+<span class="n">Mon</span><span class="p">,</span> <span class="n">Feb</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2020</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">21</span> <span class="n">PM</span>
+</pre></div>
+</div>
+<p>4.6 Gigabytes in an hour an a half - thru the VPN and TIC.</p>
+<ul class="simple">
+<li><p>more to come ….</p></li>
+</ul>
+</div>
+<div class="section" id="sync-to-bucket">
+<h3>Sync to Bucket<a class="headerlink" href="#sync-to-bucket" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>make a inputsv0 prefix</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">s3api</span> <span class="pre">put-object</span> <span class="pre">--bucket</span> <span class="pre">ga-et-data-west</span> <span class="pre">--key</span> <span class="pre">inputsv0/</span> </code></p>
+</div>
+<div class="section" id="actual-sync">
+<h3>Actual Sync<a class="headerlink" href="#actual-sync" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="dry-run">
+<h4>Dry run<a class="headerlink" href="#dry-run" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"> <span class="pre">aws</span> <span class="pre">s3</span> <span class="pre">sync</span> <span class="pre">./air_temperature</span> <span class="pre">s3://ga-et-data-west/inputsv0/air_temperature</span> <span class="pre">--dryrun</span></code></p>
+</div>
+<div class="section" id="for-reals">
+<h4>For Reals<a class="headerlink" href="#for-reals" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"> <span class="pre">time</span> <span class="pre">aws</span> <span class="pre">s3</span> <span class="pre">sync</span> <span class="pre">./air_temperature</span> <span class="pre">s3://ga-et-data-west/inputsv0/air_temperature</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">real</span>    <span class="mi">1</span><span class="n">m44</span><span class="o">.</span><span class="mi">966</span><span class="n">s</span>
+<span class="n">user</span>    <span class="mi">0</span><span class="n">m39</span><span class="o">.</span><span class="mi">020</span><span class="n">s</span>
+<span class="n">sys</span>     <span class="mi">0</span><span class="n">m23</span><span class="o">.</span><span class="mi">729</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>what took <em>an hour and a half</em> - can be done in <em>1 minute and a half</em></p>
+<ul class="simple">
+<li><p>that’s the cloud - its awesome - S3 is powerful</p></li>
+<li><p>and everyone can access the same buckets directly - think about it and <em>smile</em> :-)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="nuke-prefix">
+<h3>Nuke prefix<a class="headerlink" href="#nuke-prefix" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"> <span class="pre">aws</span> <span class="pre">s3</span> <span class="pre">rm</span> <span class="pre">--recursive</span>&#160; <span class="pre">s3://ga-et-data-west/inputsv0/</span> <span class="pre">--dryrun</span></code></p>
+</div>
+<div class="section" id="id2">
+<h3>Precipitation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"> <span class="pre">aws</span> <span class="pre">s3</span> <span class="pre">sync</span> <span class="pre">./precipitation</span> <span class="pre">s3://ga-et-data-west/inputsv0/precipitation</span> <span class="pre">--dryrun</span></code></p>
+<div class="section" id="id3">
+<h4>For Reals<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"> <span class="pre">time</span> <span class="pre">aws</span> <span class="pre">s3</span> <span class="pre">sync</span> <span class="pre">./precipitation</span> <span class="pre">s3://ga-et-data-west/inputsv0/precipitation</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">real</span>    <span class="mi">2</span><span class="n">m43</span><span class="o">.</span><span class="mi">137</span><span class="n">s</span>
+<span class="n">user</span>    <span class="mi">0</span><span class="n">m33</span><span class="o">.</span><span class="mi">461</span><span class="n">s</span>
+<span class="n">sys</span>     <span class="mi">0</span><span class="n">m7</span><span class="o">.</span><span class="mi">885</span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="git-issue">
+<h3>Git Issue?<a class="headerlink" href="#git-issue" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="data-science-cookbook">
+<h1>Data Science Cookbook<a class="headerlink" href="#data-science-cookbook" title="Permalink to this headline">¶</a></h1>
+<p>https://discourse.holoviz.org/t/simple-panel-example-of-map-time-series-interaction-for-data-cube/1485/2</p>
+<p>https://github.com/tonybutzer/notebook</p>
+<p>https://github.com/tonybutzer/notebook/blob/master/00-Viz/panel-timeseries-get-x-y-and-plot.ipynb</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Tony Butzer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
